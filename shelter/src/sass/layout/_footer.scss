@@ -21,7 +21,7 @@
         // }
         .footer-contacts {
             @include flex-content-column($gap: 40px);
-            width: 279px;
+            width: 369px;
             padding-top: 17px;
             &.footer-contacts_pets {
                 width: 371px;
