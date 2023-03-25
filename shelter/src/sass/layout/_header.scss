@@ -11,8 +11,7 @@
         display: flex;
         justify-content: space-between;
        &.pets {
-        padding: 38px 40px;
-        width: 1330px;
+        padding: $padding-header-pets;
         }
     }
 }
@@ -34,7 +33,6 @@
         margin: 0;
         &.pets{
             color:$color-dark-l;
-            letter-spacing: 0.125em;
         }
     }
 
@@ -44,7 +42,6 @@
         color: $color-light-xl;
         &.pets {
             color: $color-dark-3xl;
-            letter-spacing: 0.15em;
         }
     }
 }
@@ -55,9 +52,6 @@
         padding-top: 16px;
         gap: 36px;
         list-style-type: none;
-        &.pets {
-            gap: 44px;
-        }
     }
     .navigation__item {
         .navigation__link {
@@ -73,7 +67,6 @@
             }
             &.pets {
                 color: $color-dark-l;
-                letter-spacing: 0.03em;
                 &:hover {
                     color: $color-dark-3xl;
             }

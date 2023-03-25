@@ -13,42 +13,39 @@
         width: $content-wrapper;
         gap: 161px;
         color: $color-primary;
-        &.footer-wrapper_pets {
-            gap: 160px;
-            height: 342px;
-            width: max-content;
-            padding: 47px 35px 0 20px;
-        }
+        // &.footer-wrapper_pets {
+        //     gap: 160px;
+        //     height: 342px;
+        //     width: max-content;
+        //     padding: 47px 35px 0 20px;
+        // }
         .footer-contacts {
             @include flex-content-column($gap: 40px);
             width: 279px;
             padding-top: 17px;
             &.footer-contacts_pets {
-                gap: 45px;
-                width: 319px;
-                padding-top: 15px;
-                padding-left: 26px;
+                width: 371px;
             }
             
             .footer-contacts__title {
                 @include h3-title;
                 color: $color-light-xl;
-                &.footer-contacts__title_pets {
-                    font-size: 35px;
-                    line-height: 52px;
-                    letter-spacing: 0.12em;
-                }
+                // &.footer-contacts__title_pets {
+                //     font-size: 35px;
+                //     line-height: 52px;
+                //     letter-spacing: 0.12em;
+                // }
             }
             .footer-contacts__email {
                 @include h4-title;
                 @include flex-align-center ($gap: 20px);
                 transition: 0.3s;
-                &.footer-contacts__email_pets {
-                    font-size: 22px;
-                    line-height: 23px;
-                    letter-spacing: 0.07em;
-                    gap: 23px;
-                }
+                // &.footer-contacts__email_pets {
+                //     font-size: 22px;
+                //     line-height: 23px;
+                //     letter-spacing: 0.07em;
+                //     gap: 23px;
+                // }
                 &:hover {
                     color: $color-primary-light;
                 }
@@ -66,12 +63,12 @@
                 @include h4-title;
                 @include flex-align-center ($gap: 20px);
                 transition: 0.3s;
-                &.footer-contacts__phone_pets {
-                    line-height: 8px;
-                    font-size: 20px;
-                    letter-spacing: 0.11em;
-                    gap: 24px;
-                }
+                // &.footer-contacts__phone_pets {
+                //     line-height: 8px;
+                //     font-size: 20px;
+                //     letter-spacing: 0.11em;
+                //     gap: 24px;
+                // }
                 &:hover {
                     color: $color-primary-light;
                 }
@@ -88,29 +85,29 @@
         }
         .footer-locations {
             @include flex-content-column($gap: 33px);
-            width: 300px;
+            width: 397px;
             padding-top: 17px;
-            &.footer-locations_pets {
-                gap: 40px;
-                padding-top: 18px;
-                width: 358px;
-            }
+            // &.footer-locations_pets {
+            //     gap: 40px;
+            //     padding-top: 18px;
+            //     width: 358px;
+            // }
             .footer-locations__title {
                 @include h3-title;
                 color: $color-light-xl;
-                &.footer-locations__title_pets {
-                    font-size: 39px;
-                    line-height: 48px;
-                }
+                // &.footer-locations__title_pets {
+                //     font-size: 39px;
+                //     line-height: 48px;
+                // }
             }
             .footer-locations__link {
                 @include h4-title;
                 @include flex-align-center ($gap: 20px);
                 transition: 0.3s;
-                &.footer-locations__link_pets {
-                    font-size: 22px;
-                    letter-spacing: 0.07em;
-                }
+                // &.footer-locations__link_pets {
+                //     font-size: 22px;
+                //     letter-spacing: 0.07em;
+                // }
                 &:hover {
                     color: $color-primary-light;
                 }
@@ -137,9 +134,9 @@
                 }
             }
         }
-        .footer-puppy {
-            width: 335px;
-            height: 342px;
-        }
+        // .footer-puppy {
+        //     width: 335px;
+        //     height: 342px;
+        // }
     }
 }
