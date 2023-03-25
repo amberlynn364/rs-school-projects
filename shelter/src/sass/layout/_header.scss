@@ -1,0 +1,92 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/normalize';
+@import '../base/typography';
+
+.header {
+    @include flex-center ();
+    .header-wrapper {
+        padding: $padding-start-screen;
+        width: $content-wrapper;
+        display: flex;
+        justify-content: space-between;
+       &.pets {
+        padding: 38px 40px;
+        width: 1330px;
+        }
+    }
+}
+
+.logo {
+    @include flex-content-column($gap: 10px);
+    text-decoration: none;
+    transition: 0.3s;
+    &:hover {
+        scale: 1.05;
+    }
+    &:active {
+        scale: 1.1;
+    }
+    
+    .logo__title {
+        @include text-logo-title ();
+        color: $color-primary;
+        margin: 0;
+        &.pets{
+            color:$color-dark-l;
+            letter-spacing: 0.125em;
+        }
+    }
+
+    .logo__subtitle {
+        @include text-logo-subtitle();
+        padding-left: 5px;
+        color: $color-light-xl;
+        &.pets {
+            color: $color-dark-3xl;
+            letter-spacing: 0.15em;
+        }
+    }
+}
+
+.navigation {
+    .navigation__menu {
+        display: flex;
+        padding-top: 16px;
+        gap: 36px;
+        list-style-type: none;
+        &.pets {
+            gap: 44px;
+        }
+    }
+    .navigation__item {
+        .navigation__link {
+            @include text-paragraph-1();
+            color: $color-dark-s;
+            text-decoration: none;
+            transition: 0.3s;
+            &:hover {
+                color: $color-light-s;
+            }
+            &:active {
+                color: $color-primary;
+            }
+            &.pets {
+                color: $color-dark-l;
+                letter-spacing: 0.03em;
+                &:hover {
+                    color: $color-dark-3xl;
+            }
+            }
+            &.navigation__link_active {
+                padding-bottom: 4px;
+                border-bottom: 3px solid $color-primary;
+                color: $color-light-s;
+                pointer-events: none;
+                &.pets {
+                    color: $color-dark-l;
+                }
+            }
+        }
+    }
+}

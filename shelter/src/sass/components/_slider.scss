@@ -1,0 +1,35 @@
+@import './buttons';
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/normalize';
+@import '../base/typography';
+
+.slider {
+    display: flex;
+    align-items: center;
+    gap: 52px;
+    .card-wrapper {
+        display: flex;
+        gap: 91px
+    }
+    .slider__card {
+        @include flex-content-column ($gap: 30px);
+        align-items: center;
+        padding-bottom: 30px;
+        background-color: $color-light-s;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+            scale: 1.05;
+        }
+        .slider__pet-name {
+            @include text-pets-name;
+        }
+        .slider__pet-photo {
+            border-radius: 9px 9px 0px 0px;
+        }
+    }
+    .arrow-right {
+        transform: rotate(180deg);
+    }
+}

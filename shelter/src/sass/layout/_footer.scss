@@ -1,0 +1,145 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/normalize';
+@import '../base/typography';
+
+.footer {
+    @include flex-center;
+    background-image: url("../../assets/img/footer-background.jpg");
+    background-size: cover;
+    .footer-wrapper {
+        @include flex-center;
+        padding: $padding-footer;
+        width: $content-wrapper;
+        gap: 161px;
+        color: $color-primary;
+        &.footer-wrapper_pets {
+            gap: 160px;
+            height: 342px;
+            width: max-content;
+            padding: 47px 35px 0 20px;
+        }
+        .footer-contacts {
+            @include flex-content-column($gap: 40px);
+            width: 279px;
+            padding-top: 17px;
+            &.footer-contacts_pets {
+                gap: 45px;
+                width: 319px;
+                padding-top: 15px;
+                padding-left: 26px;
+            }
+            
+            .footer-contacts__title {
+                @include h3-title;
+                color: $color-light-xl;
+                &.footer-contacts__title_pets {
+                    font-size: 35px;
+                    line-height: 52px;
+                    letter-spacing: 0.12em;
+                }
+            }
+            .footer-contacts__email {
+                @include h4-title;
+                @include flex-align-center ($gap: 20px);
+                transition: 0.3s;
+                &.footer-contacts__email_pets {
+                    font-size: 22px;
+                    line-height: 23px;
+                    letter-spacing: 0.07em;
+                    gap: 23px;
+                }
+                &:hover {
+                    color: $color-primary-light;
+                }
+                &:active {
+                    color: $color-primary-darker;
+                }
+                &::before {
+                    content: "";
+                    background-image: url("../../assets/svg/icon-email.svg");
+                    width: 40px;
+                    height: 32px;
+                }
+            }
+            .footer-contacts__phone {
+                @include h4-title;
+                @include flex-align-center ($gap: 20px);
+                transition: 0.3s;
+                &.footer-contacts__phone_pets {
+                    line-height: 8px;
+                    font-size: 20px;
+                    letter-spacing: 0.11em;
+                    gap: 24px;
+                }
+                &:hover {
+                    color: $color-primary-light;
+                }
+                &:active {
+                    color: $color-primary-darker;
+                }
+                &::before {
+                    content: "";
+                    background-image: url("../../assets/svg/icon-phone.svg");
+                    width: 40px;
+                    height: 32px;
+                }
+            }
+        }
+        .footer-locations {
+            @include flex-content-column($gap: 33px);
+            width: 300px;
+            padding-top: 17px;
+            &.footer-locations_pets {
+                gap: 40px;
+                padding-top: 18px;
+                width: 358px;
+            }
+            .footer-locations__title {
+                @include h3-title;
+                color: $color-light-xl;
+                &.footer-locations__title_pets {
+                    font-size: 39px;
+                    line-height: 48px;
+                }
+            }
+            .footer-locations__link {
+                @include h4-title;
+                @include flex-align-center ($gap: 20px);
+                transition: 0.3s;
+                &.footer-locations__link_pets {
+                    font-size: 22px;
+                    letter-spacing: 0.07em;
+                }
+                &:hover {
+                    color: $color-primary-light;
+                }
+                &:active {
+                    color: $color-primary-darker;
+                }
+                &.boston {
+                    &::before {
+                        content: "";
+                        background-image: url("../../assets/svg/icon-marker.svg");
+                        background-repeat: no-repeat;
+                        width: 42px;
+                        height: 32px;
+                    }
+                }
+                &.london {
+                    &::before {
+                        content: "";
+                        background-image: url("../../assets/svg/icon-marker.svg");
+                        background-repeat: no-repeat;
+                        width: 22px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+        .footer-puppy {
+            width: 335px;
+            height: 342px;
+        }
+    }
+}

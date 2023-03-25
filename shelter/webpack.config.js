@@ -11,24 +11,41 @@ module.exports = {
     target,
     devtool,
     devServer: {
+      static: {
+        directory: path.join(__dirname, 'dist'),
+      },
       port: 3000,
       open: true,
       hot: true,
-    }, 
-    entry: ['@babel/polyfill', path.resolve(__dirname, 'src/main', 'script.js')],
+    },
+      entry: {
+        main: path.resolve(__dirname, 'src/main', 'script.js'),
+        pets: path.resolve(__dirname, 'src/pets', 'script.js')
+      }, 
     output: {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-        filename: '[name].[contenthash].js'
-        
+        filename: './[name]/[name].js',
+        chunkFilename: './[name]/chunkFilename.js',
+        assetModuleFilename: 'assets/img/[name][ext]'
     },
+    
     plugins: [
         new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'src/main', 'index.html') 
+        template: path.resolve(__dirname, 'src/main', 'index.html'),
+        filename: 'main/main.html',
+        chunks: ['main'],
         }),
+        new HtmlWebpackPlugin({
+          template: path.resolve(__dirname, 'src/pets', 'index.html'),
+          filename: 'pets/pets.html',
+          chunks: ['pets'],
+          }),
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
-        })
+            filename: '[name]/[name].css',
+            chunkFilename: '[name]/[name].[id].css',
+            ignoreOrder: false,
+        }),
     ],
     module: {
         rules: [
@@ -53,17 +70,12 @@ module.exports = {
                 ],
             },
             {
-              test: /\.m?js$/,
-              exclude: /node_modules/,
-              use: {
-                loader: 'babel-loader',
-                options: {
-                  presets: [
-                    ['@babel/preset-env', { targets: "defaults" }]
-                  ]
-                }
-              }
-            } 
+              test: /\.woff2?$/i,
+              type: 'asset/resource',
+              generator: {
+                filename: 'assets/fonts/[name].[ext]'
+              } 
+            },
         ]
     }
 }

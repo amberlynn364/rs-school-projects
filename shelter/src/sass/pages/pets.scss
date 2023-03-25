@@ -1,0 +1,70 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/normalize';
+@import '../base/typography';
+@import '../components/buttons';
+@import '../components/slider';
+@import '../layout/header';
+@import '../layout/footer';
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.our-friends {
+    @include flex-center;
+    background-color: $color-light-l;
+    flex: 1 0 auto;
+    .our-friends-wrapper {
+        @include flex-center;
+        @include flex-content-column ($gap: 68px);
+        padding: 89px 40px 115px 40px;
+        width: 1430px;
+        .our-friends-title {
+            @include h3-title;
+            letter-spacing: 0.11em;
+            line-height: 48px;
+            color:$color-dark-l;
+            text-align: center;
+            span {
+                display: block;
+            }
+        }
+        .cards-wrapper {
+            @include flex-center;
+            gap: 43px;
+            flex-wrap: wrap;
+        }
+        .cards__item {
+            @include flex-content-column ($gap: 36px);
+            align-items: center;
+            padding-bottom: 27px;
+            background-color: $color-light-s;
+            transition: 0.3s;
+            cursor: pointer;
+            &:hover {
+                scale: 1.05;
+            }
+            .cards__pet-name {
+                @include text-pets-name;
+                letter-spacing: 0.11em;
+            }
+            .cards__pet-photo {
+                border-radius: 9px 9px 0px 0px;
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
+}
+
+.our-friends-button-wrapper {
+    display: flex;
+    padding-top: 35px;
+    gap: 28px;
+    .arrow-left {
+        transform: rotate(180deg);
+    }
+}

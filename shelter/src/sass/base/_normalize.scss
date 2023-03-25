@@ -11,6 +11,7 @@
  html {
     line-height: 1.15; /* 1 */
     -webkit-text-size-adjust: 100%; /* 2 */
+    scroll-behavior: smooth;
   }
   
   /* Sections
@@ -40,6 +41,10 @@
   h1 {
     font-size: 2em;
     margin: 0.67em 0;
+  }
+
+  h1, h2, h3, h4, h5, span, p, ul {
+    margin: 0;
   }
   
   /* Grouping content
@@ -346,4 +351,9 @@
   
   [hidden] {
     display: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
   }
