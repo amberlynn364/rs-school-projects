@@ -25,7 +25,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         clean: true,
-        filename: './[name]/[name].js',
+        filename: './[name]/script.js',
         chunkFilename: './[name]/chunkFilename.js',
         assetModuleFilename: 'assets/img/[name][ext]'
     },
@@ -33,16 +33,16 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
         template: path.resolve(__dirname, 'src/main', 'index.html'),
-        filename: 'main/main.html',
+        filename: 'main/index.html',
         chunks: ['main'],
         }),
         new HtmlWebpackPlugin({
           template: path.resolve(__dirname, 'src/pets', 'index.html'),
-          filename: 'pets/pets.html',
+          filename: 'pets/index.html',
           chunks: ['pets'],
           }),
         new MiniCssExtractPlugin({
-            filename: '[name]/[name].css',
+            filename: '[name]/style.css',
             chunkFilename: '[name]/[name].[id].css',
             ignoreOrder: false,
         }),
