@@ -95,10 +95,6 @@
             .footer-locations__title {
                 @include h3-title;
                 color: $color-light-xl;
-                // &.footer-locations__title_pets {
-                //     font-size: 39px;
-                //     line-height: 48px;
-                // }
             }
             .footer-locations__link {
                 @include h4-title;
