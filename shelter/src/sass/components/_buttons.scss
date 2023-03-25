@@ -1,0 +1,70 @@
+@import '../abstracts/mixins';
+
+.button {
+    @include text-buttons ();
+    @include flex-center-full;
+    height: 52px;
+    border-radius: 100px;
+    border-style: none;
+    transition: 0.3s;
+    cursor: pointer;
+    &.not-only-description__button {
+        width: 207px;
+    }
+    &.slider__button {
+        width: 187px;
+    }
+    &.our-friends__button {
+        width: 261px;
+    }
+    &.cards__button {
+        width: 205px;
+        letter-spacing: 0.13em;
+    }
+}
+
+.button_round {
+    @include text-buttons;
+    @include flex-center-full;
+    border-radius: 100px;
+    border-style: none;
+    transition: 0.3s;
+    height: 52px;
+    width: 52px;
+    cursor: pointer;
+    &.button-pagination {
+        @include h4-title;
+    }
+    &:active {
+        background-color: $color-primary;
+    }
+    &.button_round_disabled {
+        pointer-events: none;
+        border: 2px solid $color-dark-s;
+    }
+}
+
+.button_primary {
+    background-color: $color-primary;
+    color: $color-dark-3xl;
+    &:hover {
+        background-color: $color-primary-light;
+    }
+    &:active {
+        background-color: $color-primary-darker;
+    }
+}
+
+.button_secondary {
+    border: 2px solid $color-primary;
+    background-color: inherit;
+    &:hover{
+        background-color: $color-primary-light;
+        border-color: $color-primary-light;
+    }
+    &:active{
+        background-color: $color-primary;
+    }
+}
+
+

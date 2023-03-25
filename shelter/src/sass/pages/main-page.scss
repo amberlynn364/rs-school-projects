@@ -1,0 +1,174 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/normalize';
+@import '../base/typography';
+@import '../components/buttons';
+@import '../components/slider';
+@import '../layout/header';
+@import '../layout/footer';
+
+
+.start-screen {
+    background-image: url('../../assets/img/start-screen-gradient-background.jpg');
+    background-size: cover;
+}
+
+.not-only {
+    @include flex-center ();
+    .not-only-wrapper {
+        padding: $padding-start-screen;
+        @include flex-wrapper($gap: 40px);
+        width: $content-wrapper;
+    }
+    .not-only-description {
+        @include flex-content-column ($gap: 42px);
+        padding: 163px 0px 243px 0;
+    }
+    .not-only-description__title {
+        @include h2-title ();
+        padding-right: 150px;
+        color: $color-light-xl;
+    }
+    .not-only-description__subtitle {
+        @include text-paragraph-1 ();
+        color:$color-dark-s
+    }
+}
+
+.about {
+    @include flex-center();
+    background-color: $color-light-xl;
+    .about-wrapper {
+        @include flex-wrapper($gap: 120px);
+        padding: $padding-about-pets-help;
+        width: $content-wrapper;
+        img {
+            padding-left: 175px;
+        }
+    }
+    .about-content {
+        @include flex-content-column ($gap: 25px);
+        padding: 14px 175px 14px 0px;
+        .about-content__title {
+            @include h3-title;
+            padding-right: 60px;
+        }
+        .about-content__description {
+            @include text-paragraph-1;
+        }
+    }
+}
+
+.our-friends {
+    @include flex-center;
+    background-color: $color-light-l;
+    .our-friends-wrapper {
+        @include flex-center-full;
+        @include flex-content-column ($gap: 60px);
+        padding: $padding-about-pets-help;
+        width: $content-wrapper;
+        .our-friends-title {
+            @include h3-title;
+            color:$color-dark-l;
+            
+            text-align: center;
+            span {
+                display: block;
+            }
+        }
+    }
+}
+
+.help {
+    @include flex-center;
+    background-color: $color-light-xl;
+    .help-wrapper {
+        @include flex-center-full;
+        @include flex-content-column ($gap: 60px);
+        padding: $padding-about-pets-help;
+        width: $content-wrapper;
+        .help-title {
+            @include h3-title;
+            width: 310px;
+            text-align: center;
+        }
+        .help-list {
+            @include flex-center-full;
+            flex-wrap: wrap;
+            gap: 119px;
+            row-gap: 55px;
+            padding: 0;
+            .help-list__item {
+                @include flex-center-full;
+                @include flex-content-column ($gap: 30px);
+                img {
+                    width: 60px;
+                    height: 60px;
+                }
+                span {
+                    @include h4-title;
+                }
+            }
+        }
+    }
+}
+
+.in-addition {
+    @include flex-center;
+    background-color: $color-light-l;
+    .in-addition-wrapper {
+        @include flex-center;
+        gap: 20px;
+        padding: $padding-in-addition;
+        img {
+            padding: 12px 10px 9px 0px;
+        }
+        .in-addition-content {
+            width: 380px;
+            @include flex-content-column ($gap: 20px);
+            color:$color-dark-l;
+            .in-addition-content__title {
+                @include h3-title;
+                padding-right: 80px;
+            }
+            .in-addition-content__subtitle {
+                @include h5-title;
+            }
+            .in-addition-content__credit-card {
+                @include h4-title;
+                @include flex-center-full;
+                background-color: $color-primary;
+                position: relative;
+                width: 349px;
+                border-radius: 9px;
+                height: 43px;
+                transition: 0.3s;
+                cursor: pointer;
+                &:hover {
+                    background-color: $color-primary-light;
+                }
+                &:active {
+                    scale: 1.05;
+                }
+                span {
+                    padding-left: 15px;
+                    padding-bottom: 4px;
+                    &::before {
+                        content: "";
+                        display: inline-block;
+                        position: relative;
+                        background-image: url('../../assets/svg/credit-card.svg');
+                        width: 30px;
+                        height: 23px;
+                        right: 14px;
+                        top: 5px;
+                    }
+                }
+            }
+            .in-addition-content__description {
+                @include text-donation-description;
+                color:$color-dark-m;
+            }
+        }
+    }
+}
