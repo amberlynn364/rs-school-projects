@@ -6,7 +6,7 @@
 .header {
     @include flex-center ();
     .header-wrapper {
-        padding: $padding-start-screen;
+        padding: $padding-header;
         width: $content-wrapper;
         display: flex;
         justify-content: space-between;
