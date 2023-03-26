@@ -46,6 +46,10 @@ body {
             &:hover {
                 scale: 1.05;
             }
+            &:hover .button_secondary {
+                background-color: $color-primary-light;
+                border-color: $color-primary-light; 
+            }
             .cards__pet-name {
                 @include text-pets-name;
             }
