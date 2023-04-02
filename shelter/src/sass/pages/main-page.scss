@@ -6,32 +6,86 @@
 @import '../components/slider';
 @import '../layout/header';
 @import '../layout/footer';
+@import '../general.scss';
+
 
 
 .start-screen {
     background-image: url('../../assets/img/start-screen-gradient-background.jpg');
-    background-size: cover;
+    background-size: cover, auto;
 }
 
 .not-only {
     @include flex-center ();
     .not-only-wrapper {
+        width: $width-100;
         padding: $padding-start-screen;
-        @include flex-wrapper($gap: 40px);
-        width: $content-wrapper;
+        @include flex-center-full;
+        gap: 40px;
+        max-width: $content-wrapper;
+        @include media-1170 {
+            flex-wrap: wrap;
+        }
+        @include media-tablet {
+            flex-wrap: wrap;
+            padding: 0.8% 2.916% 0 2.916%;
+            max-width: $content-wrapper-tablet;
+        }
+        @include media-440 {
+            padding: 7.8% 2.916% 0 2.916%;
+            gap: 78px;
+            max-width: $content-wrapper-mobile;
+        }
+    img {
+        align-self: end;
+        @include media-1170 {
+            width: 80%;
+            padding-left: 19.5%;
+        }
+        @include media-440 {
+            width: 87%;
+            padding-left: 15.5%;
+        }
+    }
     }
     .not-only-description {
         @include flex-content-column ($gap: 42px);
-        padding: 163px 0px 243px 0;
+        padding: 13.583333% 0px 20.25% 0;
+        @include media-1170 {
+            max-width: 65%;
+            padding: 3.5% 0px 8.6% 0%;
+            a { 
+                align-self: center;
+            }
+        }
+        @include media-tablet {
+            // max-width: 65%;
+            padding: 3.5% 0px 8.6% 0%;
+            a { 
+                align-self: center;
+            }
+        }
+        @include media-440 {
+            padding: 2% 0px 8.6% 0%;
+            max-width: $content-wrapper-mobile;
+            text-align: center;
+            gap: 40px;
+        }
     }
     .not-only-description__title {
-        @include h2-title ();
-        padding-right: 150px;
+        @include h2-title;
+        padding-right: 12.5%;
         color: $color-light-xl;
+        @include media-440 {
+            @include h3-title-mobile;
+            padding: 0;
+            max-width: 260px;
+            align-self: center;
+        }
     }
     .not-only-description__subtitle {
         @include text-paragraph-1 ();
-        color:$color-dark-s
+        color:$color-dark-s;
     }
 }
 
@@ -40,21 +94,54 @@
     background-color: $color-light-xl;
     .about-wrapper {
         @include flex-wrapper($gap: 120px);
+        @include flex-center-full;
         padding: $padding-about-pets-help;
-        width: $content-wrapper;
+        max-width: $content-wrapper;
+        width: $width-100;
         img {
-            padding-left: 175px;
+            width: 42%;
+            @include media-440 {
+                width: 86%;
+            }
+        }
+        @include media-1170 {
+            // flex-wrap: wrap-reverse;
+        }
+        @include media-tablet {
+            flex-wrap: wrap-reverse;
+            padding: 10.5% 2.916% 13.2% 2.916%;
+            max-width: $content-wrapper-tablet;
+            gap: 82px;
+        }
+        @include media-440 {
+            padding: 13% 2.916% 13.2% 2.916%;
+            gap: 40px;
+            max-width: $content-wrapper-mobile;
         }
     }
     .about-content {
         @include flex-content-column ($gap: 25px);
-        padding: 14px 175px 14px 0px;
+        @include flex-center-full;
+        max-width: 430px;
+        flex-wrap: wrap;
+        @include media-440 {
+            max-width: 270px;
+            gap: 23px;
+        }
         .about-content__title {
             @include h3-title;
             padding-right: 60px;
+            @include media-440 {
+                @include h3-title-mobile;
+                text-align: center;
+                padding: 0;
+            }
         }
         .about-content__description {
             @include text-paragraph-1;
+            @include media-440 {
+                text-align: justify;
+            }
         }
     }
 }
@@ -62,16 +149,29 @@
 .our-friends {
     @include flex-center;
     background-color: $color-light-l;
+    overflow: hidden;
     .our-friends-wrapper {
         @include flex-center-full;
         @include flex-content-column ($gap: 60px);
-        padding: $padding-about-pets-help;
-        width: $content-wrapper;
+        padding: $padding-our-friends-main;
+        width: $width-100;
+        max-width: $content-wrapper;
+        @include media-800 {
+            max-width: $content-wrapper-tablet;
+            padding: 10.4% 0 13.1% 0;
+        }
+        @include media-440 {
+            padding: 14% 2.5% 13.1% 2.5%;
+            gap: 40px;
+            max-width: $content-wrapper-mobile;
+        }
         .our-friends-title {
             @include h3-title;
             color:$color-dark-l;
-            
             text-align: center;
+            @include media-440 {
+                @include h3-title-mobile;
+            }
             span {
                 display: block;
             }
@@ -86,11 +186,23 @@
         @include flex-center-full;
         @include flex-content-column ($gap: 60px);
         padding: $padding-about-pets-help;
-        width: $content-wrapper;
+        max-width: $content-wrapper;
+        @include media-1170 {
+            padding: 10.4% 2.916% 12.9% 2.916%;
+        }
+        @include media-440 {
+            padding: 14% 2.916% 13.6% 2.916%;
+            gap: 39px;
+            max-width: $content-wrapper-mobile;
+        }
         .help-title {
             @include h3-title;
             width: 310px;
             text-align: center;
+            @include media-440 {
+                @include h3-title-mobile;
+                max-width: 220px;
+            }
         }
         .help-list {
             @include flex-center-full;
@@ -98,16 +210,44 @@
             gap: 119px;
             row-gap: 55px;
             padding: 0;
+            @include media-1170 {
+                row-gap: 55px;
+                column-gap: 60px;
+            }
+            @include media-440 {
+                row-gap: 30px;
+                column-gap: 45px;
+                justify-content: unset;
+                padding-left: 4.5%;
+            }
             .help-list__item {
                 @include flex-center-full;
                 @include flex-content-column ($gap: 30px);
+                @include media-1170 {
+                    width: 170px;
+                    height: 113px;
+                }
+                @include media-440 {
+                    width: 40%;
+                    height: auto;
+                    gap: 27px;
+                }
                 img {
-                    width: 60px;
-                    height: 60px;
+                    width: 100%;
+                    height: auto;
+                    @include media-440 {
+                        width: 40%;
+                    }
                 }
                 span {
                     @include h4-title;
+                    @include media-440 {
+                        @include h5-title;
+                        width: 125px;
+                        text-align: center;
+                    }
                 }
+                
             }
         }
     }
@@ -117,22 +257,61 @@
     @include flex-center;
     background-color: $color-light-l;
     .in-addition-wrapper {
-        @include flex-center;
-        gap: 20px;
+        display: flex;
+        justify-content: space-evenly;
+        max-width: $content-wrapper;
+        width: $width-100;
         padding: $padding-in-addition;
+        @include media-1170 {
+            gap: 15px;
+        }
+        @include media-915 {
+            flex-wrap: wrap-reverse;
+            padding: 10.9% 2.916% 13% 2.916%;
+            gap: 61px;
+        }
+        @include media-440 {
+            padding: 12.5% 2.916% 13% 2.916%;
+            gap: 40px;
+            max-width: $content-wrapper-mobile;
+        }
         img {
-            padding: 12px 10px 9px 0px;
+            height: 261px;
+            align-self: center;
+            @include media-1170 {
+                width: 90%;
+                @include media-915 {
+                    height: auto;
+                    @include media-440 {
+                        width: 87%;
+                    }
+                }
+            }
         }
         .in-addition-content {
             width: 380px;
             @include flex-content-column ($gap: 20px);
+            flex-wrap: wrap;
             color:$color-dark-l;
+            @include media-440 {
+                align-items: center;
+                text-align: center;
+                gap: 23px;
+            }
             .in-addition-content__title {
                 @include h3-title;
                 padding-right: 80px;
+                @include media-440 {
+                    @include h3-title-mobile;
+                    padding: 0;
+                    width: 70%;
+                }
             }
             .in-addition-content__subtitle {
                 @include h5-title;
+                @include media-440 {
+                    letter-spacing: 0;
+                }
             }
             .in-addition-content__credit-card {
                 @include h4-title;
@@ -149,6 +328,10 @@
                 }
                 &:active {
                     scale: 1.05;
+                }
+                @include media-440 {
+                    @include text-credit-card-mobile;
+                    width: 281px;
                 }
                 span {
                     padding-left: 15px;
@@ -168,6 +351,10 @@
             .in-addition-content__description {
                 @include text-donation-description;
                 color:$color-dark-m;
+                @include media-440 {
+                    text-align: justify;
+                    width: 280px;
+                }
             }
         }
     }
