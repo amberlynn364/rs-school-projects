@@ -7,10 +7,30 @@
 .slider {
     display: flex;
     align-items: center;
-    gap: 52px;
+    justify-content: space-between;
+    max-width: $content-wrapper;
+    width: $width-100;
+    @include media-720 {
+        width: 95%;
+    }
+    @include media-440 {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 20px;
+        column-gap: 80px;
+        .button_secondary {
+            order: 1;
+        }
+    }
     .card-wrapper {
-        display: flex;
-        gap: 91px
+        @include flex-center-full;
+        max-width: 1080px;
+        width: $width-100;
+        justify-content: space-around;
+        @include media-915 {
+            width: 82%;
+            gap: 40px;
+        }
     }
     .slider__card {
         @include flex-content-column ($gap: 30px);
@@ -18,8 +38,16 @@
         padding-bottom: 30px;
         background-color: $color-light-s;
         border-radius: 9px;
+        // flex: 0 0 50%;
+        // max-width: 50%;
+        // max-width: 25%;
         transition: 0.3s;
+        max-width: 270px;
+        width: 100%;
         cursor: pointer;
+        &:nth-child(n+4) {
+            display: none;
+        }
         &:hover {
             scale: 1.05;
             box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
@@ -27,6 +55,19 @@
         &:hover .button_secondary {
             background-color: $color-primary-light;
             border-color: $color-primary-light; 
+        }
+        @include media-979 {
+            &:nth-child(n+3) {
+                display: none;
+            }
+        }
+        @include media-720 {
+            &:nth-child(n+2) {
+                display: none;
+            }
+        }
+        @include media-440 {
+            min-width: 270px;
         }
         .slider__pet-name {
             @include text-pets-name;

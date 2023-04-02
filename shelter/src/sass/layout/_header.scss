@@ -6,12 +6,24 @@
 .header {
     @include flex-center ();
     .header-wrapper {
-        padding: $padding-header;
-        width: $content-wrapper;
         display: flex;
         justify-content: space-between;
-       &.pets {
-        padding: $padding-header-pets;
+        padding: $padding-header;
+        width: $width-100;
+        max-width: $content-wrapper;
+        overflow: hidden;
+        @include media-tablet {
+            max-width: $content-wrapper-tablet;
+            padding: 4% 2.916% 3.8% 2.916%;
+        }
+        @include media-375 {
+            max-width: $content-wrapper-mobile;
+            padding: 10% 0% 8.6% 5.916%;
+        }
+        &.pets {
+            @include media-440 {
+                // padding: 10% 0% 9% 5.916%;
+            }
         }
     }
 }
@@ -47,6 +59,11 @@
 }
 
 .navigation {
+    @include media-767 {
+        display: none;
+        transform: translateX(999px);
+        transition: transform 0.5s;
+    }
     .navigation__menu {
         display: flex;
         padding-top: 16px;
@@ -72,14 +89,61 @@
             }
             }
             &.navigation__link_active {
-                padding-bottom: 4px;
+                padding-bottom: 3px;
                 border-bottom: 3px solid $color-primary;
                 color: $color-light-s;
                 pointer-events: none;
                 &.pets {
+                    // padding-bottom: 3px;
                     color: $color-dark-l;
                 }
             }
         }
     }
+}
+.burger-btn {
+    display: none;
+}
+@include media-767 {
+    .burger-btn {
+        display: block;
+        position: relative;
+        align-self: center;
+        right: 50px;
+        bottom: 3px;
+        z-index: 30;
+        span {
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: $color-primary;
+            transition: all 0.5s;
+            &::before {
+                content: "";
+                position: absolute;
+                width: 30px;
+                height: 2px;
+                background-color: $color-primary;
+                top: -10px;
+            }
+            &::after {
+                content: "";
+                position: absolute;
+                width: 30px;
+                height: 2px;
+                background-color: $color-primary;
+                top: 10px;
+            }
+        }
+        .burger-line-pets {
+            background-color: black;
+            &::before {
+                background-color: black;
+            }
+            &::after {
+                background-color: black;
+            }
+        }
+    }
+
 }

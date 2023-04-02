@@ -12,7 +12,7 @@ module.exports = {
     devtool,
     devServer: {
       static: {
-        directory: path.join(__dirname, 'dist'),
+        directory: path.join(__dirname, 'dist/main'),
       },
       port: 3000,
       open: true,
