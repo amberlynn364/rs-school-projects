@@ -5,7 +5,7 @@
 
 .footer {
     @include flex-center;
-    background-image: url("../../assets/img/footer-background.jpg");
+    background: url('../../assets/img/start-screen-gradient-background.jpg') center center/100% no-repeat;
     background-size: cover;
     .footer-wrapper {
         @include flex-center;
@@ -32,7 +32,8 @@
             @include flex-content-column($gap: 38px);
             padding-top: 17px;
             .footer-contacts__title {
-                width: 278px;
+                max-width: 278px;
+                width: 100%;
                 @include h3-title;
                 color: $color-light-xl;
                 @include media-440 {
