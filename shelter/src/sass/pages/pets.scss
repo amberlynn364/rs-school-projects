@@ -21,9 +21,10 @@ body {
     .our-friends-wrapper {
         @include flex-center;
         @include flex-content-column ($gap: 59px);
-        padding: $padding-pets-our-friends;
         width: $content-wrapper;
+        padding: $padding-pets-our-friends;
         @include media-800 {
+            padding: 10.5% 3% 9.9% 3%;
             gap: 30px;
         }
         @include media-440 {
@@ -98,11 +99,11 @@ body {
     gap: 20px;
     @include media-800 {
         padding-top: 13px;
-        justify-content: space-between;
-        gap: unset;
     }
     @include media-440 {
         padding-top: 5px;
+        justify-content: space-between;
+        gap: 0px;
     }
     .arrow-left {
         transform: rotate(180deg);
