@@ -4,15 +4,20 @@
 @import '../base/typography';
 @import '../components/buttons';
 @import '../components/slider';
+@import '../components/burger';
+@import '../components/popup';
 @import '../layout/header';
 @import '../layout/footer';
 @import '../general.scss';
 
 
-
 .start-screen {
     background: url('../../assets/img/start-screen-gradient-background.jpg') center center/100% no-repeat;
     background-size: cover, auto;
+    overflow: hidden;
+}
+body.lock .start-screen {
+    overflow: inherit;
 }
 
 .not-only {

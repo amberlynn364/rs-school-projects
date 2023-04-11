@@ -23,9 +23,12 @@
 						<li class="navigation__item"><a href="#contacts" class="navigation__link">Contacts</a></li>
 					</ul>
 				</nav>
-				<div class="burger-btn">
-					<span></span>
-				</div>
+					<div class="burger-btn">
+						<span class="burger-bar"></span>
+						<span class="burger-bar"></span>
+						<span class="burger-bar"></span>
+					</div>
+					<div class="burger-menu-overlay"></div>
 			</div>
 		</header>
 		<section class="not-only">
@@ -56,52 +59,17 @@
 				<span>are looking for a house</span>
 			</h3>
 			<div class="slider">
-				<button class="button_round button_secondary">
+				<button id="left" class="button_round button_secondary">
 					<img src="../assets/svg/Arrow.svg" class="arrow-left" alt="arrow left">
 				</button>
-				<div class="card-wrapper">
-				<div class="slider__card">
-					<img src="../assets/img/pets-katrine.png" alt="Katrine photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Katrine</span>
-					<button class="button slider__button button_secondary">Learn more</button>
+				<div class="slider-wrapper">
+					<div class="card-wrapper">
+						<div class="slider__item slider__item_left"></div>
+						<div class="slider__item slider__item_main"></div>
+						<div class="slider__item slider__item_right"></div>
+					</div>
 				</div>
-				<div class="slider__card">
-					<img src="../assets/img/pets-jennifer.png" alt="Jennifer photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Jennifer</span>
-					<button class="button slider__button button_secondary">Learn more</button>
-				</div>
-				<div class="slider__card">
-					<img src="../assets/img/pets-woody.png" alt="Woody photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Woody</span>
-					<button class="button slider__button button_secondary">Learn more</button>
-				</div>
-				<div class="slider__card">
-					<img src="../assets/img/pets-woody.png" alt="Woody photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Woody</span>
-					<button class="button slider__button button_secondary">Learn more</button>
-				</div>
-				<div class="slider__card">
-					<img src="../assets/img/pets-woody.png" alt="Woody photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Woody</span>
-					<button class="button slider__button button_secondary">Learn more</button>
-				</div>
-				<div class="slider__card">
-					<img src="../assets/img/pets-woody.png" alt="Woody photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Woody</span>
-					<button class="button slider__button button_secondary">Learn more</button>
-				</div>
-				<div class="slider__card">
-					<img src="../assets/img/pets-woody.png" alt="Woody photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Woody</span>
-					<button class="button slider__button button_secondary">Learn more</button>
-				</div>
-				<div class="slider__card">
-					<img src="../assets/img/pets-woody.png" alt="Woody photo" class="slider__pet-photo">
-					<span class="slider__pet-name">Woody</span>
-					<button class="button slider__button button_secondary">Learn more</button>
-				</div>
-				</div>
-				<button class="button_round button_secondary">
+				<button id="right" class="button_round button_secondary">
 					<img src="../assets/svg/Arrow.svg" class="arrow-right" alt="arrow right">
 				</button>
 			</div>
@@ -179,5 +147,36 @@
 			<img src="../assets/img/footer-puppy.png" alt="puppy">
 		</div>
 	</footer>
+	<div class="popup-wrapper">
+		<div class="popup">
+			<button class="button_round button_secondary popup__button"></button>
+				<img src="../assets/img/pets-jennifer.png" alt="Katrine photo" class="cards__pet-photo">
+				<div class="popup__content">
+					<div class="pet-title">
+						<h3 class="pet-name">Jennifer</h3>
+						<h4 class="pet-breed">Dog - Labrador</h4>
+					</div>
+					<p class="pet-description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+					<ul class="pets-parameters">
+						<li class="pet-age">
+							<span class="left">Age:</span>
+							<span class="">2 months</span>
+						</li>
+						<li class="pet-inoculation">
+							<span class="left">Inoculations:</span>
+							<span class="">none</span>
+						</li>
+						<li class="pet-diseases">
+							<span class="left">Diseases:</span>
+							<span class="">none</span>
+						</li>
+						<li class="pet-parasites">
+							<span class="left">Parasites:</span>
+							<span class="">none</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 </body>
 </html>
