@@ -1,6 +1,9 @@
 
 body {
     width: $width-100;
+    &.lock {
+        position: fixed;
+    }
 }
 
 img {

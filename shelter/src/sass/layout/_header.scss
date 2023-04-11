@@ -2,16 +2,25 @@
 @import '../abstracts/mixins';
 @import '../base/normalize';
 @import '../base/typography';
+@import '../components/burger';
 
 .header {
     @include flex-center ();
+    &.header.active {
+        .header-wrapper {
+            overflow: inherit;
+        }
+    }
     .header-wrapper {
         display: flex;
         justify-content: space-between;
+        position: relative;
         padding: $padding-header;
         width: $width-100;
         max-width: $content-wrapper;
-        overflow: hidden;
+        &.pets {
+            overflow: hidden;
+        }
         @include media-tablet {
             max-width: $content-wrapper-tablet;
             padding: 4% 2.916% 3.8% 2.916%;
@@ -59,16 +68,36 @@
 }
 
 .navigation {
-    @include media-767 {
-        display: none;
-        transform: translateX(999px);
-        transition: transform 0.5s;
+    &.active {
+        right: -1px;
+        transition: right 0.5s;
     }
+    @include media-767 {
+        display: flex;
+        right: -999px;
+        min-height: 100vh;
+        width: 320px;
+        top: 0;
+        position: absolute;
+        background-color: $color-dark-3xl;
+        min-height: 100vh;
+        z-index: 20;
+        transition: right 1.5s;
+        &.pets {
+            background-color: $color-light-l;
+        }
+    } 
     .navigation__menu {
         display: flex;
         padding-top: 16px;
         gap: 36px;
         list-style-type: none;
+        @include media-767 {
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            gap: 41px;
+        }
     }
     .navigation__item {
         .navigation__link {
@@ -76,6 +105,9 @@
             color: $color-dark-s;
             text-decoration: none;
             transition: 0.3s;
+            @include media-767 {
+                @include text-paragraph-mobile-menu;
+            }
             &:hover {
                 color: $color-light-s;
             }
@@ -88,6 +120,10 @@
                     color: $color-dark-3xl;
             }
             }
+            &.navigation.active .navigation__link_active {
+                border-bottom: 7px;
+            }
+            
             &.navigation__link_active {
                 padding-bottom: 3px;
                 border-bottom: 3px solid $color-primary;
@@ -100,50 +136,7 @@
             }
         }
     }
-}
-.burger-btn {
-    display: none;
-}
-@include media-767 {
-    .burger-btn {
-        display: block;
-        position: relative;
-        align-self: center;
-        right: 50px;
-        bottom: 3px;
-        z-index: 30;
-        span {
-            position: absolute;
-            width: 30px;
-            height: 2px;
-            background-color: $color-primary;
-            transition: all 0.5s;
-            &::before {
-                content: "";
-                position: absolute;
-                width: 30px;
-                height: 2px;
-                background-color: $color-primary;
-                top: -10px;
-            }
-            &::after {
-                content: "";
-                position: absolute;
-                width: 30px;
-                height: 2px;
-                background-color: $color-primary;
-                top: 10px;
-            }
-        }
-        .burger-line-pets {
-            background-color: black;
-            &::before {
-                background-color: black;
-            }
-            &::after {
-                background-color: black;
-            }
-        }
+    &.navigation.active .navigation__link.navigation__link_active {
+        padding-bottom: 7px;
     }
-
 }
