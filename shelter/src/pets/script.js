@@ -51,7 +51,7 @@ const itemsWrapper = document.querySelector('.cards-wrapper');
 // }
 // generateCardSequence();
 
-itemsWrapper.innerHTML = ''
+// itemsWrapper.innerHTML = ''
 
 function createItem(index) {
   let item = document.createElement('div');
@@ -157,16 +157,14 @@ let changePage = function(page) {
   itemsWrapper.innerHTML = "";
 
   for(var i = (page -1) * itemsPerPage; i < (page * itemsPerPage) && i < mainArr.length; i++) {
-      // listingTable.innerHTML += "<div class='objectBlock'>" + objJson[i].adName + "</div>";
-      console.log(i)
-      createItem(i)
+    createItem(mainArr[i])
   }
   checkButtonDisabled();
   // selectedPage();
 }
-console.log(mainArr)
+console.log(mainArr.length)
 
-changePage(2);
+changePage(1);
 
 let prevPage = function() {
   if(currentPage > 1) {

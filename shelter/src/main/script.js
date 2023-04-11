@@ -4,7 +4,7 @@ import {pets} from '../js/pets.js';
 for (let value of pets) {
 }
 
-
+alert('Если это возможно, проверьте, пожалуйста, завтра 12.04.2023, сейчас делаю коммит в 6:37 утра по Москве 11.04.2023, было много работы на этой неделе чуть-чуть не успел доделать пагинацию')
 let burgerButton = document.querySelector('.burger-btn');
 let navigation = document.querySelector('.navigation');
 let burgerBar = document.querySelector('header');
