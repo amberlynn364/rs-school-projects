@@ -38,20 +38,6 @@ navigationLink.addEventListener('click', function(){
 
 // pagination 
 
-const itemsWrapper = document.querySelector('.cards-wrapper');
-
-// let arrayForMainItems = [];
-// function generateCardSequence () {
-//   while(arrayForMainItems.length <= 7) {
-//     let indexForItems = Math.round(Math.random() * 7);
-//     if(!arrayForMainItems.includes(indexForItems)) {
-//       arrayForMainItems.push(indexForItems);
-//     }
-//   }
-// }
-// generateCardSequence();
-
-// itemsWrapper.innerHTML = ''
 
 function createItem(index) {
   let item = document.createElement('div');
@@ -63,31 +49,28 @@ function createItem(index) {
   itemImg.alt = `${pets[index].name} photo`;
   itemImg.classList.add('cards__pet-photo');
   item.append(itemImg);
-
+  
   let itemName = document.createElement('span');
   itemName.classList.add('cards__pet-name');
   itemName.textContent = `${pets[index].name}`;
   item.append(itemName)
-
+  
   let itemButton = document.createElement('button');
   itemButton.classList.add('button', 'cards__button', 'button_secondary');
   itemButton.textContent = 'Learn more';
   item.append(itemButton);
-
+  
   itemsWrapper.append(item);
 }
-// arrayForMainItems.forEach(el => {
-//   createItem(el)
-// })
 
 const genRandoms = () => {
-    const result = [];
-      for(let i = 0; result.length < 8; i++) {
-        let j = Math.round(Math.random() * 7);
-          if(!result.includes(j)) {
-              result.push(j);
-          }
-      }
+  const result = [];
+  for(let i = 0; result.length < 8; i++) {
+    let j = Math.round(Math.random() * 7);
+    if(!result.includes(j)) {
+      result.push(j);
+    }
+  }
   return result;
 }
 let firstArray;
@@ -104,21 +87,53 @@ function generateTwentyFourItems() {
       break;
     }
   }
-  return firstArray.concat(secondArray, secondArray);
+  return firstArray.concat(secondArray, thirdArray);
 }
 
 let mainArr = generateTwentyFourItems().concat(generateTwentyFourItems());
+  
+  const firstPageButton = document.querySelector('#first-page');
+  const prevButton = document.querySelector('#prev');
+  const currentButton = document.querySelector('#page-number')
+  const nextButton = document.querySelector('#next');
+  const lastPageButton = document.querySelector('#last-page');
+  const itemsWrapper = document.querySelector('.cards-wrapper');
+  
+  let itemsPerPage
+  let currentPage = 1;
 
-let itemsPerPage = 8;
-let currentPage = 1;
-const firstPageButton = document.querySelector('#first-page');
-const prevButton = document.querySelector('#prev');
-const currentButton = document.querySelector('#page-number')
-const nextButton = document.querySelector('#next');
-const lastPageButton = document.querySelector('#last-page');
-
-
-window.addEventListener('resize', () => {
+  let numPages = function() {
+    return Math.ceil(mainArr.length / itemsPerPage);  
+  }
+  
+  let checkButtonDisabled = function() {
+    currentPage == 1 ? (prevButton.classList.add('button_round_disabled')) : prevButton.classList.remove('button_round_disabled');
+    currentPage == 1 ? (firstPageButton.classList.add('button_round_disabled')) :(() => {
+      firstPageButton.classList.remove('button_round_disabled');
+      firstPageButton.removeAttribute('disabled');
+  
+    })()
+    currentPage == numPages() ? nextButton.classList.add('button_round_disabled') : nextButton.classList.remove('button_round_disabled');
+    currentPage == numPages() ? lastPageButton.classList.add('button_round_disabled') :(() => {
+      lastPageButton.classList.remove('button_round_disabled');
+      lastPageButton.removeAttribute('disabled');
+    })()
+  }
+  function getScreenWidth () {
+    if (window.innerWidth > 1200 ) {
+      itemsPerPage = 8;
+    } 
+    if (window.innerWidth > 720 && window.innerWidth < 1158 ) {
+      itemsPerPage = 6;
+    }
+    if(window.innerWidth < 720) {
+      itemsPerPage = 3;
+    }
+    checkButtonDisabled()
+  }
+  getScreenWidth()
+  
+  window.addEventListener('resize', () => {
   if (window.innerWidth > 1200 ) {
     itemsPerPage = 8;
   } 
@@ -128,41 +143,19 @@ window.addEventListener('resize', () => {
   if(window.innerWidth < 720) {
     itemsPerPage = 3;
   }
+  checkButtonDisabled()
 })
 
-console.log(itemsPerPage)
-
-let checkButtonDisabled = function() {
-  currentPage == 1 ? (prevButton.classList.add('button_round_disabled')) : prevButton.classList.remove('button_round_disabled');
-  currentPage == 1 ? (firstPageButton.classList.add('button_round_disabled')) : firstPageButton.classList.remove('button_round_disabled');
-  currentPage == numPages() ? nextButton.classList.add('button_round_disabled') : nextButton.classList.remove('button_round_disabled');
-  currentPage == numPages() ? lastPageButton.classList.add('button_round_disabled') : lastPageButton.classList.remove('button_round_disabled');
-}
-
-
-let numPages = function() {
-  return Math.ceil(mainArr.length / itemsPerPage);  
-}
-numPages()
-
 let changePage = function(page) {
-
-  if (page < 1) {
-      page = 1;
-  } 
-  if (page > (numPages() -1)) {
-      page = numPages();
-  }
-
   itemsWrapper.innerHTML = "";
-
-  for(var i = (page -1) * itemsPerPage; i < (page * itemsPerPage) && i < mainArr.length; i++) {
-    createItem(mainArr[i])
-  }
+  let startIndex = (page - 1) * itemsPerPage;
+  let endIndex = page * itemsPerPage;
+  mainArr.slice(startIndex, endIndex).forEach(el => {
+    createItem(el);
+  })
+  currentButton.textContent = page;
   checkButtonDisabled();
-  // selectedPage();
 }
-console.log(mainArr.length)
 
 changePage(1);
 
@@ -177,27 +170,26 @@ let nextPage = function() {
   if(currentPage < numPages()) {
       currentPage++;
       changePage(currentPage);
+      console.log(currentPage)
   } 
 }
 
-nextButton.addEventListener('click', nextPage)
-prevButton.addEventListener('click', prevPage)
+let firstPage = function() {
+  changePage(1)
+  currentPage = 1;
+  checkButtonDisabled()
+}
 
-// let selectedPage = function() {
-//   for (let i = 0; i < page_number.length; i++) {
-//       if (i == current_page - 1) {
-//           page_number[i].style.opacity = "1.0";
-//       } 
-//       else {
-//           page_number[i].style.opacity = "0.5";
-//       }
-//   }   
-// } 
+let lastPage = function() {
+  changePage(numPages())
+  currentPage = numPages();
+  checkButtonDisabled()
+}
 
-
-
-
-
+firstPageButton.addEventListener('click', firstPage)
+nextButton.addEventListener('click', nextPage);
+prevButton.addEventListener('click', prevPage);
+lastPageButton.addEventListener('click', lastPage)  
 
 //popup
 
