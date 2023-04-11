@@ -40,16 +40,16 @@ navigationLink.addEventListener('click', function(){
 
 const itemsWrapper = document.querySelector('.cards-wrapper');
 
-let arrayForMainItems = [];
-function generateCardSequence () {
-  while(arrayForMainItems.length <= 7) {
-    let indexForItems = Math.round(Math.random() * 7);
-    if(!arrayForMainItems.includes(indexForItems)) {
-      arrayForMainItems.push(indexForItems);
-    }
-  }
-}
-generateCardSequence();
+// let arrayForMainItems = [];
+// function generateCardSequence () {
+//   while(arrayForMainItems.length <= 7) {
+//     let indexForItems = Math.round(Math.random() * 7);
+//     if(!arrayForMainItems.includes(indexForItems)) {
+//       arrayForMainItems.push(indexForItems);
+//     }
+//   }
+// }
+// generateCardSequence();
 
 itemsWrapper.innerHTML = ''
 
@@ -76,9 +76,9 @@ function createItem(index) {
 
   itemsWrapper.append(item);
 }
-arrayForMainItems.forEach(el => {
-  createItem(el)
-})
+// arrayForMainItems.forEach(el => {
+//   createItem(el)
+// })
 
 const genRandoms = () => {
     const result = [];
@@ -111,10 +111,11 @@ let mainArr = generateTwentyFourItems().concat(generateTwentyFourItems());
 
 let itemsPerPage = 8;
 let currentPage = 1;
-const buttonFirstPage = document.querySelector('#first-page');
-const buttonPrev = document.querySelector('#prev');
-const buttonNext = document.querySelector('#next');
-const buttonLastPage = document.querySelector('#last-page');
+const firstPageButton = document.querySelector('#first-page');
+const prevButton = document.querySelector('#prev');
+const currentButton = document.querySelector('#page-number')
+const nextButton = document.querySelector('#next');
+const lastPageButton = document.querySelector('#last-page');
 
 
 window.addEventListener('resize', () => {
@@ -130,6 +131,70 @@ window.addEventListener('resize', () => {
 })
 
 console.log(itemsPerPage)
+
+let checkButtonDisabled = function() {
+  currentPage == 1 ? (prevButton.classList.add('button_round_disabled')) : prevButton.classList.remove('button_round_disabled');
+  currentPage == 1 ? (firstPageButton.classList.add('button_round_disabled')) : firstPageButton.classList.remove('button_round_disabled');
+  currentPage == numPages() ? nextButton.classList.add('button_round_disabled') : nextButton.classList.remove('button_round_disabled');
+  currentPage == numPages() ? lastPageButton.classList.add('button_round_disabled') : lastPageButton.classList.remove('button_round_disabled');
+}
+
+
+let numPages = function() {
+  return Math.ceil(mainArr.length / itemsPerPage);  
+}
+numPages()
+
+let changePage = function(page) {
+
+  if (page < 1) {
+      page = 1;
+  } 
+  if (page > (numPages() -1)) {
+      page = numPages();
+  }
+
+  itemsWrapper.innerHTML = "";
+
+  for(var i = (page -1) * itemsPerPage; i < (page * itemsPerPage) && i < mainArr.length; i++) {
+      // listingTable.innerHTML += "<div class='objectBlock'>" + objJson[i].adName + "</div>";
+      console.log(i)
+      createItem(i)
+  }
+  checkButtonDisabled();
+  // selectedPage();
+}
+console.log(mainArr)
+
+changePage(2);
+
+let prevPage = function() {
+  if(currentPage > 1) {
+      currentPage--;
+      changePage(currentPage);
+  }
+}
+
+let nextPage = function() {
+  if(currentPage < numPages()) {
+      currentPage++;
+      changePage(currentPage);
+  } 
+}
+
+nextButton.addEventListener('click', nextPage)
+prevButton.addEventListener('click', prevPage)
+
+// let selectedPage = function() {
+//   for (let i = 0; i < page_number.length; i++) {
+//       if (i == current_page - 1) {
+//           page_number[i].style.opacity = "1.0";
+//       } 
+//       else {
+//           page_number[i].style.opacity = "0.5";
+//       }
+//   }   
+// } 
 
 
 
@@ -196,3 +261,4 @@ popup.addEventListener('click', (e) => {
   popup.classList.remove('visible');
   document.querySelector('body').style.overflow = 'inherit';
 })
+
