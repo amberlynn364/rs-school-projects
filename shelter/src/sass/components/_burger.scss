@@ -83,6 +83,7 @@
 }
 
 .header.active .burger-menu-overlay {
+    pointer-events: inherit;
     display: block;
     transition: 0.5s;
     background-color: rgba(0, 0, 0, 0.5);

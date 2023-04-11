@@ -4,11 +4,11 @@ import {pets} from '../js/pets.js';
 for (let value of pets) {
 }
 
-alert('Если это возможно, проверьте, пожалуйста, завтра 12.04.2023, сейчас делаю коммит в 6:37 утра по Москве 11.04.2023, было много работы на этой неделе чуть-чуть не успел доделать пагинацию')
 let burgerButton = document.querySelector('.burger-btn');
 let navigation = document.querySelector('.navigation');
 let burgerBar = document.querySelector('header');
 let body = document.querySelector('body');
+let startScreen = document.querySelector('.start-screen')
 
   burgerButton.addEventListener('click', function() {
     burgerButton.classList.toggle('active');
@@ -115,158 +115,165 @@ const buildSideItems = (array) => {
 buildSideItems(arrayForSideItems);
 
 
-let leftClickCounter = 0;
-let rightClickCounter = 0;
-
 const motionToLeft = () => {
-  leftClickCounter++
   slider.classList.add('transition-to-left');
   buttonLeft.removeEventListener('click', motionToLeft);
   buttonRight.removeEventListener('click', motionToRight);
-  if (rightClickCounter === 1 && leftClickCounter === 1) {
-    leftItem.innerHTML = cardState;
-    rightItem.innerHTML = cardState;
-  }
+  
 }
 
 const motionToRight = () => {
-  rightClickCounter++
   slider.classList.add('transition-to-right');
   buttonLeft.removeEventListener('click', motionToLeft);
   buttonRight.removeEventListener('click', motionToRight);
-  if (rightClickCounter === 1 && leftClickCounter === 1) {
-    leftItem.innerHTML = cardState;
-    rightItem.innerHTML = cardState;
-  }
+  
 }
 
 buttonLeft.addEventListener('click', motionToLeft);
 buttonRight.addEventListener('click', motionToRight);
 
-let cardState;
 
 slider.addEventListener('animationend', (AnimationEvent) => { 
-  console.log('rightClick', rightClickCounter, 'leftClick', leftClickCounter)
-  
-  // if (rightClickCounter === 0) { 
-  //   console.log(1)
-  //     if(AnimationEvent.animationName === 'move-to-right') { 
-  //         slider.classList.remove('transition-to-right'); 
-  //         mainItem.innerHTML = rightItem.innerHTML; 
-  //     } else if (AnimationEvent.animationName === 'move-to-left') { 
-  //         slider.classList.remove('transition-to-left'); 
-  //         mainItem.innerHTML = leftItem.innerHTML; 
-  //     } 
-  //     leftItem.innerHTML = ''; 
-  //     rightItem.innerHTML = ''; 
-  //     arrayForMainItems = arrayForSideItems;
-      
-  //     addIndexForSideItems(arrayForMainItems) 
-  //     buildSideItems(arrayForSideItems); 
-      
-      // if(leftClickCounter > 0) { 
-      //     leftClickCounter = 0; 
-      // } 
-  // } 
-  if ((rightClickCounter > 0 && leftClickCounter === 0) || (rightClickCounter === 0 && leftClickCounter > 0)) { 
-    console.log(2)
-      if(AnimationEvent.animationName === 'move-to-right') { 
-          slider.classList.remove('transition-to-right'); 
-          cardState = mainItem.innerHTML; 
-          mainItem.innerHTML = rightItem.innerHTML; 
-          // console.log('for3', arrayForMainItems, arrayForSideItems) 
-          arrayForMainItems = arrayForSideItems;
-          // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
-          leftItem.innerHTML = ''; 
-          rightItem.innerHTML = '';
-          addIndexForSideItems(arrayForMainItems); 
-          // console.log('afterFunc', arrayForSideItems)
-          buildSideItems(arrayForSideItems); 
-        } 
-
-        if(AnimationEvent.animationName === 'move-to-left') { 
-          slider.classList.remove('transition-to-left'); 
-          cardState = mainItem.innerHTML; 
-          mainItem.innerHTML = leftItem.innerHTML; 
-          // console.log('for3', arrayForMainItems, arrayForSideItems) 
-          arrayForMainItems = arrayForSideItems;
-          // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
-          leftItem.innerHTML = ''; 
-          rightItem.innerHTML = '';
-          addIndexForSideItems(arrayForMainItems); 
-          // console.log('afterFunc', arrayForSideItems)
-          buildSideItems(arrayForSideItems); 
-        }
-    // leftItem.innerHTML = cardState;
-    // rightItem.innerHTML = cardState;
-  }
-  // fsdjkfdskfj
-  if ((rightClickCounter > 0 && leftClickCounter === 1) || (leftClickCounter > 0 && rightClickCounter === 1)) { 
-    if (AnimationEvent.animationName === 'move-to-left') {
-      console.log(3)
-      slider.classList.remove('transition-to-left'); 
-      leftItem.innerHTML = cardState; 
-      mainItem.innerHTML = leftItem.innerHTML; 
-      // leftItem.innerHTML = ''; 
-      // rightItem.innerHTML = ''; 
-      // console.log('1', arrayForMainItems, '2', arrayForSideItems);
-      // addIndexForSideItems(arrayForMainItems)
-      // buildSideItems(arrayForMainItems); 
-      // console.log('3', arrayForMainItems, '6', arrayForSideItems);
-      // console.log('for3', arrayForMainItems, arrayForSideItems) 
-          arrayForMainItems = arrayForSideItems;
-          // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
-          leftItem.innerHTML = ''; 
-          rightItem.innerHTML = '';
-          addIndexForSideItems(arrayForMainItems); 
-          // console.log('afterFunc', arrayForSideItems)
-          buildSideItems(arrayForSideItems); 
-      rightClickCounter = 0; 
-      leftClickCounter = 0; 
-      cardState = ''; 
-    }
-
-    if (AnimationEvent.animationName === 'move-to-right') {
-      console.log(7)
-      slider.classList.remove('transition-to-right'); 
-      leftItem.innerHTML = cardState; 
-      mainItem.innerHTML = rightItem.innerHTML; 
-      // leftItem.innerHTML = ''; 
-      // rightItem.innerHTML = ''; 
-      // console.log('1', arrayForMainItems, '2', arrayForSideItems);
-      // addIndexForSideItems(arrayForMainItems)
-      // buildSideItems(arrayForMainItems); 
-      // console.log('3', arrayForMainItems, '6', arrayForSideItems);
-      // console.log('for3', arrayForMainItems, arrayForSideItems) 
-          arrayForMainItems = arrayForSideItems;
-          // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
-          leftItem.innerHTML = ''; 
-          rightItem.innerHTML = '';
-          addIndexForSideItems(arrayForMainItems); 
-          // console.log('afterFunc', arrayForSideItems)
-          buildSideItems(arrayForSideItems); 
-      rightClickCounter = 0; 
-      leftClickCounter = 0; 
-      cardState = ''; 
-    }
-     
-  } 
-
-  if (rightClickCounter > 0 && leftClickCounter > 1 && AnimationEvent.animationName === 'move-to-left') { 
-    console.log(4)
-      slider.classList.remove('transition-to-left'); 
-      mainItem.innerHTML = leftItem.innerHTML; 
-      leftItem.innerHTML = ''; 
-      rightItem.innerHTML = ''; 
-      arrayForMainItems = arrayForSideItems; 
-      addIndexForSideItems(arrayForSideItems) 
-      buildSideItems(arrayForSideItems);  
-      rightClickCounter = 0; 
-      leftClickCounter = 0; 
-  } 
+    if(AnimationEvent.animationName === 'move-to-right') { 
+        slider.classList.remove('transition-to-right'); 
+        mainItem.innerHTML = rightItem.innerHTML; 
+    } else if (AnimationEvent.animationName === 'move-to-left') { 
+        slider.classList.remove('transition-to-left'); 
+        mainItem.innerHTML = leftItem.innerHTML; 
+    } 
+    rightItem.innerHTML = ''; 
+    leftItem.innerHTML = ''; 
+    arrayForMainItems = arrayForSideItems;
+    addIndexForSideItems(arrayForSideItems) 
+    buildSideItems(arrayForSideItems);  
     buttonLeft.addEventListener('click', motionToLeft) 
     buttonRight.addEventListener('click', motionToRight) 
-})
+  })
+
+
+
+// slider.addEventListener('animationend', (AnimationEvent) => { 
+//   console.log('rightClick', rightClickCounter, 'leftClick', leftClickCounter)
+  
+//   // if (rightClickCounter === 0) { 
+//   //   console.log(1)
+//   //     if(AnimationEvent.animationName === 'move-to-right') { 
+//   //         slider.classList.remove('transition-to-right'); 
+//   //         mainItem.innerHTML = rightItem.innerHTML; 
+//   //     } else if (AnimationEvent.animationName === 'move-to-left') { 
+//   //         slider.classList.remove('transition-to-left'); 
+//   //         mainItem.innerHTML = leftItem.innerHTML; 
+//   //     } 
+//   //     leftItem.innerHTML = ''; 
+//   //     rightItem.innerHTML = ''; 
+//   //     arrayForMainItems = arrayForSideItems;
+      
+//   //     addIndexForSideItems(arrayForMainItems) 
+//   //     buildSideItems(arrayForSideItems); 
+      
+//       // if(leftClickCounter > 0) { 
+//       //     leftClickCounter = 0; 
+//       // } 
+//   // } 
+//   if ((rightClickCounter > 0 && leftClickCounter === 0) || (rightClickCounter === 0 && leftClickCounter > 0)) { 
+//     console.log(2)
+//       if(AnimationEvent.animationName === 'move-to-right') { 
+//           slider.classList.remove('transition-to-right'); 
+//           cardState = mainItem.innerHTML; 
+//           mainItem.innerHTML = rightItem.innerHTML; 
+//           // console.log('for3', arrayForMainItems, arrayForSideItems) 
+//           arrayForMainItems = arrayForSideItems;
+//           // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
+//           leftItem.innerHTML = ''; 
+//           rightItem.innerHTML = '';
+//           addIndexForSideItems(arrayForMainItems); 
+//           // console.log('afterFunc', arrayForSideItems)
+//           buildSideItems(arrayForSideItems); 
+//         } 
+
+//         if(AnimationEvent.animationName === 'move-to-left') { 
+//           slider.classList.remove('transition-to-left'); 
+//           cardState = mainItem.innerHTML; 
+//           mainItem.innerHTML = leftItem.innerHTML; 
+//           // console.log('for3', arrayForMainItems, arrayForSideItems) 
+//           arrayForMainItems = arrayForSideItems;
+//           // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
+//           leftItem.innerHTML = ''; 
+//           rightItem.innerHTML = '';
+//           addIndexForSideItems(arrayForMainItems); 
+//           // console.log('afterFunc', arrayForSideItems)
+//           buildSideItems(arrayForSideItems); 
+//         }
+//     // leftItem.innerHTML = cardState;
+//     // rightItem.innerHTML = cardState;
+//   }
+//   // fsdjkfdskfj
+//   if ((rightClickCounter > 0 && leftClickCounter === 1) || (leftClickCounter > 0 && rightClickCounter === 1)) { 
+//     if (AnimationEvent.animationName === 'move-to-left') {
+//       console.log(3)
+//       slider.classList.remove('transition-to-left'); 
+//       leftItem.innerHTML = cardState; 
+//       mainItem.innerHTML = leftItem.innerHTML; 
+//       // leftItem.innerHTML = ''; 
+//       // rightItem.innerHTML = ''; 
+//       // console.log('1', arrayForMainItems, '2', arrayForSideItems);
+//       // addIndexForSideItems(arrayForMainItems)
+//       // buildSideItems(arrayForMainItems); 
+//       // console.log('3', arrayForMainItems, '6', arrayForSideItems);
+//       // console.log('for3', arrayForMainItems, arrayForSideItems) 
+//           arrayForMainItems = arrayForSideItems;
+//           // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
+//           leftItem.innerHTML = ''; 
+//           rightItem.innerHTML = '';
+//           addIndexForSideItems(arrayForMainItems); 
+//           // console.log('afterFunc', arrayForSideItems)
+//           buildSideItems(arrayForSideItems); 
+//       rightClickCounter = 0; 
+//       leftClickCounter = 0; 
+//       cardState = ''; 
+//     }
+
+//     if (AnimationEvent.animationName === 'move-to-right') {
+//       console.log(7)
+//       slider.classList.remove('transition-to-right'); 
+//       leftItem.innerHTML = cardState; 
+//       mainItem.innerHTML = rightItem.innerHTML; 
+//       // leftItem.innerHTML = ''; 
+//       // rightItem.innerHTML = ''; 
+//       // console.log('1', arrayForMainItems, '2', arrayForSideItems);
+//       // addIndexForSideItems(arrayForMainItems)
+//       // buildSideItems(arrayForMainItems); 
+//       // console.log('3', arrayForMainItems, '6', arrayForSideItems);
+//       // console.log('for3', arrayForMainItems, arrayForSideItems) 
+//           arrayForMainItems = arrayForSideItems;
+//           // console.log('for3 changes', arrayForMainItems, arrayForSideItems) 
+//           leftItem.innerHTML = ''; 
+//           rightItem.innerHTML = '';
+//           addIndexForSideItems(arrayForMainItems); 
+//           // console.log('afterFunc', arrayForSideItems)
+//           buildSideItems(arrayForSideItems); 
+//       rightClickCounter = 0; 
+//       leftClickCounter = 0; 
+//       cardState = ''; 
+//     }
+     
+//   } 
+
+//   if (rightClickCounter > 0 && leftClickCounter > 1 && AnimationEvent.animationName === 'move-to-left') { 
+//     console.log(4)
+//       slider.classList.remove('transition-to-left'); 
+//       mainItem.innerHTML = leftItem.innerHTML; 
+//       leftItem.innerHTML = ''; 
+//       rightItem.innerHTML = ''; 
+//       arrayForMainItems = arrayForSideItems; 
+//       addIndexForSideItems(arrayForSideItems) 
+//       buildSideItems(arrayForSideItems);  
+//       rightClickCounter = 0; 
+//       leftClickCounter = 0; 
+//   } 
+//     buttonLeft.addEventListener('click', motionToLeft) 
+//     buttonRight.addEventListener('click', motionToRight) 
+
 
 
 //popup
@@ -314,14 +321,6 @@ function generatePopup (petIndex) {
   petParasites.textContent = pets[petIndex].parasites.join(',');
 
 }
-
-
-
-// sliderCards.forEach(el => {
-//   el.addEventListener('click', () => {
-//     popup.classList.add('visible')
-//   })
-// }) 
 
 popupButton.addEventListener('click', () => {
   popup.classList.remove('visible');
