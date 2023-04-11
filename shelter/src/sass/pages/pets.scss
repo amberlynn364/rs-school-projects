@@ -4,6 +4,7 @@
 @import '../base/typography';
 @import '../components/buttons';
 @import '../components/slider';
+@import '../components/popup';
 @import '../layout/header';
 @import '../layout/footer';
 @import '../general.scss';
@@ -78,7 +79,7 @@ body {
                     display: none;
                 }
             }
-            @include media-440 {
+            @include media-720 {
                 &:nth-child(n+4) {
                     display: none;
                 }
