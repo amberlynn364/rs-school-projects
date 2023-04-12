@@ -135,13 +135,22 @@ let mainArr = generateTwentyFourItems().concat(generateTwentyFourItems());
   
   window.addEventListener('resize', () => {
   if (window.innerWidth > 1200 ) {
+    if(currentPage > 6) {
+      currentPage = 6;
+    }
     itemsPerPage = 8;
+    changePage(currentPage)
   } 
   if (window.innerWidth > 720 && window.innerWidth < 1158 ) {
+    if(currentPage > 8) {
+      currentPage = 8;
+    }
     itemsPerPage = 6;
+    changePage(currentPage)
   }
   if(window.innerWidth < 720) {
     itemsPerPage = 3;
+    changePage(currentPage)
   }
   checkButtonDisabled()
 })
