@@ -58,6 +58,18 @@ function addButton(id, buttonTextContent, extraSettings) {
   const button = document.createElement('button');
   button.setAttribute('id', `${id}`);
   button.classList.add('button');
+
+  switch (id) {
+    case 'medium':
+      button.setAttribute('title', '15x15, 40 mines');
+      break;
+    case 'hard':
+      button.setAttribute('title', '25x25, 99 mines');
+      break;
+    default:
+      button.setAttribute('title', '10x10, 10 mines');
+  }
+
   if (extraSettings) {
     button.classList.add(extraSettings);
   }
