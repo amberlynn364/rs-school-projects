@@ -1,4 +1,3 @@
-
 export default function createDomElements() {
   const title = document.createElement('h1');
   title.classList.add('app-title');
