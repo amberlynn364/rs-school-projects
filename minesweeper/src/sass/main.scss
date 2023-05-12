@@ -1,0 +1,45 @@
+@import './base/normalize';
+@import './base/typography';
+@import './variables';
+@import './_buttons.scss';
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-direction: column;
+  font-family: Ubuntu, sans-serif;
+  color: $font-color-white;
+  background: $page-background-color;
+}
+
+.app-title {
+  font-size: 3rem;
+}
+
+.game-counters {
+  display: flex;
+  gap: 30px;
+  font-size: 1.5rem;
+}
+
+.game-wrapper {
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.buttons-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.buttons-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
+
+

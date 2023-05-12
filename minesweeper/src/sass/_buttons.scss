@@ -1,0 +1,27 @@
+.button {
+  background-clip: padding-box;
+  background-color: #602ef9;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  font-size: 1.3rem;
+  color: #fff;
+  min-height: 3rem;
+  padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+  text-decoration: none;
+  transition: all 250ms;
+  width: auto;
+  cursor: pointer;
+  &.button-big {
+    width: 300px;
+  }
+  &:hover {
+    background-color: #4d20d3;
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    transform: translateY(-1px);
+  }
+  &:active {
+    background-color: #34168d;
+    box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
+    transform: translateY(0);
+  }
+}
