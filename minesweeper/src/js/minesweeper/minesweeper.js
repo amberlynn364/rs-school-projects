@@ -1,16 +1,5 @@
-const minesweeperData = {
-  grid: [],
-  minesFound: 0,
-  falseMines: 0,
-  gameStatus: 'Playing',
-  playing: true,
-  movesMade: 0,
-  options: {
-    rows: 10,
-    cols: 10,
-    mines: 10,
-  },
-};
+import { minesweeperData } from './data';
+import nearbyMinesCells from './helpers';
 
 function setCell(xpos, ypos) {
   const cell = {
@@ -24,13 +13,14 @@ function setCell(xpos, ypos) {
   return cell;
 }
 
-
-export default function createBoard () {
-  fillBoardWithGrid()
-  addMinesToBoard() 
+export default function createBoard() {
+  createGrid();
+  addMinesToBoard();
+  nearbyMinesCounter();
+  fillBoard();
 }
 
-function fillBoardWithGrid() {
+function createGrid() {
   for (let i = 0; i < minesweeperData.options.rows; i++) {
     minesweeperData.grid[i] = [];
     for (let j = 0; j < minesweeperData.options.cols; j++) {
@@ -39,18 +29,62 @@ function fillBoardWithGrid() {
   }
 }
 
-function addMinesToBoard () {
+function addMinesToBoard() {
   let inclusionMines = 0;
   while (inclusionMines < minesweeperData.options.mines) {
     const rowIndex = Math.floor(Math.random() * minesweeperData.options.rows);
     const colIndex = Math.floor(Math.random() * minesweeperData.options.cols);
-    let cell = minesweeperData.grid[rowIndex][colIndex];
+    const cell = minesweeperData.grid[rowIndex][colIndex];
     if (!cell.isMine) {
       cell.isMine = true;
       cell.value = 'M';
-      inclusionMines++
+      inclusionMines++;
     }
   }
 }
+
+function nearbyMinesCounter() {
+  for (let i = 0; i < minesweeperData.options.rows; i++) {
+    for (let j = 0; j < minesweeperData.options.cols; j++) {
+      if (!minesweeperData.grid[i][j].isMine) {
+        let mineCounter = 0;
+        const nearbyCells = nearbyMinesCells(i, j);
+        for (let k = nearbyCells.length; k--;) {
+          if (nearbyCells[k].isMine) {
+            mineCounter++;
+          }
+        }
+        minesweeperData.grid[i][j].value = mineCounter;
+      }
+    }
+  }
+}
+
+function fillBoard() {
+  const gameWrapper = document.getElementById('minesweeper');
+  gameWrapper.innerHTML = '';
+
+  let attribute = '';
+  for (let i = 0; i < minesweeperData.options.rows; i++) {
+    attribute += '<div class="row">';
+    for (let j = 0; j < minesweeperData.options.cols; j++) {
+      const cellItem = minesweeperData.grid[i][j];
+      let setClass = '';
+      let value = '';
+      if (cellItem.isFlagged) {
+        setClass = 'flagged';
+      } else if (cellItem.isRevealed) {
+        setClass = `revealed adj-${cellItem.value}`;
+        value = !cellItem.isMine ? cellItem.value || '' : '';
+      }
+      attribute += `<div class="cell ${setClass}" data-xpos="${j}" data-ypos="${i}">${value}</div>`;
+    }
+    attribute += '</div>';
+  }
+  gameWrapper.innerHTML = attribute;
+}
+
+// function updateCounters() {
+
+// }
 console.log(minesweeperData.grid);
-createBoard()
