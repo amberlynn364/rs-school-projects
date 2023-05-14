@@ -1,0 +1,39 @@
+@import '../abstracts';
+
+
+.game-wrapper {
+  padding: 15px;
+  background-color: #eee;
+  border-radius: 10px;
+  .row {
+    display: flex;
+    .cell {
+      @include flex-center;
+      width: 35px;
+      height: 25px;
+      padding: 10px 5px 5px 5px;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      text-align: center;
+      box-shadow: inset 5px 5px 10px #FFF, inset -3px -3px 5px #777;
+      cursor: pointer;
+      transition-property: background-color, box-shadow;
+      transition-duration: 1s;
+      transition-timing-function: ease-out;
+      &.revealed {
+        background-color: #ddd;
+        box-shadow: none;
+      }
+      &.value-M {
+        background-color: #FFCCCC;
+        &:after {
+          content: '';
+          width: 30px;
+          height: 30px;
+          background-size: cover;
+          background-image: url('../assets/svg/bomb.svg');
+        }
+      }
+    }
+  }
+}

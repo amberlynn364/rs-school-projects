@@ -9,11 +9,14 @@ function setCell(xpos, ypos) {
     isMine: false,
     isRevealed: false,
     isFlagged: false,
+    getItem() {
+      return document.querySelector(`.cell[data-xpos="${this.xpos}"][data-ypos="${this.ypos}"]`);
+    },
   };
   return cell;
 }
 
-export default function createBoard() {
+export function createBoard() {
   createGrid();
   addMinesToBoard();
   nearbyMinesCounter();
@@ -74,7 +77,7 @@ function fillBoard() {
       if (cellItem.isFlagged) {
         setClass = 'flagged';
       } else if (cellItem.isRevealed) {
-        setClass = `revealed adj-${cellItem.value}`;
+        setClass = `revealed value-${cellItem.value}`;
         value = !cellItem.isMine ? cellItem.value || '' : '';
       }
       attribute += `<div class="cell ${setClass}" data-xpos="${j}" data-ypos="${i}">${value}</div>`;
@@ -84,7 +87,22 @@ function fillBoard() {
   gameWrapper.innerHTML = attribute;
 }
 
-// function updateCounters() {
-
-// }
-console.log(minesweeperData.grid);
+export function openCell(cell) {
+  if (!cell.isRevealed && !cell.isFlagged && minesweeperData.playing) {
+    const cellItem = cell.getItem();
+    cell.isRevealed = true;
+    cellItem.classList.add('revealed', `value-${cell.value}`);
+    cellItem.textContent = (!cell.isMine ? cell.value || '' : '');
+    if (cell.isMine) {
+      minesweeperData.gameStatus = 'BOOM, you lost!';
+      minesweeperData.playing = false;
+      document.getElementById('game-status').textContent = minesweeperData.gameStatus;
+      document.getElementById('game-status').style.color = '#EE0000';
+    } else if (!cell.isFlagged && cell.value === 0) {
+      const adjCells = nearbyMinesCells(cell.ypos, cell.xpos);
+      for (let k = 0; k < adjCells.length; k++) {
+        openCell(adjCells[k]);
+      }
+    }
+  }
+}

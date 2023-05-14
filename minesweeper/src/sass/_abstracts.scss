@@ -1,0 +1,25 @@
+$page-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+$font-color-white: #fff;
+
+$cell-value-colors: (
+  1: 'blue',
+  2: 'green',
+  3: 'red',
+  4: 'purple',
+  5: 'maroon',
+  6: 'turquoise',
+  7: 'black',
+  8: 'white'
+);
+
+@each $name, $value in $cell-value-colors {
+  .value-#{$name} {
+    color: #{$value};
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

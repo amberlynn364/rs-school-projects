@@ -1,7 +1,9 @@
+@import './abstracts';
 @import './base/normalize';
 @import './base/typography';
-@import './variables';
-@import './_buttons.scss';
+@import './components/buttons';
+@import './components/minesweeper';
+
 
 body {
   display: flex;
@@ -22,28 +24,6 @@ body {
   display: flex;
   gap: 30px;
   font-size: 1.5rem;
-}
-
-.game-wrapper {
-  padding: 15px;
-  background-color: #eee;
-  border-radius: 10px;
-  .row {
-    display: flex;
-    .cell {
-      width: 35px;
-      height: 25px;
-      padding: 10px 5px 5px 5px;
-      border: 1px solid #eee;
-      background-color: #eee;
-      text-align: center;
-      box-shadow: inset 5px 5px 10px #FFF, inset -3px -3px 5px #777;
-      cursor: pointer;
-      transition-property: background-color, box-shadow;
-      transition-duration: 1s;
-      transition-timing-function: ease-out;
-    }
-  }
 }
 
 .buttons-title {

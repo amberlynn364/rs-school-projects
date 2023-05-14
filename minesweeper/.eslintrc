@@ -6,7 +6,8 @@
   "rules": {
     "linebreak-style": 0,
     "no-use-before-define": ["error", { "functions": false }],
-    "no-plusplus": "off"
+    "no-plusplus": "off",
+    "no-param-reassign": ["error", { "props": false }],
   }
 }
 
