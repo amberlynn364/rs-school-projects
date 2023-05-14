@@ -1,5 +1,5 @@
-import { minesweeperData } from './data';
-import nearbyMinesCells from './helpers';
+import { minesweeperData, cssClasses } from './data';
+import { nearbyMinesCells } from './helpers';
 
 function setCell(xpos, ypos) {
   const cell = {
@@ -21,6 +21,8 @@ export function createBoard() {
   addMinesToBoard();
   nearbyMinesCounter();
   fillBoard();
+
+  document.getElementById(cssClasses.MINE_COUNTER).textContent = minesweeperData.options.mines;
 }
 
 function createGrid() {
@@ -40,7 +42,7 @@ function addMinesToBoard() {
     const cell = minesweeperData.grid[rowIndex][colIndex];
     if (!cell.isMine) {
       cell.isMine = true;
-      cell.value = 'M';
+      cell.value = 'Mine';
       inclusionMines++;
     }
   }
@@ -64,7 +66,7 @@ function nearbyMinesCounter() {
 }
 
 function fillBoard() {
-  const gameWrapper = document.getElementById('minesweeper');
+  const gameWrapper = document.getElementById(cssClasses.MINESWEEPER);
   gameWrapper.innerHTML = '';
 
   let attribute = '';
@@ -96,8 +98,8 @@ export function openCell(cell) {
     if (cell.isMine) {
       minesweeperData.gameStatus = 'BOOM, you lost!';
       minesweeperData.playing = false;
-      document.getElementById('game-status').textContent = minesweeperData.gameStatus;
-      document.getElementById('game-status').style.color = '#EE0000';
+      document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
+      document.getElementById(cssClasses.GAME_STATUS).style.color = '#EE0000';
     } else if (!cell.isFlagged && cell.value === 0) {
       const adjCells = nearbyMinesCells(cell.ypos, cell.xpos);
       for (let k = 0; k < adjCells.length; k++) {

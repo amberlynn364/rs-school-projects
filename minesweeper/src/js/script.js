@@ -1,12 +1,12 @@
 import '../index.html';
 import '../sass/main.scss';
 import createDomElements from './createDomElements';
-import { minesweeperData } from './minesweeper/data';
-import { createBoard, openCell } from './minesweeper/minesweeper';
+import { minesweeperData, cssClasses } from './data';
+import { createBoard, openCell } from './minesweeper';
+import { changeMinesweeperDataOptions, resetCounters } from './helpers';
 
 createDomElements();
 createBoard();
-// openCell();
 
 document
   .getElementById('minesweeper')
@@ -18,10 +18,39 @@ document
 
       if (!cell.isRevealed && minesweeperData.playing) {
         minesweeperData.movesMade++;
-        document.getElementById('move-counter').textContent = minesweeperData.movesMade;
+        document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
         openCell(cell);
         // save();
       }
     }
   });
-console.log('2', minesweeperData.grid);
+document
+  .getElementById(cssClasses.BUTTON_EASY)
+  .addEventListener('click', () => {
+    resetCounters();
+    changeMinesweeperDataOptions(10, 10, 10);
+    createBoard();
+  });
+
+document
+  .getElementById(cssClasses.BUTTON_MEDIUM)
+  .addEventListener('click', () => {
+    resetCounters();
+    changeMinesweeperDataOptions(15, 15, 40);
+    createBoard();
+  });
+
+document
+  .getElementById(cssClasses.BUTTON_HARD)
+  .addEventListener('click', () => {
+    resetCounters();
+    changeMinesweeperDataOptions(25, 25, 99);
+    createBoard();
+  });
+
+document
+  .getElementById(cssClasses.BUTTON_START_NEW_GAME)
+  .addEventListener('click', () => {
+    resetCounters();
+    createBoard();
+  });
