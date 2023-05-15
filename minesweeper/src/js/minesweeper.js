@@ -140,3 +140,13 @@ export function setFlag(cell) {
     }
   }
 }
+
+export function checkGameStatus() {
+  const gameStatus = document.getElementById(cssClasses.GAME_STATUS);
+  if (minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0) {
+    minesweeperData.gameStatus = 'You won!';
+    minesweeperData.playing = false;
+    gameStatus.textContent = minesweeperData.gameStatus;
+    gameStatus.style.color = '#00cc00';
+  }
+}

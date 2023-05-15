@@ -49,7 +49,7 @@ export function unhideGrid() {
   let result = '';
   for (let i = 0; i < minesweeperData.grid.length; i++) {
     for (let j = 0; j < minesweeperData.grid[i].length; j++) {
-      result += minesweeperData.grid[i][j].value + " ";
+      result += `${minesweeperData.grid[i][j].value} `;
     }
     result += '\n';
   }

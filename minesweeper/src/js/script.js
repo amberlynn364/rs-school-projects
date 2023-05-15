@@ -2,7 +2,12 @@ import '../index.html';
 import '../sass/main.scss';
 import createDomElements from './createDomElements';
 import { minesweeperData, cssClasses } from './data';
-import { createBoard, openCell, setFlag } from './minesweeper';
+import {
+  createBoard,
+  openCell,
+  setFlag,
+  checkGameStatus,
+} from './minesweeper';
 import { changeMinesweeperDataOptions, resetCounters, unhideGrid } from './helpers';
 
 createDomElements();
@@ -12,7 +17,6 @@ const minesweeper = document.getElementById(cssClasses.MINESWEEPER);
 
 minesweeper.addEventListener('click', (e) => {
   const { target } = e;
-
   if (target.classList.contains('cell')) {
     const cell = minesweeperData.grid[target.getAttribute('data-ypos')][target.getAttribute('data-xpos')];
 
@@ -23,12 +27,12 @@ minesweeper.addEventListener('click', (e) => {
       // save();
     }
   }
+  checkGameStatus();
 });
 
 minesweeper.addEventListener('contextmenu', (e) => {
   e.preventDefault();
   const { target } = e;
-
   if (target.classList.contains('cell')) {
     const cell = minesweeperData.grid[target.getAttribute('data-ypos')][target.getAttribute('data-xpos')];
     if (!cell.isRevealed && minesweeperData.playing) {
@@ -38,6 +42,7 @@ minesweeper.addEventListener('contextmenu', (e) => {
       // minesweeperData.save();
     }
   }
+  checkGameStatus();
 });
 
 document
