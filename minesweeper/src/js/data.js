@@ -5,6 +5,7 @@ export const cssClasses = {
   BUTTON_START_NEW_GAME: 'new-game',
   MINE_COUNTER: 'mine-counter',
   MOVE_COUNTER: 'move-counter',
+  FLAG_COUNTER: 'flag-counter',
   GAME_STATUS: 'game-status',
   TIMER: 'timer',
   MINESWEEPER: 'minesweeper',

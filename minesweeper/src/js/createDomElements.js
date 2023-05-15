@@ -8,6 +8,7 @@ export default function createDomElements() {
   gameCounters.append(
     addCountersToGameCounter('Mines remaining: ', 'mine-counter'),
     addCountersToGameCounter('Moves made: ', 'move-counter'),
+    addCountersToGameCounter('Flags set: ', 'flag-counter'),
     addCountersToGameCounter('Game status: ', 'game-status', 'Playing'),
     addCountersToGameCounter('Timer: ', 'timer', '00:00:00'),
   );

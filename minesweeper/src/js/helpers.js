@@ -27,11 +27,11 @@ export function changeMinesweeperDataOptions(rows, cols, mines) {
 export function resetCounters() {
   const gameStatus = document.getElementById(cssClasses.GAME_STATUS);
   const moveCounter = document.getElementById(cssClasses.MOVE_COUNTER);
-  const mineCounter = document.getElementById(cssClasses.MOVE_COUNTER);
-  const timer = document.getElementById('timer');
+  const mineCounter = document.getElementById(cssClasses.MINE_COUNTER);
+  const flagCounter = document.getElementById(cssClasses.FLAG_COUNTER);
+  const timer = document.getElementById(cssClasses.TIMER);
 
   minesweeperData.minesFound = 0;
-  minesweeperData.falseMines = 0;
   minesweeperData.gameStatus = 'Playing';
   minesweeperData.playing = true;
   minesweeperData.movesMade = 0;
@@ -40,6 +40,18 @@ export function resetCounters() {
   gameStatus.textContent = minesweeperData.gameStatus;
   gameStatus.style.color = '#fff';
   moveCounter.textContent = minesweeperData.movesMade;
-  mineCounter.textContent = minesweeperData.minesFound;
+  mineCounter.textContent = minesweeperData.options.mines;
+  flagCounter.textContent = 0;
   timer.textContent = minesweeperData.timer;
+}
+
+export function unhideGrid() {
+  let result = '';
+  for (let i = 0; i < minesweeperData.grid.length; i++) {
+    for (let j = 0; j < minesweeperData.grid[i].length; j++) {
+      result += minesweeperData.grid[i][j].value + " ";
+    }
+    result += '\n';
+  }
+  return result;
 }

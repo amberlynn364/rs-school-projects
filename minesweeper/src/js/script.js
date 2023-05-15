@@ -2,28 +2,44 @@ import '../index.html';
 import '../sass/main.scss';
 import createDomElements from './createDomElements';
 import { minesweeperData, cssClasses } from './data';
-import { createBoard, openCell } from './minesweeper';
-import { changeMinesweeperDataOptions, resetCounters } from './helpers';
+import { createBoard, openCell, setFlag } from './minesweeper';
+import { changeMinesweeperDataOptions, resetCounters, unhideGrid } from './helpers';
 
 createDomElements();
 createBoard();
 
-document
-  .getElementById('minesweeper')
-  .addEventListener('click', (e) => {
-    const { target } = e;
+const minesweeper = document.getElementById(cssClasses.MINESWEEPER);
 
-    if (target.classList.contains('cell')) {
-      const cell = minesweeperData.grid[target.getAttribute('data-ypos')][target.getAttribute('data-xpos')];
+minesweeper.addEventListener('click', (e) => {
+  const { target } = e;
 
-      if (!cell.isRevealed && minesweeperData.playing) {
-        minesweeperData.movesMade++;
-        document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
-        openCell(cell);
-        // save();
-      }
+  if (target.classList.contains('cell')) {
+    const cell = minesweeperData.grid[target.getAttribute('data-ypos')][target.getAttribute('data-xpos')];
+
+    if (!cell.isRevealed && minesweeperData.playing) {
+      minesweeperData.movesMade++;
+      document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
+      openCell(cell);
+      // save();
     }
-  });
+  }
+});
+
+minesweeper.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  const { target } = e;
+
+  if (target.classList.contains('cell')) {
+    const cell = minesweeperData.grid[target.getAttribute('data-ypos')][target.getAttribute('data-xpos')];
+    if (!cell.isRevealed && minesweeperData.playing) {
+      minesweeperData.movesMade++;
+      document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
+      setFlag(cell);
+      // minesweeperData.save();
+    }
+  }
+});
+
 document
   .getElementById(cssClasses.BUTTON_EASY)
   .addEventListener('click', () => {
@@ -54,3 +70,5 @@ document
     resetCounters();
     createBoard();
   });
+
+console.log(unhideGrid());

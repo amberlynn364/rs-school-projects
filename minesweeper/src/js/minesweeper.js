@@ -22,7 +22,9 @@ export function createBoard() {
   nearbyMinesCounter();
   fillBoard();
 
-  document.getElementById(cssClasses.MINE_COUNTER).textContent = minesweeperData.options.mines;
+  document
+    .getElementById(cssClasses.MINE_COUNTER)
+    .textContent = minesweeperData.options.mines;
 }
 
 function createGrid() {
@@ -34,7 +36,7 @@ function createGrid() {
   }
 }
 
-function addMinesToBoard() {
+export function addMinesToBoard() {
   let inclusionMines = 0;
   while (inclusionMines < minesweeperData.options.mines) {
     const rowIndex = Math.floor(Math.random() * minesweeperData.options.rows);
@@ -42,7 +44,7 @@ function addMinesToBoard() {
     const cell = minesweeperData.grid[rowIndex][colIndex];
     if (!cell.isMine) {
       cell.isMine = true;
-      cell.value = 'Mine';
+      cell.value = 'M';
       inclusionMines++;
     }
   }
@@ -104,6 +106,36 @@ export function openCell(cell) {
       const adjCells = nearbyMinesCells(cell.ypos, cell.xpos);
       for (let k = 0; k < adjCells.length; k++) {
         openCell(adjCells[k]);
+      }
+    }
+  }
+}
+
+export function setFlag(cell) {
+  if (!cell.isRevealed && minesweeperData.playing) {
+    const cellElement = cell.getItem();
+    const mineCounter = document.getElementById(cssClasses.MINE_COUNTER);
+    const flagCounter = document.getElementById(cssClasses.FLAG_COUNTER);
+    if (!cell.isFlagged) {
+      cell.isFlagged = true;
+      cellElement.classList.add('flagged');
+      mineCounter.textContent--;
+      flagCounter.textContent++;
+      if (cell.isMine) {
+        minesweeperData.minesFound++;
+      } else {
+        minesweeperData.falseMines++;
+      }
+    } else {
+      cell.isFlagged = false;
+      cellElement.classList.remove('flagged');
+      cellElement.textContent = '';
+      mineCounter.textContent++;
+      flagCounter.textContent--;
+      if (cell.isMine) {
+        minesweeperData.minesFound--;
+      } else {
+        minesweeperData.falseMines--;
       }
     }
   }

@@ -24,7 +24,7 @@
         background-color: #ddd;
         box-shadow: none;
       }
-      &.value-Mine {
+      &.value-M {
         background-color: #FFCCCC;
         &:after {
           content: '';
@@ -32,6 +32,15 @@
           height: 30px;
           background-size: cover;
           background-image: url('../assets/svg/bomb.svg');
+        }
+      }
+      &.flagged {
+        &:after {
+          content: '';
+          width: 20px;
+          height: 20px;
+          background-size: cover;
+          background-image: url('../assets/svg/flag.svg');
         }
       }
     }
