@@ -98,7 +98,7 @@ export function openCell(cell) {
     cellItem.classList.add('revealed', `value-${cell.value}`);
     cellItem.textContent = (!cell.isMine ? cell.value || '' : '');
     if (cell.isMine) {
-      minesweeperData.gameStatus = 'BOOM, you lost!';
+      minesweeperData.gameStatus = 'Game over. Try again';
       minesweeperData.playing = false;
       document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
       document.getElementById(cssClasses.GAME_STATUS).style.color = '#EE0000';
@@ -144,7 +144,7 @@ export function setFlag(cell) {
 export function checkGameStatus() {
   const gameStatus = document.getElementById(cssClasses.GAME_STATUS);
   if (minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0) {
-    minesweeperData.gameStatus = 'You won!';
+    minesweeperData.gameStatus = `Hooray! You found all mines in ## seconds and ${minesweeperData.movesMade} moves!`;
     minesweeperData.playing = false;
     gameStatus.textContent = minesweeperData.gameStatus;
     gameStatus.style.color = '#00cc00';

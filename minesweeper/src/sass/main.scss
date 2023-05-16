@@ -21,7 +21,8 @@ body {
 }
 
 .game-counters {
-  display: flex;
+  @include flex-center;
+  flex-wrap: wrap;
   gap: 30px;
   font-size: 1.5rem;
 }
@@ -32,7 +33,10 @@ body {
 }
 
 .buttons-wrapper {
-  display: flex;
+  @include flex-center;
   gap: 10px;
   align-items: center;
+    @media (max-width: 540px) {
+      flex-direction: column;
+  }
 }

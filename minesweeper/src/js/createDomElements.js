@@ -32,7 +32,7 @@ export default function createDomElements() {
   document.body.append(
     title,
     buttonsWrapper,
-    addButton('new-game', 'Start new game!', 'button-big'),
+    addButton('new-game', 'New game!', 'button-big'),
     gameCounters,
     minesweeper,
   );
