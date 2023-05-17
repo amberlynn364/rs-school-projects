@@ -80,6 +80,8 @@ export function updateFieldStatement(rows, cols, mines) {
   if (validateLocalStorage) {
     localStorage.clear();
   }
+  minesweeperData.time = clearInterval(minesweeperData.time);
+  minesweeperData.firstClick = false;
   resetCounters();
   changeMinesweeperDataOptions(rows, cols, mines);
   createBoard();

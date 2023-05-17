@@ -114,6 +114,7 @@ export function openCell(cell) {
     if (cell.isMine) {
       minesweeperData.gameStatus = 'Game over. Try again';
       minesweeperData.time = clearInterval(minesweeperData.time);
+      minesweeperData.firstClick = false;
       minesweeperData.playing = false;
       document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
       document.getElementById(cssClasses.GAME_STATUS).style.color = '#EE0000';
@@ -163,6 +164,7 @@ export function checkGameStatus() {
   if (minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0) {
     minesweeperData.gameStatus = `Hooray! You found all mines in ${minesweeperData.timer} seconds and ${minesweeperData.movesMade} moves!`;
     minesweeperData.time = clearInterval(minesweeperData.time);
+    minesweeperData.firstClick = false;
     minesweeperData.playing = false;
     gameStatus.textContent = minesweeperData.gameStatus;
     gameStatus.style.color = '#00cc00';

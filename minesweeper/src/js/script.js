@@ -31,7 +31,7 @@ minesweeper.addEventListener('click', (e) => {
       document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
       openCell(cell);
       if (!minesweeper.firstClick) {
-        minesweeper.firstClick = true;
+        minesweeperData.firstClick = true;
         stopwatch();
         minesweeper.timeHasGone = true;
       }
@@ -88,6 +88,7 @@ document
       localStorage.clear();
     }
     minesweeperData.time = clearInterval(minesweeperData.time);
+    minesweeperData.firstClick = false;
     resetCounters();
     createBoard();
   });
