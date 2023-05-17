@@ -1,37 +1,44 @@
 import { minesweeperData, cssClasses } from './data';
-import { nearbyMinesCells } from './helpers';
+import { nearbyMinesCells, validateLocalStorage } from './helpers';
 
-function setCell(xpos, ypos) {
+export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed = false, isFlagged = false }) {
   const cell = {
     xpos,
     ypos,
-    value: 0,
-    isMine: false,
-    isRevealed: false,
-    isFlagged: false,
+    value,
+    isMine,
+    isRevealed,
+    isFlagged,
     getItem() {
-      return document.querySelector(`.cell[data-xpos="${this.xpos}"][data-ypos="${this.ypos}"]`);
+      return document.querySelector(`.cell[data-xpos="${xpos}"][data-ypos="${ypos}"]`);
     },
   };
   return cell;
 }
 
 export function createBoard() {
-  createGrid();
-  addMinesToBoard();
-  nearbyMinesCounter();
-  fillBoard();
-
-  document
-    .getElementById(cssClasses.MINE_COUNTER)
-    .textContent = minesweeperData.options.mines;
+  if (validateLocalStorage && localStorage['minesweeper.gameSave']) {
+    const loadedData = JSON.parse(localStorage['minesweeper.gameSave']);
+    for (let i = 0; i < loadedData.grid.length; i++) {
+      for (let j = 0; j < loadedData.grid[i].length; j++) {
+        loadedData.grid[i][j] = createCell(loadedData.grid[i][j]);
+      }
+    }
+    Object.assign(minesweeperData, loadedData);
+    fillBoard();
+  } else {
+    createGrid();
+    addMinesToBoard();
+    nearbyMinesCounter();
+    fillBoard();
+  }
 }
 
 function createGrid() {
   for (let i = 0; i < minesweeperData.options.rows; i++) {
     minesweeperData.grid[i] = [];
     for (let j = 0; j < minesweeperData.options.cols; j++) {
-      minesweeperData.grid[i].push(setCell(j, i));
+      minesweeperData.grid[i].push(createCell({ xpos: j, ypos: i }));
     }
   }
 }
@@ -67,8 +74,9 @@ function nearbyMinesCounter() {
   }
 }
 
-function fillBoard() {
+export function fillBoard() {
   const gameWrapper = document.getElementById(cssClasses.MINESWEEPER);
+  const mineCounter = document.getElementById(cssClasses.MINE_COUNTER);
   gameWrapper.innerHTML = '';
 
   let attribute = '';
@@ -89,6 +97,10 @@ function fillBoard() {
     attribute += '</div>';
   }
   gameWrapper.innerHTML = attribute;
+  mineCounter.textContent = minesweeperData.options.mines - (minesweeperData.falseMines + minesweeperData.minesFound);
+  document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
+  document.getElementById(cssClasses.FLAG_COUNTER).textContent = minesweeperData.flagsSet;
+  document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
 }
 
 export function openCell(cell) {
@@ -120,7 +132,8 @@ export function setFlag(cell) {
       cell.isFlagged = true;
       cellElement.classList.add('flagged');
       mineCounter.textContent--;
-      flagCounter.textContent++;
+      minesweeperData.flagsSet++;
+      flagCounter.textContent = minesweeperData.flagsSet;
       if (cell.isMine) {
         minesweeperData.minesFound++;
       } else {
@@ -131,7 +144,8 @@ export function setFlag(cell) {
       cellElement.classList.remove('flagged');
       cellElement.textContent = '';
       mineCounter.textContent++;
-      flagCounter.textContent--;
+      minesweeperData.flagsSet--;
+      flagCounter.textContent = minesweeperData.flagsSet;
       if (cell.isMine) {
         minesweeperData.minesFound--;
       } else {
@@ -149,4 +163,13 @@ export function checkGameStatus() {
     gameStatus.textContent = minesweeperData.gameStatus;
     gameStatus.style.color = '#00cc00';
   }
+}
+
+export function saveGame() {
+  if (!validateLocalStorage()) {
+    return false;
+  }
+  const data = JSON.stringify(minesweeperData);
+  localStorage['minesweeper.gameSave'] = data;
+  return undefined;
 }

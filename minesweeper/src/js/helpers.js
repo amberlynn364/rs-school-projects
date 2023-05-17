@@ -32,16 +32,18 @@ export function resetCounters() {
   const timer = document.getElementById(cssClasses.TIMER);
 
   minesweeperData.minesFound = 0;
+  minesweeperData.falseMines = 0;
   minesweeperData.gameStatus = 'Playing';
   minesweeperData.playing = true;
   minesweeperData.movesMade = 0;
   minesweeperData.timer = '00:00:00';
+  minesweeperData.flagsSet = 0;
 
   gameStatus.textContent = minesweeperData.gameStatus;
   gameStatus.style.color = '#fff';
   moveCounter.textContent = minesweeperData.movesMade;
   mineCounter.textContent = minesweeperData.options.mines;
-  flagCounter.textContent = 0;
+  flagCounter.textContent = minesweeperData.flagsSet;
   timer.textContent = minesweeperData.timer;
 }
 
@@ -54,4 +56,8 @@ export function unhideGrid() {
     result += '\n';
   }
   return result;
+}
+
+export function validateLocalStorage() {
+  return 'localStorage' in window && window.localStorage !== null;
 }

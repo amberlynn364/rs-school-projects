@@ -7,8 +7,14 @@ import {
   openCell,
   setFlag,
   checkGameStatus,
+  saveGame,
 } from './minesweeper';
-import { changeMinesweeperDataOptions, resetCounters, unhideGrid } from './helpers';
+import {
+  changeMinesweeperDataOptions,
+  resetCounters,
+  unhideGrid,
+  validateLocalStorage,
+} from './helpers';
 
 createDomElements();
 createBoard();
@@ -19,12 +25,11 @@ minesweeper.addEventListener('click', (e) => {
   const { target } = e;
   if (target.classList.contains('cell')) {
     const cell = minesweeperData.grid[target.getAttribute('data-ypos')][target.getAttribute('data-xpos')];
-
     if (!cell.isRevealed && minesweeperData.playing) {
       minesweeperData.movesMade++;
       document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
       openCell(cell);
-      // save();
+      saveGame();
     }
   }
   checkGameStatus();
@@ -39,7 +44,7 @@ minesweeper.addEventListener('contextmenu', (e) => {
       minesweeperData.movesMade++;
       document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
       setFlag(cell);
-      // minesweeperData.save();
+      saveGame();
     }
   }
   checkGameStatus();
@@ -72,8 +77,10 @@ document
 document
   .getElementById(cssClasses.BUTTON_START_NEW_GAME)
   .addEventListener('click', () => {
+    if (validateLocalStorage) {
+      localStorage.clear();
+    }
     resetCounters();
     createBoard();
   });
-
 console.log(unhideGrid());
