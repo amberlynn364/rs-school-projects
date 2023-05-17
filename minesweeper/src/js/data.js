@@ -18,6 +18,8 @@ export const minesweeperData = {
   playing: true,
   movesMade: 0,
   flagsSet: 0,
+  firstClick: false,
+  time: null,
   timer: '00:00:00',
   options: {
     rows: 10,

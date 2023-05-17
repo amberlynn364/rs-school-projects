@@ -8,6 +8,7 @@ import {
   setFlag,
   checkGameStatus,
   saveGame,
+  stopwatch,
 } from './minesweeper';
 import {
   changeMinesweeperDataOptions,
@@ -29,6 +30,11 @@ minesweeper.addEventListener('click', (e) => {
       minesweeperData.movesMade++;
       document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
       openCell(cell);
+      if (!minesweeper.firstClick) {
+        minesweeper.firstClick = true;
+        stopwatch();
+        minesweeper.timeHasGone = true;
+      }
       saveGame();
     }
   }

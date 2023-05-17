@@ -101,6 +101,7 @@ export function fillBoard() {
   document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
   document.getElementById(cssClasses.FLAG_COUNTER).textContent = minesweeperData.flagsSet;
   document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
+  document.getElementById(cssClasses.TIMER).textContent = minesweeperData.timer;
 }
 
 export function openCell(cell) {
@@ -111,6 +112,7 @@ export function openCell(cell) {
     cellItem.textContent = (!cell.isMine ? cell.value || '' : '');
     if (cell.isMine) {
       minesweeperData.gameStatus = 'Game over. Try again';
+      minesweeperData.time = clearInterval(minesweeperData.time);
       minesweeperData.playing = false;
       document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
       document.getElementById(cssClasses.GAME_STATUS).style.color = '#EE0000';
@@ -158,7 +160,8 @@ export function setFlag(cell) {
 export function checkGameStatus() {
   const gameStatus = document.getElementById(cssClasses.GAME_STATUS);
   if (minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0) {
-    minesweeperData.gameStatus = `Hooray! You found all mines in ## seconds and ${minesweeperData.movesMade} moves!`;
+    minesweeperData.gameStatus = `Hooray! You found all mines in ${minesweeperData.timer} seconds and ${minesweeperData.movesMade} moves!`;
+    minesweeperData.time = clearInterval(minesweeperData.time);
     minesweeperData.playing = false;
     gameStatus.textContent = minesweeperData.gameStatus;
     gameStatus.style.color = '#00cc00';
@@ -172,4 +175,27 @@ export function saveGame() {
   const data = JSON.stringify(minesweeperData);
   localStorage['minesweeper.gameSave'] = data;
   return undefined;
+}
+
+export function stopwatch() {
+  let [milliseconds, seconds, minutes] = [0, 0, 0];
+  minesweeperData.time = setInterval(timer, 10);
+  function timer() {
+    if (!minesweeperData.timeHasGone) {
+      milliseconds++;
+      if (milliseconds === 100) {
+        milliseconds = 0;
+        seconds++;
+        if (seconds === 60) {
+          seconds = 0;
+          minutes++;
+        }
+      }
+      const m = minutes < 10 ? `0${minutes}` : minutes;
+      const s = seconds < 10 ? `0${seconds}` : seconds;
+      const ms = milliseconds < 10 ? `0${milliseconds}` : milliseconds;
+      minesweeperData.timer = ` ${m}:${s}:${ms}`;
+      document.getElementById(cssClasses.TIMER).textContent = minesweeperData.timer;
+    }
+  }
 }
