@@ -3,12 +3,14 @@ export const cssClasses = {
   BUTTON_MEDIUM: 'medium',
   BUTTON_HARD: 'hard',
   BUTTON_START_NEW_GAME: 'new-game',
+  BUTTON_UPDATE_FIELD: 'update-field',
   MINE_COUNTER: 'mine-counter',
   MOVE_COUNTER: 'move-counter',
   FLAG_COUNTER: 'flag-counter',
   GAME_STATUS: 'game-status',
   TIMER: 'timer',
   MINESWEEPER: 'minesweeper',
+  MINE_INPUT: 'mine-input',
 };
 export const minesweeperData = {
   grid: [],

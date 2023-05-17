@@ -11,10 +11,10 @@ import {
   stopwatch,
 } from './minesweeper';
 import {
-  changeMinesweeperDataOptions,
   resetCounters,
   unhideGrid,
   validateLocalStorage,
+  updateFieldStatement,
 } from './helpers';
 
 createDomElements();
@@ -59,25 +59,26 @@ minesweeper.addEventListener('contextmenu', (e) => {
 document
   .getElementById(cssClasses.BUTTON_EASY)
   .addEventListener('click', () => {
-    resetCounters();
-    changeMinesweeperDataOptions(10, 10, 10);
-    createBoard();
+    updateFieldStatement(10, 10, 10);
   });
 
 document
   .getElementById(cssClasses.BUTTON_MEDIUM)
   .addEventListener('click', () => {
-    resetCounters();
-    changeMinesweeperDataOptions(15, 15, 40);
-    createBoard();
+    updateFieldStatement(15, 15, 40);
   });
 
 document
   .getElementById(cssClasses.BUTTON_HARD)
   .addEventListener('click', () => {
-    resetCounters();
-    changeMinesweeperDataOptions(25, 25, 99);
-    createBoard();
+    updateFieldStatement(25, 25, 99);
+  });
+
+document
+  .getElementById(cssClasses.BUTTON_UPDATE_FIELD)
+  .addEventListener('click', () => {
+    const mineInput = document.getElementById(cssClasses.MINE_INPUT);
+    updateFieldStatement(minesweeperData.options.rows, minesweeperData.options.cols, mineInput.value);
   });
 
 document
@@ -86,6 +87,7 @@ document
     if (validateLocalStorage) {
       localStorage.clear();
     }
+    minesweeperData.time = clearInterval(minesweeperData.time);
     resetCounters();
     createBoard();
   });

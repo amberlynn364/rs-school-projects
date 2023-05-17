@@ -11,6 +11,28 @@
   transition: all 250ms;
   width: auto;
   cursor: pointer;
+  &.button-input {
+    background-color: transparent;
+    border-bottom: 2px solid gray;
+    border-right: 2px solid gray;
+    color: gray;
+    &:hover {
+      color: white;
+      background-color: transparent;
+      transform: none;
+      box-shadow: none;
+      border-bottom: 2px solid white;
+      border-right: 2px solid white;
+    }
+    &:focus {
+      background-color: transparent;
+      box-shadow: none;
+      transform: none;
+    }
+    &:active {
+      transform: translateY(-1px);
+    }
+  }
   &.button-big {
     width: 300px;
   }

@@ -17,21 +17,32 @@ export default function createDomElements() {
   minesweeper.setAttribute('id', 'minesweeper');
   minesweeper.classList.add('game-wrapper');
 
-  const buttonsWrapper = document.createElement('div');
-  const buttonsDescription = document.createElement('h2');
-  buttonsDescription.classList.add('buttons-title');
-  buttonsDescription.textContent = 'Difficulty level:';
-  buttonsWrapper.classList.add('buttons-wrapper');
-  buttonsWrapper.append(
-    buttonsDescription,
+  const difficultyWrapper = document.createElement('div');
+  difficultyWrapper.classList.add('difficulty-wrapper');
+  const difficultyDescription = document.createElement('h2');
+  difficultyDescription.classList.add('difficulty-title');
+  difficultyDescription.textContent = 'Difficulty level:';
+  const inputWrapper = document.createElement('div');
+  inputWrapper.classList.add('input-wrapper');
+  const mineInput = document.createElement('input');
+  mineInput.setAttribute('id', 'mine-input');
+  mineInput.classList.add('input');
+  const fieldLabel = document.createElement('label');
+  fieldLabel.setAttribute('for', 'mine-input');
+  fieldLabel.classList.add('label');
+  fieldLabel.textContent = 'from 10 to 99 mines';
+  inputWrapper.append(mineInput, fieldLabel, addButton('update-field', 'Update field', 'button-input', 'button'));
+  difficultyWrapper.append(
+    difficultyDescription,
     addButton('easy', 'Easy'),
     addButton('medium', 'Medium'),
     addButton('hard', 'Hard'),
+    inputWrapper,
   );
 
   document.body.append(
     title,
-    buttonsWrapper,
+    difficultyWrapper,
     addButton('new-game', 'New game!', 'button-big'),
     gameCounters,
     minesweeper,
@@ -55,12 +66,15 @@ function addCountersToGameCounter(title, id, textContent) {
   return counterWrapper;
 }
 
-function addButton(id, buttonTextContent, extraSettings) {
+function addButton(id, buttonTextContent, extraSettings, className = 'button') {
   const button = document.createElement('button');
   button.setAttribute('id', `${id}`);
-  button.classList.add('button');
+  button.classList.add(className);
 
   switch (id) {
+    case 'easy':
+      button.setAttribute('title', '10x10, 10 mines');
+      break;
     case 'medium':
       button.setAttribute('title', '15x15, 40 mines');
       break;
@@ -68,7 +82,6 @@ function addButton(id, buttonTextContent, extraSettings) {
       button.setAttribute('title', '25x25, 99 mines');
       break;
     default:
-      button.setAttribute('title', '10x10, 10 mines');
   }
 
   if (extraSettings) {

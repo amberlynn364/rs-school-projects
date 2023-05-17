@@ -102,6 +102,7 @@ export function fillBoard() {
   document.getElementById(cssClasses.FLAG_COUNTER).textContent = minesweeperData.flagsSet;
   document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
   document.getElementById(cssClasses.TIMER).textContent = minesweeperData.timer;
+  document.getElementById(cssClasses.MINE_INPUT).setAttribute('value', minesweeperData.options.mines);
 }
 
 export function openCell(cell) {

@@ -1,4 +1,5 @@
 import { minesweeperData, cssClasses } from './data';
+import { createBoard, saveGame } from './minesweeper';
 
 export function nearbyMinesCells(row, col) {
   const result = [];
@@ -19,9 +20,22 @@ export function nearbyMinesCells(row, col) {
 }
 
 export function changeMinesweeperDataOptions(rows, cols, mines) {
+  let mine = mines;
+  const mineInput = document.getElementById(cssClasses.MINE_INPUT);
+  if (Number.isNaN(mine)) {
+    mine = 10;
+  }
+  if (mine < 10) {
+    mine = 10;
+    mineInput.value = mine;
+  }
+  if (mine > 99) {
+    mine = 99;
+    mineInput.value = mine;
+  }
   minesweeperData.options.rows = rows;
   minesweeperData.options.cols = cols;
-  minesweeperData.options.mines = mines;
+  minesweeperData.options.mines = mine;
 }
 
 export function resetCounters() {
@@ -60,4 +74,14 @@ export function unhideGrid() {
 
 export function validateLocalStorage() {
   return 'localStorage' in window && window.localStorage !== null;
+}
+
+export function updateFieldStatement(rows, cols, mines) {
+  if (validateLocalStorage) {
+    localStorage.clear();
+  }
+  resetCounters();
+  changeMinesweeperDataOptions(rows, cols, mines);
+  createBoard();
+  saveGame();
 }

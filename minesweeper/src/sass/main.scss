@@ -12,7 +12,7 @@ body {
   gap: 30px;
   flex-direction: column;
   font-family: Ubuntu, sans-serif;
-  color: $font-color-white;
+  color: $color-white;
   background: $page-background-color;
 }
 
@@ -27,16 +27,46 @@ body {
   font-size: 1.5rem;
 }
 
-.buttons-title {
+.difficulty-title {
   margin: 0;
   font-size: 1.5rem;
 }
 
-.buttons-wrapper {
+.difficulty-wrapper {
   @include flex-center;
   gap: 10px;
   align-items: center;
     @media (max-width: 540px) {
       flex-direction: column;
+  }
+}
+
+.input-wrapper {
+  display: flex;
+  position: relative;
+  gap: 30px;
+  padding-left: 20px;
+  .input {
+    width: 50px;
+    border: 0;
+    border-bottom: 2px solid $color-gray;
+    border-left: 2px solid $color-gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: $color-gray;
+    text-align: center;
+    background: transparent;
+    transition: border-color 0.2s;
+    &:focus {
+      border-width: 3px;
+      border-color: rgb(226, 226, 226);
+      color: white;
+    }
+  }
+  .label {
+    position: absolute;
+    bottom: -20px;
+    color: $color-gray;
+    opacity: 0.7;
   }
 }
