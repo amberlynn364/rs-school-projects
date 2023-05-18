@@ -21,8 +21,13 @@ export const minesweeperData = {
   movesMade: 0,
   flagsSet: 0,
   firstClick: false,
-  time: null,
-  timer: '00:00:00',
+  timerOptions: {
+    timer: null,
+    time: '',
+    milliseconds: 0,
+    seconds: 0,
+    minutes: 0,
+  },
   options: {
     rows: 10,
     cols: 10,

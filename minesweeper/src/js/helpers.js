@@ -22,8 +22,10 @@ export function nearbyMinesCells(row, col) {
 export function changeMinesweeperDataOptions(rows, cols, mines) {
   let mine = mines;
   const mineInput = document.getElementById(cssClasses.MINE_INPUT);
-  if (Number.isNaN(mine)) {
+  minesweeperData.grid = [];
+  if (Number.isNaN(parseInt(mine, 10))) {
     mine = 10;
+    mineInput.value = mine;
   }
   if (mine < 10) {
     mine = 10;
@@ -33,9 +35,9 @@ export function changeMinesweeperDataOptions(rows, cols, mines) {
     mine = 99;
     mineInput.value = mine;
   }
-  minesweeperData.options.rows = rows;
-  minesweeperData.options.cols = cols;
-  minesweeperData.options.mines = mine;
+  minesweeperData.options.rows = parseInt(rows, 10);
+  minesweeperData.options.cols = parseInt(cols, 10);
+  minesweeperData.options.mines = parseInt(mine, 10);
 }
 
 export function resetCounters() {
@@ -50,15 +52,18 @@ export function resetCounters() {
   minesweeperData.gameStatus = 'Playing';
   minesweeperData.playing = true;
   minesweeperData.movesMade = 0;
-  minesweeperData.timer = '00:00:00';
+  minesweeperData.timerOptions.time = '00:00,00';
   minesweeperData.flagsSet = 0;
+  minesweeperData.timerOptions.milliseconds = 0;
+  minesweeperData.timerOptions.seconds = 0;
+  minesweeperData.timerOptions.minutes = 0;
 
   gameStatus.textContent = minesweeperData.gameStatus;
   gameStatus.style.color = '#fff';
   moveCounter.textContent = minesweeperData.movesMade;
   mineCounter.textContent = minesweeperData.options.mines;
   flagCounter.textContent = minesweeperData.flagsSet;
-  timer.textContent = minesweeperData.timer;
+  timer.textContent = minesweeperData.timerOptions.time;
 }
 
 export function unhideGrid() {
@@ -80,10 +85,23 @@ export function updateFieldStatement(rows, cols, mines) {
   if (validateLocalStorage) {
     localStorage.clear();
   }
-  minesweeperData.time = clearInterval(minesweeperData.time);
+  minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
   minesweeperData.firstClick = false;
   resetCounters();
   changeMinesweeperDataOptions(rows, cols, mines);
   createBoard();
   saveGame();
+}
+
+export function timerToSeconds(str) {
+  const p = str.split(':');
+  let seconds = 0;
+  let minutes = 1;
+
+  while (p.length > 0) {
+    seconds += minutes * parseInt(p.pop(), 10);
+    minutes *= 60;
+  }
+
+  return seconds;
 }

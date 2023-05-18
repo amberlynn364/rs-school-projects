@@ -8,7 +8,7 @@ import {
   setFlag,
   checkGameStatus,
   saveGame,
-  stopwatch,
+  timer,
 } from './minesweeper';
 import {
   resetCounters,
@@ -30,12 +30,11 @@ minesweeper.addEventListener('click', (e) => {
       minesweeperData.movesMade++;
       document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
       openCell(cell);
-      if (!minesweeper.firstClick) {
+      if (!minesweeperData.firstClick) {
         minesweeperData.firstClick = true;
-        stopwatch();
-        minesweeper.timeHasGone = true;
+        minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
+        timer();
       }
-      saveGame();
     }
   }
   checkGameStatus();
@@ -50,8 +49,11 @@ minesweeper.addEventListener('contextmenu', (e) => {
       minesweeperData.movesMade++;
       document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
       setFlag(cell);
-      saveGame();
     }
+  }
+  if (!minesweeperData.firstClick) {
+    minesweeperData.firstClick = true;
+    timer();
   }
   checkGameStatus();
 });
@@ -87,9 +89,13 @@ document
     if (validateLocalStorage) {
       localStorage.clear();
     }
-    minesweeperData.time = clearInterval(minesweeperData.time);
+    minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
     minesweeperData.firstClick = false;
     resetCounters();
     createBoard();
   });
 console.log(unhideGrid());
+window.addEventListener('beforeunload', () => {
+  minesweeperData.firstClick = false;
+  saveGame();
+}); // for timer

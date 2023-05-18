@@ -10,7 +10,7 @@ export default function createDomElements() {
     addCountersToGameCounter('Moves made: ', 'move-counter'),
     addCountersToGameCounter('Flags set: ', 'flag-counter'),
     addCountersToGameCounter('Game status: ', 'game-status', 'Playing'),
-    addCountersToGameCounter('Timer: ', 'timer', '00:00:00'),
+    addCountersToGameCounter('Timer: ', 'timer', '00:00,00'),
   );
 
   const minesweeper = document.createElement('div');
