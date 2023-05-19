@@ -1,5 +1,10 @@
 import '../index.html';
 import '../sass/main.scss';
+import soundClick from '../assets/sounds/click.mp3';
+import soundFlag from '../assets/sounds/flag.mp3';
+import soundWin from '../assets/sounds/win.mp3';
+import soundLose from '../assets/sounds/lose.mp3';
+
 import createDomElements from './createDomElements';
 import { minesweeperData, cssClasses } from './data';
 import {
@@ -37,6 +42,12 @@ minesweeper.addEventListener('click', (e) => {
       }
     }
   }
+  new Audio(soundLose).play().then(() => {
+
+  })
+    .catch((error) => {
+      console.log(error);
+    });
   checkGameStatus();
 });
 

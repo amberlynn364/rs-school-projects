@@ -52,7 +52,7 @@ export function resetCounters() {
   minesweeperData.gameStatus = 'Playing';
   minesweeperData.playing = true;
   minesweeperData.movesMade = 0;
-  minesweeperData.timerOptions.time = '00:00,00';
+  minesweeperData.timerOptions.time = '00,00';
   minesweeperData.flagsSet = 0;
   minesweeperData.timerOptions.milliseconds = 0;
   minesweeperData.timerOptions.seconds = 0;
@@ -93,7 +93,7 @@ export function updateFieldStatement(rows, cols, mines) {
   saveGame();
 }
 
-export function timerToSeconds(str) {
+export function convertTimerToSeconds(str) {
   const p = str.split(':');
   let seconds = 0;
   let minutes = 1;

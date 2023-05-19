@@ -2,12 +2,11 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostcssPresetEnv = require('postcss-preset-env');
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 
 const mode = process.env.NODE_ENV || 'development'; // явно указываем мод ENV
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist'; // определяем под какой браузер идёт сборка
-const devtool = devMode ? 'source-map' : undefined; // если режим разработки, то добавляем сорс мапы для нахождения ошибок и т.д.
+const devtool = devMode ? 'source-map' : undefined;
 
 module.exports = {
   mode,
@@ -81,6 +80,14 @@ module.exports = {
         type: 'asset/resource',
         generator: {
           filename: 'assets/svg/[name][ext]',
+        },
+      },
+      {
+        test: /\.(ogg|mp3|wav|mpe?g)$/i,
+        // loader: 'url-loader',
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/sounds/[name][ext]',
         },
       },
     ],

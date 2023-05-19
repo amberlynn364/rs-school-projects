@@ -34,3 +34,26 @@ export const minesweeperData = {
     mines: 10,
   },
 };
+
+export const sounds = [
+  {
+    title: 'win',
+    src: '../assets/sounds/win.mp3',
+    duration: '0:05',
+  },
+  {
+    title: 'lose',
+    src: '../assets/sounds/lose.mp3',
+    duration: '0:06',
+  },
+  {
+    title: 'click',
+    src: '../assets/sounds/click.mp3',
+    duration: '0:07',
+  },
+  {
+    title: 'flag',
+    src: '../assets/sounds/flag.mp3',
+    duration: '0:05',
+  },
+];

@@ -1,5 +1,6 @@
-import { minesweeperData, cssClasses } from './data';
+import { minesweeperData, cssClasses, sounds } from './data';
 import { nearbyMinesCells, validateLocalStorage } from './helpers';
+
 
 export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed = false, isFlagged = false }) {
   const cell = {
@@ -102,7 +103,6 @@ export function fillBoard() {
   document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
   document.getElementById(cssClasses.FLAG_COUNTER).textContent = minesweeperData.flagsSet;
   document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
-  console.log(minesweeperData.timerOptions.time);
   document.getElementById(cssClasses.TIMER).textContent = minesweeperData.timerOptions.time;
   document.getElementById(cssClasses.MINE_INPUT).setAttribute('value', minesweeperData.options.mines);
 }
@@ -127,6 +127,9 @@ export function openCell(cell) {
       }
     }
   }
+  
+  // // audio.src = sounds[0].src;
+  // audio.play();
 }
 
 export function setFlag(cell) {
@@ -175,7 +178,6 @@ export function checkGameStatus() {
     minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
     minesweeperData.firstClick = false;
   }
-  console.log(minesweeperData);
 }
 
 export function saveGame() {
@@ -194,15 +196,17 @@ export function timer() {
     if (minesweeperData.timerOptions.milliseconds === 100) {
       minesweeperData.timerOptions.milliseconds = 0;
       minesweeperData.timerOptions.seconds++;
-      if (minesweeperData.timerOptions.seconds === 60) {
-        minesweeperData.timerOptions.seconds = 0;
-        minesweeperData.timerOptions.minutes++;
-      }
+      // if (minesweeperData.timerOptions.seconds === 60) {
+      //   minesweeperData.timerOptions.seconds = 0;
+      //   minesweeperData.timerOptions.minutes++;
+      // }
     }
-    const m = minesweeperData.timerOptions.minutes < 10 ? `0${minesweeperData.timerOptions.minutes}` : minesweeperData.timerOptions.minutes;
+    // const m = minesweeperData.timerOptions.minutes < 10 ? `0${minesweeperData.timerOptions.minutes}` : minesweeperData.timerOptions.minutes;
     const s = minesweeperData.timerOptions.seconds < 10 ? `0${minesweeperData.timerOptions.seconds}` : minesweeperData.timerOptions.seconds;
     const ms = minesweeperData.timerOptions.milliseconds < 10 ? `0${minesweeperData.timerOptions.milliseconds}` : minesweeperData.timerOptions.milliseconds;
-    minesweeperData.timerOptions.time = ` ${m}:${s},${ms}`;
+    minesweeperData.timerOptions.time = ` ${s},${ms}`;
     document.getElementById(cssClasses.TIMER).textContent = minesweeperData.timerOptions.time;
   }
 }
+
+console.log(sounds[0].src)
