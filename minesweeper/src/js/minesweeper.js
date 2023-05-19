@@ -1,5 +1,5 @@
-import { minesweeperData, cssClasses, sounds } from './data';
-import { nearbyMinesCells, validateLocalStorage } from './helpers';
+import { minesweeperData, cssClasses } from './data';
+import { nearbyMinesCells, validateLocalStorage, setSounds } from './helpers';
 
 
 export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed = false, isFlagged = false }) {
@@ -127,9 +127,6 @@ export function openCell(cell) {
       }
     }
   }
-  
-  // // audio.src = sounds[0].src;
-  // audio.play();
 }
 
 export function setFlag(cell) {
@@ -196,12 +193,7 @@ export function timer() {
     if (minesweeperData.timerOptions.milliseconds === 100) {
       minesweeperData.timerOptions.milliseconds = 0;
       minesweeperData.timerOptions.seconds++;
-      // if (minesweeperData.timerOptions.seconds === 60) {
-      //   minesweeperData.timerOptions.seconds = 0;
-      //   minesweeperData.timerOptions.minutes++;
-      // }
     }
-    // const m = minesweeperData.timerOptions.minutes < 10 ? `0${minesweeperData.timerOptions.minutes}` : minesweeperData.timerOptions.minutes;
     const s = minesweeperData.timerOptions.seconds < 10 ? `0${minesweeperData.timerOptions.seconds}` : minesweeperData.timerOptions.seconds;
     const ms = minesweeperData.timerOptions.milliseconds < 10 ? `0${minesweeperData.timerOptions.milliseconds}` : minesweeperData.timerOptions.milliseconds;
     minesweeperData.timerOptions.time = ` ${s},${ms}`;
@@ -209,4 +201,11 @@ export function timer() {
   }
 }
 
-console.log(sounds[0].src)
+export function sounds() {
+  if (minesweeperData.gameStatus === 'Game over. Try again') {
+    setSounds('https://audio.jukehost.co.uk/QZKlbFPz2Rd2dwS6AT27uVYmFs4c5r6E');
+  }
+  if (minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0) {
+    setSounds('https://audio.jukehost.co.uk/3C36ArOHe2B75hw8ISk5VCvj3neMWxhr');
+  }
+}

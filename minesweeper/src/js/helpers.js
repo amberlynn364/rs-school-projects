@@ -27,10 +27,10 @@ export function changeMinesweeperDataOptions(rows, cols, mines) {
     mine = 10;
     mineInput.value = mine;
   }
-  if (mine < 10) {
-    mine = 10;
-    mineInput.value = mine;
-  }
+  // if (mine < 10) {
+  //   mine = 10;
+  //   mineInput.value = mine;
+  // }
   if (mine > 99) {
     mine = 99;
     mineInput.value = mine;
@@ -104,4 +104,9 @@ export function convertTimerToSeconds(str) {
   }
 
   return seconds;
+}
+
+export function setSounds(link) {
+  const audio = new Audio(link);
+  audio.play();
 }

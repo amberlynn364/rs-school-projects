@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PostcssPresetEnv = require('postcss-preset-env');
 
+const SRC = path.resolve(__dirname, './src/js/script.js');
+
 const mode = process.env.NODE_ENV || 'development'; // явно указываем мод ENV
 const devMode = mode === 'development';
 const target = devMode ? 'web' : 'browserslist'; // определяем под какой браузер идёт сборка
@@ -84,8 +86,9 @@ module.exports = {
       },
       {
         test: /\.(ogg|mp3|wav|mpe?g)$/i,
-        // loader: 'url-loader',
-        type: 'asset/resource',
+        // type: 'asset/resource',
+        include: SRC,
+        loader: 'file-loader',
         generator: {
           filename: 'assets/sounds/[name][ext]',
         },
