@@ -100,6 +100,14 @@ document
     resetCounters();
     createBoard();
   });
+
+document
+  .getElementById(cssClasses.BUTTON_SOUND_OFF_ON)
+  .addEventListener('click', () => {
+    minesweeperData.audioMuted = !minesweeperData.audioMuted;
+    setSounds();
+  });
+
 console.log(unhideGrid());
 window.addEventListener('beforeunload', () => {
   minesweeperData.firstClick = false;

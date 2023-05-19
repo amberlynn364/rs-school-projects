@@ -4,6 +4,7 @@ export const cssClasses = {
   BUTTON_HARD: 'hard',
   BUTTON_START_NEW_GAME: 'new-game',
   BUTTON_UPDATE_FIELD: 'update-field',
+  BUTTON_SOUND_OFF_ON: 'sound-on-off',
   MINE_COUNTER: 'mine-counter',
   MOVE_COUNTER: 'move-counter',
   FLAG_COUNTER: 'flag-counter',
@@ -21,6 +22,7 @@ export const minesweeperData = {
   movesMade: 0,
   flagsSet: 0,
   firstClick: false,
+  audioMuted: false,
   timerOptions: {
     timer: null,
     time: '',

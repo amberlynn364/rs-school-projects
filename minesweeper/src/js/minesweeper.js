@@ -1,7 +1,6 @@
 import { minesweeperData, cssClasses } from './data';
 import { nearbyMinesCells, validateLocalStorage, setSounds } from './helpers';
 
-
 export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed = false, isFlagged = false }) {
   const cell = {
     xpos,
@@ -27,11 +26,13 @@ export function createBoard() {
     }
     Object.assign(minesweeperData, loadedData);
     fillBoard();
+    setSounds();
   } else {
     createGrid();
     addMinesToBoard();
     nearbyMinesCounter();
     fillBoard();
+    setSounds();
   }
 }
 

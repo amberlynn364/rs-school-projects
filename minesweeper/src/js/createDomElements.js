@@ -4,19 +4,19 @@ export default function createDomElements() {
   title.textContent = 'Minesweeper';
 
   const gameCounters = document.createElement('div');
-  gameCounters.classList.add('game-counters');
+  gameCounters.classList.add('game-attribute');
   gameCounters.append(
     addCountersToGameCounter('Mines remaining: ', 'mine-counter'),
     addCountersToGameCounter('Moves made: ', 'move-counter'),
     addCountersToGameCounter('Flags set: ', 'flag-counter'),
     addCountersToGameCounter('Game status: ', 'game-status', 'Playing'),
     addCountersToGameCounter('Timer: ', 'timer', '00,00'),
+    addButton('sound-on-off', 'Press to sound off'),
   );
 
   const minesweeper = document.createElement('div');
   minesweeper.setAttribute('id', 'minesweeper');
   minesweeper.classList.add('game-wrapper');
-
   const difficultyWrapper = document.createElement('div');
   difficultyWrapper.classList.add('difficulty-wrapper');
   const difficultyDescription = document.createElement('h2');

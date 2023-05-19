@@ -20,7 +20,7 @@ body {
   font-size: 3rem;
 }
 
-.game-counters {
+.game-attribute {
   @include flex-center;
   flex-wrap: wrap;
   gap: 30px;

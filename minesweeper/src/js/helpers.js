@@ -107,6 +107,17 @@ export function convertTimerToSeconds(str) {
 }
 
 export function setSounds(link) {
-  const audio = new Audio(link);
-  audio.play();
+  const audio = new Audio();
+  if (link) {
+    audio.src = link;
+    audio.play();
+  }
+  const buttonOnOf = document.getElementById(cssClasses.BUTTON_SOUND_OFF_ON);
+  if (minesweeperData.audioMuted) {
+    audio.muted = true;
+    buttonOnOf.textContent = 'Press to sound on';
+  } else {
+    audio.muted = false;
+    buttonOnOf.textContent = 'Press to sound off';
+  }
 }
