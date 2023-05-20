@@ -25,7 +25,7 @@ export const minesweeperData = {
   audioMuted: false,
   timerOptions: {
     timer: null,
-    time: '',
+    time: '00,00',
     milliseconds: 0,
     seconds: 0,
     minutes: 0,
@@ -35,4 +35,9 @@ export const minesweeperData = {
     cols: 10,
     mines: 10,
   },
+};
+
+export const tableData = {
+  data: [],
+  tableID: 1,
 };

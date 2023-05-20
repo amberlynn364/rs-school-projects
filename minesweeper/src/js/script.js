@@ -1,7 +1,7 @@
 import '../index.html';
 import '../sass/main.scss';
 import createDomElements from './createDomElements';
-import { minesweeperData, cssClasses } from './data';
+import { minesweeperData, cssClasses, tableData } from './data';
 import {
   createBoard,
   openCell,
@@ -17,6 +17,8 @@ import {
   validateLocalStorage,
   updateFieldStatement,
   setSounds,
+  addRowToTable,
+  parseTable,
 } from './helpers';
 
 createDomElements();
@@ -62,6 +64,7 @@ minesweeper.addEventListener('contextmenu', (e) => {
     timer();
   }
   checkGameStatus();
+  console.log('123', minesweeperData.table);
 });
 
 document
@@ -109,6 +112,7 @@ document
   });
 
 console.log(unhideGrid());
+console.log(tableData.data);
 window.addEventListener('beforeunload', () => {
   minesweeperData.firstClick = false;
   saveGame();

@@ -1,4 +1,4 @@
-import { minesweeperData, cssClasses } from './data';
+import { minesweeperData, cssClasses, tableData } from './data';
 import { createBoard, saveGame } from './minesweeper';
 
 export function nearbyMinesCells(row, col) {
@@ -119,5 +119,44 @@ export function setSounds(link) {
   } else {
     audio.muted = false;
     buttonOnOf.textContent = 'Press to sound off';
+  }
+}
+
+export function addRowToTable(tableID, col1, col2, col3) {
+  const table = document.getElementById(tableID);
+  const newRow = table.insertRow(0);
+  // const cell1 = newRow.insertCell(0);
+  const cell2 = newRow.insertCell(0);
+  const cell3 = newRow.insertCell(1);
+  const cell4 = newRow.insertCell(2);
+  // cell1.innerText = tableData.tableID;
+  cell2.innerText = col1;
+  cell3.innerText = `${col2} moves`;
+  cell4.innerText = `${col3} seconds`;
+  if (table.rows.length > 10) {
+    table.deleteRow(-1);
+    tableData.data.pop();
+  }
+  if (col1 === 'Win') {
+    cell2.style.backgroundColor = '#00cc00';
+  }
+  if (col1 === 'Lose') {
+    cell2.style.backgroundColor = '#ee0000';
+  }
+  tableData.data.push({ status: col1, moves: col2, seconds: col3 });
+  saveTable();
+}
+
+export function saveTable() {
+  const data = JSON.stringify(tableData);
+  localStorage.tableSave = data;
+}
+
+export function parseTable() {
+  if (localStorage.tableSave) {
+    const loadedData = JSON.parse(localStorage.tableSave);
+    for (let i = 0; i < loadedData.data.length; i++) {
+      addRowToTable('table', loadedData.data[i].status, loadedData.data[i].moves, loadedData.data[i].seconds);
+    }
   }
 }

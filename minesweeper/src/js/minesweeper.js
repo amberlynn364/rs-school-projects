@@ -1,5 +1,5 @@
-import { minesweeperData, cssClasses } from './data';
-import { nearbyMinesCells, validateLocalStorage, setSounds } from './helpers';
+import { minesweeperData, cssClasses, tableData } from './data';
+import { nearbyMinesCells, validateLocalStorage, setSounds, addRowToTable, parseTable } from './helpers';
 
 export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed = false, isFlagged = false }) {
   const cell = {
@@ -26,6 +26,7 @@ export function createBoard() {
     }
     Object.assign(minesweeperData, loadedData);
     fillBoard();
+    parseTable();
     setSounds();
   } else {
     createGrid();
@@ -120,7 +121,8 @@ export function openCell(cell) {
       minesweeperData.firstClick = false;
       minesweeperData.playing = false;
       document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
-      document.getElementById(cssClasses.GAME_STATUS).style.color = '#EE0000';
+      document.getElementById(cssClasses.GAME_STATUS).style.color = '#ee0000';
+      addRowToTable('table', 'Lose', minesweeperData.movesMade, minesweeperData.timerOptions.time);
     } else if (!cell.isFlagged && cell.value === 0) {
       const adjCells = nearbyMinesCells(cell.ypos, cell.xpos);
       for (let k = 0; k < adjCells.length; k++) {
@@ -171,6 +173,7 @@ export function checkGameStatus() {
     minesweeperData.playing = false;
     gameStatus.textContent = minesweeperData.gameStatus;
     gameStatus.style.color = '#00cc00';
+    addRowToTable('table', 'Win', minesweeperData.movesMade, minesweeperData.timerOptions.time);
   }
   if (gameStatus.textContent === 'Game over. Try again') {
     minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
@@ -197,7 +200,7 @@ export function timer() {
     }
     const s = minesweeperData.timerOptions.seconds < 10 ? `0${minesweeperData.timerOptions.seconds}` : minesweeperData.timerOptions.seconds;
     const ms = minesweeperData.timerOptions.milliseconds < 10 ? `0${minesweeperData.timerOptions.milliseconds}` : minesweeperData.timerOptions.milliseconds;
-    minesweeperData.timerOptions.time = ` ${s},${ms}`;
+    minesweeperData.timerOptions.time = `${s},${ms}`;
     document.getElementById(cssClasses.TIMER).textContent = minesweeperData.timerOptions.time;
   }
 }

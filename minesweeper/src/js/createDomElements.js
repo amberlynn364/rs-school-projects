@@ -14,9 +14,19 @@ export default function createDomElements() {
     addButton('sound-on-off', 'Press to sound off'),
   );
 
+  const minesweeperWrapper = document.createElement('div');
+  minesweeperWrapper.classList.add('minesweeper-wrapper');
   const minesweeper = document.createElement('div');
   minesweeper.setAttribute('id', 'minesweeper');
   minesweeper.classList.add('game-wrapper');
+  const result = document.createElement('div');
+  result.setAttribute('id', 'results');
+  const table = document.createElement('table');
+  table.setAttribute('id', 'table');
+  table.classList.add('results-table');
+  table.append(addHeaderRowToTable());
+  minesweeperWrapper.append(minesweeper, table);
+
   const difficultyWrapper = document.createElement('div');
   difficultyWrapper.classList.add('difficulty-wrapper');
   const difficultyDescription = document.createElement('h2');
@@ -45,7 +55,7 @@ export default function createDomElements() {
     difficultyWrapper,
     addButton('new-game', 'New game!', 'button-big'),
     gameCounters,
-    minesweeper,
+    minesweeperWrapper,
   );
 }
 
@@ -89,4 +99,16 @@ function addButton(id, buttonTextContent, extraSettings, className = 'button') {
   }
   button.textContent = `${buttonTextContent}`;
   return button;
+}
+
+function addHeaderRowToTable() {
+  const thead = document.createElement('thead');
+  const th1 = document.createElement('th');
+  const th2 = document.createElement('th');
+  const th3 = document.createElement('th');
+  th1.innerText = 'Result';
+  th2.innerText = 'Moves made';
+  th3.innerText = 'Time spent';
+  thead.append(th1, th2, th3);
+  return thead;
 }
