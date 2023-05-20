@@ -1,7 +1,28 @@
 $page-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+$page-dark-background-color: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(64, 64, 64) 90.2%);
 $color-white: #fff;
 $color-gray: gray;
 
+$color-buttons: #602ef9;
+$color-buttons-dark: #16044b;
+$color-buttons-hover: #4d20d3;
+$color-buttons-active: #34168d;
+$color-buttons-hover-dark: #01010e;
+$color-buttons-active-dark: #34168d;
+
+$color-background-minesweeper: #eee;
+$color-background-minesweeper-dark: #323030;
+$color-cell-border: 1px solid #ccc;
+$color-cell-border-dark: 1px solid #282525;
+$color-cell-box-shadow: inset 5px 5px 10px $color-white, inset -3px -3px 5px #777;
+$color-cell-box-shadow-dark: inset 5px 5px 10px #000000, inset -3px -3px 5px #777;
+$color-cell-revealed: #ddd;
+$color-cell-revealed-dark: #282828;
+$color-cell-mine: #FFCCCC;
+$color-cell-mine-dark: #4a2525;
+
+$color-table-background: #1e1a5e;
+$color-table-td: #2c3655;
 $cell-value-colors: (
   1: 'blue',
   2: 'green',

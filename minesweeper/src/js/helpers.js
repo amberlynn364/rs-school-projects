@@ -27,10 +27,10 @@ export function changeMinesweeperDataOptions(rows, cols, mines) {
     mine = 10;
     mineInput.value = mine;
   }
-  // if (mine < 10) {
-  //   mine = 10;
-  //   mineInput.value = mine;
-  // }
+  if (mine < 10) {
+    mine = 10;
+    mineInput.value = mine;
+  }
   if (mine > 99) {
     mine = 99;
     mineInput.value = mine;
@@ -59,7 +59,7 @@ export function resetCounters() {
   minesweeperData.timerOptions.minutes = 0;
 
   gameStatus.textContent = minesweeperData.gameStatus;
-  gameStatus.style.color = '#fff';
+  gameStatus.style.color = 'inherit';
   moveCounter.textContent = minesweeperData.movesMade;
   mineCounter.textContent = minesweeperData.options.mines;
   flagCounter.textContent = minesweeperData.flagsSet;

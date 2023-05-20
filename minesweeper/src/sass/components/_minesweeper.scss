@@ -3,7 +3,7 @@
 
 .game-wrapper {
   padding: 15px;
-  background-color: #eee;
+  background-color: $color-background-minesweeper;
   border-radius: 10px;
   @media (max-width: 550px) {
     width: 450px;
@@ -15,20 +15,19 @@
       width: 35px;
       height: 25px;
       padding: 10px 5px 5px 5px;
-      border: 1px solid #ccc;
-      background-color: #eee;
+      border: $color-cell-border;
       text-align: center;
-      box-shadow: inset 5px 5px 10px #FFF, inset -3px -3px 5px #777;
+      box-shadow: $color-cell-box-shadow;
       cursor: pointer;
       transition-property: background-color, box-shadow;
-      transition-duration: 1s;
+      transition-duration: 0.5s;
       transition-timing-function: ease-out;
       &.revealed {
-        background-color: #ddd;
+        background-color: $color-cell-revealed;
         box-shadow: none;
       }
       &.value-M {
-        background-color: #FFCCCC;
+        background-color: $color-cell-mine;
         &:after {
           content: '';
           width: 30px;
@@ -45,6 +44,20 @@
           background-size: cover;
           background-image: url('../assets/svg/flag.svg');
         }
+      }
+    }
+  }
+}
+
+body.dark .game-wrapper {
+  background-color: $color-background-minesweeper-dark;
+  .cell {
+    border: $color-cell-border-dark;
+    box-shadow: $color-cell-box-shadow-dark;
+    &.revealed {
+      background-color: $color-cell-revealed-dark;
+      &.value-M {
+        background-color: $color-cell-mine-dark;
       }
     }
   }

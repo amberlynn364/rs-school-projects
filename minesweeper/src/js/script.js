@@ -111,6 +111,13 @@ document
     setSounds();
   });
 
+document
+  .getElementById(cssClasses.BUTTON_TOGGLE_THEME)
+  .addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    setSounds();
+  });
+
 console.log(unhideGrid());
 window.addEventListener('beforeunload', () => {
   minesweeperData.firstClick = false;

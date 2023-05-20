@@ -12,6 +12,7 @@ export default function createDomElements() {
     addCountersToGameCounter('Game status: ', 'game-status', 'Playing'),
     addCountersToGameCounter('Timer: ', 'timer', '00,00'),
     addButton('sound-on-off', 'Press to sound off'),
+    addButton('toggle', 'dark/light theme'),
   );
 
   const minesweeperWrapper = document.createElement('div');
@@ -41,7 +42,11 @@ export default function createDomElements() {
   fieldLabel.setAttribute('for', 'mine-input');
   fieldLabel.classList.add('label');
   fieldLabel.textContent = 'from 10 to 99 mines';
-  inputWrapper.append(mineInput, fieldLabel, addButton('update-field', 'Update field', 'button-input', 'button'));
+  inputWrapper.append(
+    mineInput,
+    fieldLabel,
+    addButton('update-field', 'Update field', 'button-input', 'button-input'),
+  );
   difficultyWrapper.append(
     difficultyDescription,
     addButton('easy', 'Easy'),

@@ -14,6 +14,10 @@ body {
   font-family: Ubuntu, sans-serif;
   color: $color-white;
   background: $page-background-color;
+  &.dark {
+    background: $page-dark-background-color;
+    color: $color-gray;
+  }
 }
 
 .app-title {
@@ -67,7 +71,7 @@ body {
     &:focus {
       border-width: 3px;
       border-color: rgb(226, 226, 226);
-      color: white;
+      color: $color-white;
     }
   }
   .label {

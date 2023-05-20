@@ -5,6 +5,7 @@ export const cssClasses = {
   BUTTON_START_NEW_GAME: 'new-game',
   BUTTON_UPDATE_FIELD: 'update-field',
   BUTTON_SOUND_OFF_ON: 'sound-on-off',
+  BUTTON_TOGGLE_THEME: 'toggle',
   MINE_COUNTER: 'mine-counter',
   MOVE_COUNTER: 'move-counter',
   FLAG_COUNTER: 'flag-counter',
