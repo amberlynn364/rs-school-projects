@@ -12,6 +12,7 @@ export const cssClasses = {
   TIMER: 'timer',
   MINESWEEPER: 'minesweeper',
   MINE_INPUT: 'mine-input',
+  TABLE: 'table',
 };
 export const minesweeperData = {
   grid: [],

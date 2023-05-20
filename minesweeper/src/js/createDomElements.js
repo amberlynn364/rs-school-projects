@@ -106,9 +106,11 @@ function addHeaderRowToTable() {
   const th1 = document.createElement('th');
   const th2 = document.createElement('th');
   const th3 = document.createElement('th');
-  th1.innerText = 'Result';
-  th2.innerText = 'Moves made';
-  th3.innerText = 'Time spent';
-  thead.append(th1, th2, th3);
+  const th4 = document.createElement('th');
+  th1.innerText = 'Date';
+  th2.innerText = 'Result';
+  th3.innerText = 'Moves made';
+  th4.innerText = 'Time spent';
+  thead.append(th1, th2, th3, th4);
   return thead;
 }

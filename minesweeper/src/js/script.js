@@ -112,7 +112,6 @@ document
   });
 
 console.log(unhideGrid());
-console.log(tableData.data);
 window.addEventListener('beforeunload', () => {
   minesweeperData.firstClick = false;
   saveGame();

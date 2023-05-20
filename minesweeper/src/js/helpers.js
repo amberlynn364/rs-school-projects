@@ -123,13 +123,15 @@ export function setSounds(link) {
 }
 
 export function addRowToTable(tableID, col1, col2, col3) {
+  const date = new Date();
+  const options = { weekday: 'long', month: 'long', day: 'numeric' };
   const table = document.getElementById(tableID);
   const newRow = table.insertRow(0);
-  // const cell1 = newRow.insertCell(0);
-  const cell2 = newRow.insertCell(0);
-  const cell3 = newRow.insertCell(1);
-  const cell4 = newRow.insertCell(2);
-  // cell1.innerText = tableData.tableID;
+  const cell1 = newRow.insertCell(0);
+  const cell2 = newRow.insertCell(1);
+  const cell3 = newRow.insertCell(2);
+  const cell4 = newRow.insertCell(3);
+  cell1.innerText = `${date.toLocaleDateString('en-EN', options)} ${date.toLocaleTimeString()}`;
   cell2.innerText = col1;
   cell3.innerText = `${col2} moves`;
   cell4.innerText = `${col3} seconds`;
