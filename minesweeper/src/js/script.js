@@ -1,7 +1,7 @@
 import '../index.html';
 import '../sass/main.scss';
 import createDomElements from './createDomElements';
-import { minesweeperData, cssClasses, tableData } from './data';
+import { minesweeperData, cssClasses } from './data';
 import {
   createBoard,
   openCell,
@@ -10,15 +10,12 @@ import {
   saveGame,
   timer,
   sounds,
+  updateFieldStatement,
 } from './minesweeper';
 import {
   resetCounters,
   unhideGrid,
-  validateLocalStorage,
-  updateFieldStatement,
   setSounds,
-  addRowToTable,
-  parseTable,
 } from './helpers';
 
 createDomElements();
@@ -95,7 +92,7 @@ document
 document
   .getElementById(cssClasses.BUTTON_START_NEW_GAME)
   .addEventListener('click', () => {
-    if (validateLocalStorage) {
+    if (localStorage['minesweeper.gameSave']) {
       localStorage.clear();
     }
     minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
@@ -119,6 +116,7 @@ document
   });
 
 console.log(unhideGrid());
+
 window.addEventListener('beforeunload', () => {
   minesweeperData.firstClick = false;
   saveGame();

@@ -1,5 +1,12 @@
-import { minesweeperData, cssClasses, tableData } from './data';
-import { nearbyMinesCells, validateLocalStorage, setSounds, addRowToTable, parseTable } from './helpers';
+import { minesweeperData, cssClasses } from './data';
+import {
+  nearbyMinesCells,
+  setSounds,
+  addRowToTable,
+  parseTable,
+  changeMinesweeperDataOptions,
+  resetCounters,
+} from './helpers';
 
 export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed = false, isFlagged = false }) {
   const cell = {
@@ -17,7 +24,7 @@ export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed =
 }
 
 export function createBoard() {
-  if (validateLocalStorage && localStorage['minesweeper.gameSave']) {
+  if (localStorage['minesweeper.gameSave']) {
     const loadedData = JSON.parse(localStorage['minesweeper.gameSave']);
     for (let i = 0; i < loadedData.grid.length; i++) {
       for (let j = 0; j < loadedData.grid[i].length; j++) {
@@ -182,9 +189,6 @@ export function checkGameStatus() {
 }
 
 export function saveGame() {
-  if (!validateLocalStorage()) {
-    return false;
-  }
   const data = JSON.stringify(minesweeperData);
   localStorage['minesweeper.gameSave'] = data;
   return undefined;
@@ -212,4 +216,16 @@ export function sounds() {
   if (minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0) {
     setSounds('https://audio.jukehost.co.uk/3C36ArOHe2B75hw8ISk5VCvj3neMWxhr');
   }
+}
+
+export function updateFieldStatement(rows, cols, mines) {
+  if (localStorage['minesweeper.gameSave']) {
+    localStorage.clear();
+  }
+  minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
+  minesweeperData.firstClick = false;
+  resetCounters();
+  changeMinesweeperDataOptions(rows, cols, mines);
+  createBoard();
+  saveGame();
 }

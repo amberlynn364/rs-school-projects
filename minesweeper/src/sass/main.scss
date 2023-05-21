@@ -48,6 +48,8 @@ body {
 .minesweeper-wrapper {
   @include flex-center;
   flex-wrap: wrap;
+  flex-direction: column;
+  gap: 15px;
   position: relative;
 
 }

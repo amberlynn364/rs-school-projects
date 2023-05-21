@@ -1,5 +1,5 @@
 import { minesweeperData, cssClasses, tableData } from './data';
-import { createBoard, saveGame } from './minesweeper';
+// import { createBoard, saveGame } from './minesweeper';
 
 export function nearbyMinesCells(row, col) {
   const result = [];
@@ -79,18 +79,6 @@ export function unhideGrid() {
 
 export function validateLocalStorage() {
   return 'localStorage' in window && window.localStorage !== null;
-}
-
-export function updateFieldStatement(rows, cols, mines) {
-  if (validateLocalStorage) {
-    localStorage.clear();
-  }
-  minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
-  minesweeperData.firstClick = false;
-  resetCounters();
-  changeMinesweeperDataOptions(rows, cols, mines);
-  createBoard();
-  saveGame();
 }
 
 export function convertTimerToSeconds(str) {
