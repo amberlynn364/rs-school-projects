@@ -11,6 +11,9 @@ import {
   timer,
   sounds,
   updateFieldStatement,
+  addMinesToBoard,
+  nearbyMinesCounter,
+  fillBoard,
 } from './minesweeper';
 import {
   resetCounters,
@@ -22,7 +25,6 @@ createDomElements();
 createBoard();
 
 const minesweeper = document.getElementById(cssClasses.MINESWEEPER);
-
 minesweeper.addEventListener('click', (e) => {
   const { target } = e;
   if (target.classList.contains('cell')) {
@@ -30,12 +32,15 @@ minesweeper.addEventListener('click', (e) => {
     if (!cell.isRevealed && minesweeperData.playing) {
       minesweeperData.movesMade++;
       document.getElementById(cssClasses.MOVE_COUNTER).textContent = minesweeperData.movesMade;
-      openCell(cell);
       if (!minesweeperData.firstClick) {
+        addMinesToBoard(cell);
+        nearbyMinesCounter();
+        fillBoard();
         minesweeperData.firstClick = true;
         minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
         timer();
       }
+      openCell(cell);
       sounds();
       setSounds('https://audio.jukehost.co.uk/Pvy5nBqSCpGanu1hQZ9tM9XLSzamOBMo');
     }
@@ -99,6 +104,9 @@ document
     minesweeperData.firstClick = false;
     resetCounters();
     createBoard();
+    // addMinesToBoard();
+    // nearbyMinesCounter();
+    fillBoard();
   });
 
 document

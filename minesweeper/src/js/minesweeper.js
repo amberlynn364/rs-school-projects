@@ -37,9 +37,9 @@ export function createBoard() {
     setSounds();
   } else {
     createGrid();
-    addMinesToBoard();
-    nearbyMinesCounter();
-    fillBoard();
+    // addMinesToBoard();
+    // nearbyMinesCounter();
+    // fillBoard();
     setSounds();
   }
 }
@@ -53,13 +53,13 @@ function createGrid() {
   }
 }
 
-export function addMinesToBoard() {
+export function addMinesToBoard(cellWithOutBomb) {
   let inclusionMines = 0;
   while (inclusionMines < minesweeperData.options.mines) {
     const rowIndex = Math.floor(Math.random() * minesweeperData.options.rows);
     const colIndex = Math.floor(Math.random() * minesweeperData.options.cols);
     const cell = minesweeperData.grid[rowIndex][colIndex];
-    if (!cell.isMine) {
+    if (!cell.isMine && cellWithOutBomb !== cell) {
       cell.isMine = true;
       cell.value = 'M';
       inclusionMines++;
@@ -67,7 +67,7 @@ export function addMinesToBoard() {
   }
 }
 
-function nearbyMinesCounter() {
+export function nearbyMinesCounter() {
   for (let i = 0; i < minesweeperData.options.rows; i++) {
     for (let j = 0; j < minesweeperData.options.cols; j++) {
       if (!minesweeperData.grid[i][j].isMine) {
@@ -227,5 +227,6 @@ export function updateFieldStatement(rows, cols, mines) {
   resetCounters();
   changeMinesweeperDataOptions(rows, cols, mines);
   createBoard();
+  fillBoard();
   saveGame();
 }
