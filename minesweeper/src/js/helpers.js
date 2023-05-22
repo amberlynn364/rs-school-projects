@@ -77,10 +77,6 @@ export function unhideGrid() {
   return result;
 }
 
-export function validateLocalStorage() {
-  return 'localStorage' in window && window.localStorage !== null;
-}
-
 export function convertTimerToSeconds(str) {
   const p = str.split(':');
   let seconds = 0;
