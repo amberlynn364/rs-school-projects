@@ -104,8 +104,6 @@ document
     minesweeperData.firstClick = false;
     resetCounters();
     createBoard();
-    // addMinesToBoard();
-    // nearbyMinesCounter();
     fillBoard();
   });
 
