@@ -4,23 +4,103 @@
 @import '../base/normalize';
 @import '../base/typography';
 
+@keyframes move-to-left {
+    from {left: 0}
+    to {left: 100%}
+}
+
+.transition-to-left {
+    animation-name: move-to-left;
+    animation-duration: 1s;
+}
+
+@keyframes move-to-right {
+    from {right: 0}
+    to {right: 100%}
+}
+
+.transition-to-right {
+    animation-name: move-to-right;
+    animation-duration: 1s;
+}
+
 .slider {
     display: flex;
     align-items: center;
-    gap: 52px;
+    justify-content: space-between;
+    max-width: $content-wrapper;
+    width: $width-100;
+    @include media-720 {
+        width: 95%;
+    }
+    @include media-440 {
+        flex-wrap: wrap;
+        justify-content: center;
+        row-gap: 20px;
+        column-gap: 80px;
+        .button_secondary {
+            order: 1;
+        }
+    }
+    .slider-wrapper {
+        width: 1080px;
+        @include flex-center;
+        overflow: hidden;
+    }
     .card-wrapper {
-        display: flex;
-        gap: 91px
+        position: relative;
+        @include flex-center-full;
+        // width: 500%;
+        width: 300%;
+        height: 435px;
+        justify-content: space-around;
+        // justify-content: space-between;
+        transition: left .4s cubic-bezier(.47,.13,.15,.89);
+        // gap: 91px;
+        @include media-915 {
+            // width: 82%;
+            gap: 40px;
+        }
+        .slider__item {
+            position: relative;
+            width: 1100px;
+            // left: 1100px;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
     }
     .slider__card {
         @include flex-content-column ($gap: 30px);
+        flex: 0 0 auto;
+        position: relative;
         align-items: center;
         padding-bottom: 30px;
         background-color: $color-light-s;
-        transition: 0.3s;
+        border-radius: 9px;
+        max-width: 270px;
+        width: 100%;
         cursor: pointer;
         &:hover {
-            scale: 1.05;
+            // scale: 1.05;
+            box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+        }
+        &:hover .button_secondary {
+            background-color: $color-primary-light;
+            border-color: $color-primary-light; 
+        }
+        @include media-979 {
+            &:nth-child(n+3) {
+                display: none;
+            }
+        }
+        @include media-720 {
+            &:nth-child(n+2) {
+                display: none;
+            }
+        }
+        @include media-440 {
+            min-width: 270px;
         }
         .slider__pet-name {
             @include text-pets-name;

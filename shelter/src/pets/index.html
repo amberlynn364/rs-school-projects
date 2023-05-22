@@ -5,23 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pets</title>
-	<link rel="icon" href="../assets/svg/footer-puppy.svg">
+	<link rel="icon" href="../assets/svg/icon-pet-food.svg">
 </head>
 <body>
     <header class="header">
         <div class="header-wrapper pets">
-            <a href="../main/main.html" target="_blank" class="logo">
+            <a href="../main/index.html" target="_blank" class="logo">
                     <h1 class="logo__title pets">Cozy House</h1>
                     <span class="logo__subtitle pets">Shelter for pets in Boston</span>
             </a>
-            <nav class="navigation">
+            <nav class="navigation pets">
                 <ul class="navigation__menu pets">
-                    <li class="navigation__item"><a href="../main/main.html" class="navigation__link pets" target="_blank">About the shelter</a></li>
+                    <li class="navigation__item"><a href="../main/index.html" class="navigation__link pets" target="_blank">About the shelter</a></li>
                     <li class="navigation__item"><a href="#" class="navigation__link pets navigation__link_active">Our pets</a></li>
-                    <li class="navigation__item"><a href="../main/main.html#help" class="navigation__link pets">Help the shelter</a></li>
+                    <li class="navigation__item"><a href="../main/index.html#help" class="navigation__link pets">Help the shelter</a></li>
                     <li class="navigation__item pets"><a href="#contacts" class="navigation__link pets">Contacts</a></li>
                 </ul>
             </nav>
+			<div class="burger-btn">
+				<span class="burger-bar pets"></span>
+				<span class="burger-bar pets"></span>
+				<span class="burger-bar pets"></span>
+			</div>
+			<div class="burger-menu-overlay"></div>
         </div>
     </header>
     <section class="our-friends">
@@ -71,21 +77,21 @@
 					<span class="cards__pet-name">Freddie</span>
 					<button class="button cards__button button_secondary">Learn more</button>
 				</div>
-				<div class="our-friends-button-wrapper">
-					<button class="button_round button_round_disabled button_secondary button-pagination" disabled>
-						<img src="../assets/svg/double-arrow.svg" class="arrow-left" alt="arrow left">
-					</button>
-					<button class="button_round button_round_disabled button_secondary button-pagination">
-						<img src="../assets/svg/semi-arrow.svg" class="arrow-left" alt="arrow left">
-					</button>
-					<button class="button_round button_secondary button-pagination">1</button>
-					<button class="button_round button_secondary button-pagination">
-						<img src="../assets/svg/semi-arrow.svg" class="arrow-right" alt="arrow left">
-					</button>
-					<button class="button_round button_secondary button-pagination">
-					<img src="../assets/svg/double-arrow.svg" class="arrow-right" alt="arrow left">
+			</div>
+			<div class="our-friends-button-wrapper">
+				<button id="first-page" class="button_round  button_secondary button-pagination" disabled>
+					<img src="../assets/svg/double-arrow.svg" class="arrow-left" alt="arrow left">
 				</button>
-				</div>
+				<button id="prev" class="button_round  button_secondary button-pagination">
+					<img src="../assets/svg/semi-arrow.svg" class="arrow-left" alt="arrow left">
+				</button>
+				<button id="page-number" class="button_round button_primary button-pagination">1</button>
+				<button id="next" class="button_round button_secondary button-pagination">
+					<img src="../assets/svg/semi-arrow.svg" class="arrow-right" alt="arrow left">
+				</button>
+				<button id="last-page" class="button_round button_secondary button-pagination">
+				<img src="../assets/svg/double-arrow.svg" class="arrow-right" alt="arrow left">
+			</button>
             </div>        
         </div>
     </section>
@@ -104,5 +110,36 @@
 			<img src="../assets/img/footer-puppy.png" class="footer-puppy" alt="puppy">
 		</div>
 	</footer>
+	<div class="popup-wrapper">
+		<div class="popup">
+			<button class="button_round button_secondary popup__button"></button>
+				<img src="../assets/img/pets-jennifer.png" alt="Katrine photo" class="cards__pet-photo">
+				<div class="popup__content">
+					<div class="pet-title">
+						<h3 class="pet-name">Jennifer</h3>
+						<h4 class="pet-breed">Dog - Labrador</h4>
+					</div>
+					<p class="pet-description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+					<ul class="pets-parameters">
+						<li class="pet-age">
+							<span class="left">Age:</span>
+							<span class="">2 months</span>
+						</li>
+						<li class="pet-inoculation">
+							<span class="left">Inoculations:</span>
+							<span class="">none</span>
+						</li>
+						<li class="pet-diseases">
+							<span class="left">Diseases:</span>
+							<span class="">none</span>
+						</li>
+						<li class="pet-parasites">
+							<span class="left">Parasites:</span>
+							<span class="">none</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
 </body>
 </html>

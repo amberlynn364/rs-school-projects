@@ -4,8 +4,10 @@
 @import '../base/typography';
 @import '../components/buttons';
 @import '../components/slider';
+@import '../components/popup';
 @import '../layout/header';
 @import '../layout/footer';
+@import '../general.scss';
 
 body {
     display: flex;
@@ -19,51 +21,91 @@ body {
     flex: 1 0 auto;
     .our-friends-wrapper {
         @include flex-center;
-        @include flex-content-column ($gap: 68px);
-        padding: 89px 40px 115px 40px;
-        width: 1430px;
+        @include flex-content-column ($gap: 59px);
+        width: $content-wrapper;
+        padding: $padding-pets-our-friends;
+        @include media-800 {
+            padding: 10.5% 3% 9.9% 3%;
+            gap: 30px;
+        }
+        @include media-440 {
+            padding: 13% 3% 13% 3%;
+            gap: 40px;
+        }
         .our-friends-title {
             @include h3-title;
-            letter-spacing: 0.11em;
-            line-height: 48px;
             color:$color-dark-l;
             text-align: center;
+            @include media-440 {
+                @include h3-title-mobile;
+            }
             span {
                 display: block;
             }
         }
         .cards-wrapper {
-            @include flex-center;
-            gap: 43px;
+            display: flex;
+            justify-content: space-between;
+            gap: 3px;
+            row-gap: 33px;
             flex-wrap: wrap;
+            @include media-800 {
+                padding: 0 9.6%;
+            }
+            @include media-714 {
+                justify-content: center;
+            }
+            @include media-440 {
+                padding: 0;
+            }
         }
         .cards__item {
-            @include flex-content-column ($gap: 36px);
+            @include flex-content-column ($gap: 30px);
             align-items: center;
             padding-bottom: 27px;
             background-color: $color-light-s;
+            border-radius: 9px;
             transition: 0.3s;
             cursor: pointer;
             &:hover {
                 scale: 1.05;
             }
+            &:hover .button_secondary {
+                background-color: $color-primary-light;
+                border-color: $color-primary-light; 
+            }
+            @include media-1158 {
+                &:nth-child(n+7) {
+                    display: none;
+                }
+            }
+            @include media-720 {
+                &:nth-child(n+4) {
+                    display: none;
+                }
+            }
             .cards__pet-name {
                 @include text-pets-name;
-                letter-spacing: 0.11em;
             }
             .cards__pet-photo {
                 border-radius: 9px 9px 0px 0px;
-                width: 300px;
-                height: 300px;
             }
         }
     }
 }
 
 .our-friends-button-wrapper {
-    display: flex;
-    padding-top: 35px;
-    gap: 28px;
+    @include flex-center-full;
+    padding-top: 4px;
+    gap: 20px;
+    @include media-800 {
+        padding-top: 13px;
+    }
+    @include media-440 {
+        padding-top: 5px;
+        justify-content: space-between;
+        gap: 0px;
+    }
     .arrow-left {
         transform: rotate(180deg);
     }

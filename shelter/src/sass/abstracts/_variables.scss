@@ -1,13 +1,25 @@
 $content-wrapper: 1200px;
+$content-wrapper-1170: 1000px;
+$content-wrapper-tablet: 708px;
+$content-wrapper-mobile: 300px;
 $footer-div-width: 310px;
+$width-100: 100%;
 
 //padding
-$padding-start-screen: 60px 40px 0 40px;
-$padding-about-pets-help: 80px 40px 100px 40px;
-$padding-in-addition: 80px 182px 100px 183px;
-$padding-footer: 40px 20px 0 20px;
-$padding-header-pets: 30px 40px;
-$padding-pets-our-friends: 80px 40px 100px 40px;
+$padding-header: 2.4% 2.916% 2.1% 2.916%;
+$padding-start-screen: 4.8% 2.916% 0 2.916%;
+$padding-about-pets-help: 6.2% 2.916% 7.8% 2.916%;
+$padding-our-friends-main: 6.4% 2.916% 7.8% 2.916%;
+$padding-in-addition: 6.4% 11.5% 7.85% 11.5%;
+$padding-footer: 3.2% 1.66666% 0 1.66666%;
+$padding-pets-our-friends: 6.5% 3% 7.88% 3%;
+// $padding-header: 30px 35px 30px 35px;
+// $padding-start-screen: 60px 35px 0 35px;
+// $padding-about-pets-help: 80px 35px 100px 35px;
+// $padding-our-friends-main: 80px 35px 100px 35px;
+// $padding-in-addition: 81px 128px 99px 128px;
+// $padding-footer: 40px 20px 0 20px;
+// $padding-pets-our-friends: 80px 40px 100px 40px;
 
 //colors
 $color-light-xl: #FFFFFF;
@@ -22,3 +34,4 @@ $color-dark-3xl:#292929;
 $color-primary:#F1CDB3;
 $color-primary-light:#FDDCC4;
 $color-primary-darker:#ffc499;
+
