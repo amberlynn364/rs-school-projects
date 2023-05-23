@@ -40,7 +40,7 @@ export function createBoard() {
     createGrid();
     // addMinesToBoard();
     // nearbyMinesCounter();
-    // fillBoard();
+    fillBoard();
     setSounds();
   }
 }
