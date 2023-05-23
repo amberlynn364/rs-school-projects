@@ -57,6 +57,8 @@ export function resetCounters() {
   minesweeperData.timerOptions.milliseconds = 0;
   minesweeperData.timerOptions.seconds = 0;
   minesweeperData.timerOptions.minutes = 0;
+  minesweeperData.quantityValues = [];
+  minesweeperData.firstClick = false;
 
   gameStatus.textContent = minesweeperData.gameStatus;
   gameStatus.style.color = 'inherit';

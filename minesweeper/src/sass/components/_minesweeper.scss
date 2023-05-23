@@ -31,6 +31,7 @@
       &.revealed {
         background-color: $color-cell-revealed;
         box-shadow: none;
+        transition: 0.3s;
       }
       &.value-M {
         background-color: $color-cell-mine;

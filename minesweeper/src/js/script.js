@@ -19,6 +19,7 @@ import {
   resetCounters,
   unhideGrid,
   setSounds,
+  saveTable,
 } from './helpers';
 
 createDomElements();
@@ -37,7 +38,9 @@ minesweeper.addEventListener('click', (e) => {
         nearbyMinesCounter();
         fillBoard();
         minesweeperData.firstClick = true;
-        minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
+      }
+      if (!minesweeperData.firstClickTimer) {
+        minesweeperData.firstClickTimer = true;
         timer();
       }
       openCell(cell);
@@ -61,8 +64,8 @@ minesweeper.addEventListener('contextmenu', (e) => {
       sounds();
     }
   }
-  if (!minesweeperData.firstClick) {
-    minesweeperData.firstClick = true;
+  if (!minesweeperData.firstClickTimer) {
+    minesweeperData.firstClickTimer = true;
     timer();
   }
   checkGameStatus();
@@ -124,6 +127,7 @@ document
 console.log(unhideGrid());
 
 window.addEventListener('beforeunload', () => {
-  minesweeperData.firstClick = false;
+  minesweeperData.firstClickTimer = false;
   saveGame();
+  saveTable();
 }); // for timer

@@ -3,6 +3,7 @@ import {
   nearbyMinesCells,
   setSounds,
   addRowToTable,
+  saveTable,
   parseTable,
   changeMinesweeperDataOptions,
   resetCounters,
@@ -122,6 +123,7 @@ export function openCell(cell) {
     cell.isRevealed = true;
     cellItem.classList.add('revealed', `value-${cell.value}`);
     cellItem.textContent = (!cell.isMine ? cell.value || '' : '');
+    minesweeperData.quantityValues.push('');
     if (cell.isMine) {
       minesweeperData.gameStatus = 'Game over. Try again';
       minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
@@ -130,6 +132,7 @@ export function openCell(cell) {
       document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
       document.getElementById(cssClasses.GAME_STATUS).style.color = '#ee0000';
       addRowToTable('table', 'Lose', minesweeperData.movesMade, minesweeperData.timerOptions.time);
+      minesweeperData.quantityValues.pop();
     } else if (!cell.isFlagged && cell.value === 0) {
       const adjCells = nearbyMinesCells(cell.ypos, cell.xpos);
       for (let k = 0; k < adjCells.length; k++) {
@@ -173,7 +176,11 @@ export function setFlag(cell) {
 
 export function checkGameStatus() {
   const gameStatus = document.getElementById(cssClasses.GAME_STATUS);
-  if (minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0) {
+  const optionMulti = minesweeperData.options.rows * minesweeperData.options.cols;
+  if ((
+    minesweeperData.minesFound === minesweeperData.options.mines && minesweeperData.falseMines === 0)
+     || (optionMulti - (minesweeperData.options.mines + minesweeperData.quantityValues.length)) === 0
+  ) {
     minesweeperData.gameStatus = `Hooray! You found all mines in ${minesweeperData.timerOptions.time} seconds and ${minesweeperData.movesMade} moves!`;
     minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
     minesweeperData.firstClick = false;
@@ -221,6 +228,9 @@ export function sounds() {
 export function updateFieldStatement(rows, cols, mines) {
   if (localStorage['minesweeper.gameSave']) {
     localStorage.clear();
+  }
+  if (localStorage.tableSave) {
+    parseTable();
   }
   minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
   minesweeperData.firstClick = false;
