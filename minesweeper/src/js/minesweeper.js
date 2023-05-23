@@ -3,10 +3,10 @@ import {
   nearbyMinesCells,
   setSounds,
   addRowToTable,
-  saveTable,
   parseTable,
   changeMinesweeperDataOptions,
   resetCounters,
+  getDay,
 } from './helpers';
 
 export function createCell({ xpos, ypos, value = 0, isMine = false, isRevealed = false, isFlagged = false }) {
@@ -131,7 +131,7 @@ export function openCell(cell) {
       minesweeperData.playing = false;
       document.getElementById(cssClasses.GAME_STATUS).textContent = minesweeperData.gameStatus;
       document.getElementById(cssClasses.GAME_STATUS).style.color = '#ee0000';
-      addRowToTable('table', 'Lose', minesweeperData.movesMade, minesweeperData.timerOptions.time);
+      addRowToTable('table', getDay(), 'Lose', minesweeperData.movesMade, minesweeperData.timerOptions.time);
       minesweeperData.quantityValues.pop();
     } else if (!cell.isFlagged && cell.value === 0) {
       const adjCells = nearbyMinesCells(cell.ypos, cell.xpos);
@@ -187,7 +187,7 @@ export function checkGameStatus() {
     minesweeperData.playing = false;
     gameStatus.textContent = minesweeperData.gameStatus;
     gameStatus.style.color = '#00cc00';
-    addRowToTable('table', 'Win', minesweeperData.movesMade, minesweeperData.timerOptions.time);
+    addRowToTable('table', getDay(), 'Win', minesweeperData.movesMade, minesweeperData.timerOptions.time);
   }
   if (gameStatus.textContent === 'Game over. Try again') {
     minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);

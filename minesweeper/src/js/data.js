@@ -27,6 +27,7 @@ export const minesweeperData = {
   firstClickTimer: false,
   audioMuted: false,
   quantityValues: [],
+  date: null,
   timerOptions: {
     timer: null,
     time: '00,00',

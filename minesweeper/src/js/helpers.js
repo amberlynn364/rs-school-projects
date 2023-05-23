@@ -59,6 +59,8 @@ export function resetCounters() {
   minesweeperData.timerOptions.minutes = 0;
   minesweeperData.quantityValues = [];
   minesweeperData.firstClick = false;
+  minesweeperData.firstClickTimer = false;
+  minesweeperData.date = null;
 
   gameStatus.textContent = minesweeperData.gameStatus;
   gameStatus.style.color = 'inherit';
@@ -108,30 +110,30 @@ export function setSounds(link) {
   }
 }
 
-export function addRowToTable(tableID, col1, col2, col3) {
-  const date = new Date();
-  const options = { weekday: 'long', month: 'long', day: 'numeric' };
+export function addRowToTable(tableID, col1, col2, col3, col4) {
+  // let date = new Date();
+  // const options = { weekday: 'long', month: 'long', day: 'numeric' };
   const table = document.getElementById(tableID);
   const newRow = table.insertRow(0);
   const cell1 = newRow.insertCell(0);
   const cell2 = newRow.insertCell(1);
   const cell3 = newRow.insertCell(2);
   const cell4 = newRow.insertCell(3);
-  cell1.innerText = `${date.toLocaleDateString('en-EN', options)} ${date.toLocaleTimeString()}`;
-  cell2.innerText = col1;
-  cell3.innerText = `${col2} moves`;
-  cell4.innerText = `${col3} seconds`;
+  cell1.innerText = col1;
+  cell2.innerText = col2;
+  cell3.innerText = `${col3} moves`;
+  cell4.innerText = `${col4} seconds`;
   if (table.rows.length > 10) {
     table.deleteRow(-1);
     tableData.data.pop();
   }
-  if (col1 === 'Win') {
+  if (col2 === 'Win') {
     cell2.style.backgroundColor = '#00cc00';
   }
-  if (col1 === 'Lose') {
+  if (col2 === 'Lose') {
     cell2.style.backgroundColor = '#ee0000';
   }
-  tableData.data.push({ status: col1, moves: col2, seconds: col3 });
+  tableData.data.push({ date: col1, status: col2, moves: col3, seconds: col4 });
   saveTable();
 }
 
@@ -144,7 +146,20 @@ export function parseTable() {
   if (localStorage.tableSave) {
     const loadedData = JSON.parse(localStorage.tableSave);
     for (let i = 0; i < loadedData.data.length; i++) {
-      addRowToTable('table', loadedData.data[i].status, loadedData.data[i].moves, loadedData.data[i].seconds);
+      addRowToTable(
+        'table',
+        loadedData.data[i].date,
+        loadedData.data[i].status,
+        loadedData.data[i].moves,
+        loadedData.data[i].seconds,
+      );
     }
   }
+}
+
+export function getDay() {
+  const date = new Date();
+  const options = { weekday: 'long', month: 'long', day: 'numeric' };
+  const dateOptions = `${date.toLocaleDateString('en-EN', options)} ${date.toLocaleTimeString()}`;
+  return dateOptions;
 }

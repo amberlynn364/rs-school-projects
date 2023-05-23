@@ -105,6 +105,7 @@ document
     }
     minesweeperData.timerOptions.timer = clearInterval(minesweeperData.timerOptions.timer);
     minesweeperData.firstClick = false;
+    minesweeperData.firstClickTimer = false;
     resetCounters();
     createBoard();
     fillBoard();
