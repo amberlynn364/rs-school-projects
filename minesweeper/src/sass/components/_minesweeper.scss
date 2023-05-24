@@ -50,6 +50,10 @@
           height: 20px;
           background-size: cover;
           background-image: url('../assets/svg/flag.svg');
+          @media (max-width: 960px ) {
+            width: 10px;
+            height: 10px;
+          }
         }
       }
     }
