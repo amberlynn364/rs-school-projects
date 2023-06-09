@@ -1,7 +1,5 @@
 import './news.css';
-import '../../../types/index'
 import { NewsApi } from '../../../types/index';
-
 
 class News {
     draw(data: NewsApi[]) {
