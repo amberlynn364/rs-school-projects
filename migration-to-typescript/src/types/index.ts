@@ -7,3 +7,8 @@ export interface NewsApi {
   urlToImage: string;
   url: string;
 }
+
+export interface sourceNews {
+  name: string;
+  id: string;
+}
