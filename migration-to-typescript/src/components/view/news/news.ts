@@ -2,7 +2,7 @@ import './news.css';
 import { NewsApi } from '../../../types/index';
 
 class News {
-    draw(data: NewsApi[]) {
+    public draw(data: NewsApi[]) {
         const news: NewsApi[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
