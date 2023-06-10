@@ -2,11 +2,11 @@ import './sources.css';
 import { sourceNews } from '../../../types/index';
 
 class Sources {
-    public draw(data: sourceNews[]) {
+    public draw(data: sourceNews[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
 
-        data.forEach((item: sourceNews) => {
+        data.forEach((item: sourceNews): void => {
             if (sourceItemTemp) {
                 const sourceClone: Node = sourceItemTemp.content.cloneNode(true) as HTMLElement;
                 if (sourceClone instanceof DocumentFragment) {
