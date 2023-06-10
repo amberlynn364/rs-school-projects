@@ -2,7 +2,7 @@ import AppLoader from './appLoader';
 import { MethodsAppView, EndPoint } from '../../types/index'
 
 class AppController extends AppLoader {
-    public getSources(callback: MethodsAppView): void {
+    public getSources<T>(callback: (data?: T) => void): void {
         super.getResp(
             {
                 endpoint: EndPoint.Sources,
