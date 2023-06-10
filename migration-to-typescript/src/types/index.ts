@@ -12,3 +12,12 @@ export interface sourceNews {
   name: string;
   id: string;
 }
+
+export type MethodsAppView = drawNews & drawSources;
+interface drawNews {
+  articles: NewsApi[];
+};
+
+interface drawSources {
+  sources: sourceNews[];
+}
