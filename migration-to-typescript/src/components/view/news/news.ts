@@ -2,13 +2,13 @@ import './news.css';
 import { NewsApi } from '../../../types/index';
 
 class News {
-    public draw(data: NewsApi[]) {
+    public draw(data: NewsApi[]): void {
         const news: NewsApi[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
 
-        news.forEach((item: NewsApi, idx: number) => {
+        news.forEach((item: NewsApi, idx: number): void => {
             if (newsItemTemp) {
                 const newsClone: Node = (newsItemTemp).content.cloneNode(true);
                 if (newsClone instanceof DocumentFragment) {
@@ -30,8 +30,8 @@ class News {
                     newsClone.querySelector('.news__read-more a')!.setAttribute('href', item.url);
         
                     fragment.append(newsClone);
-            }
                 }
+            }
         });
 
         document.querySelector('.news')!.innerHTML = '';
