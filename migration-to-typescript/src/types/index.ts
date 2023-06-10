@@ -21,3 +21,7 @@ interface drawNews {
 interface drawSources {
   sources: sourceNews[];
 }
+
+export interface LoaderOptions {
+  apiKey: string;
+}
