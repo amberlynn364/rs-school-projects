@@ -20,6 +20,7 @@ interface drawNews {
 
 interface drawSources {
   sources: sourceNews[];
+  (): void
 }
 
 export interface LoaderOptions {
@@ -27,7 +28,11 @@ export interface LoaderOptions {
   sources?: string;
 }
 
+export enum EndPoint {
+  Everything = 'everything',
+  Sources = 'sources'
+}
 export interface GetResp {
-  endpoint: string;
-  options: object;
+  endpoint: EndPoint;
+  options?: object;
 }
