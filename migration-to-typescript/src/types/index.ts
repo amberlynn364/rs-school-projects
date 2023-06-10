@@ -1,38 +1,38 @@
 export interface NewsApi {
-  author: string;
-  publishedAt: string;
-  title: string;
-  source: { name: string };
-  description: string;
-  urlToImage: string;
-  url: string;
+    author: string;
+    publishedAt: string;
+    title: string;
+    source: { name: string };
+    description: string;
+    urlToImage: string;
+    url: string;
 }
 
 export interface sourceNews {
-  name: string;
-  id: string;
+    name: string;
+    id: string;
 }
 
 export type MethodsAppView = drawNews & drawSources;
 interface drawNews {
-  articles: NewsApi[];
-};
+    articles: NewsApi[];
+}
 
 interface drawSources {
-  sources: sourceNews[];
-  (): void
+    sources: sourceNews[];
+    (): void;
 }
 
 export interface LoaderOptions {
-  apiKey: string;
-  sources?: string;
+    apiKey: string;
+    sources?: string;
 }
 
 export enum EndPoint {
-  Everything = 'everything',
-  Sources = 'sources'
+    Everything = 'everything',
+    Sources = 'sources',
 }
 export interface GetResp {
-  endpoint: EndPoint;
-  options?: object;
+    endpoint: EndPoint;
+    options?: object;
 }
