@@ -24,4 +24,10 @@ interface drawSources {
 
 export interface LoaderOptions {
   apiKey: string;
+  sources?: string;
+}
+
+export interface GetResp {
+  endpoint: string;
+  options: object;
 }
