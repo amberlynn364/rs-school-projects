@@ -10,10 +10,10 @@ class News {
 
         news.forEach((item: NewsApi, idx: number): void => {
             if (newsItemTemp) {
-                const newsClone: Node = (newsItemTemp).content.cloneNode(true);
+                const newsClone: Node = newsItemTemp.content.cloneNode(true);
                 if (newsClone instanceof DocumentFragment) {
                     if (idx % 2) newsClone.querySelector('.news__item')!.classList.add('alt');
-        
+
                     newsClone.querySelector<HTMLElement>('.news__meta-photo')!.style.backgroundImage = `url(${
                         item.urlToImage || 'img/news_placeholder.jpg'
                     })`;
@@ -23,12 +23,12 @@ class News {
                         .split('-')
                         .reverse()
                         .join('-');
-        
+
                     newsClone.querySelector('.news__description-title')!.textContent = item.title;
                     newsClone.querySelector('.news__description-source')!.textContent = item.source.name;
                     newsClone.querySelector('.news__description-content')!.textContent = item.description;
                     newsClone.querySelector('.news__read-more a')!.setAttribute('href', item.url);
-        
+
                     fragment.append(newsClone);
                 }
             }
