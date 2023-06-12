@@ -4,6 +4,7 @@ import { NewsApi } from '../../../types/index';
 class News {
     public draw(data: NewsApi[]): void {
         const news: NewsApi[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+        const newsWrapper: HTMLDivElement | null = document.querySelector('.news');
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
@@ -34,8 +35,8 @@ class News {
             }
         });
 
-        document.querySelector('.news')!.innerHTML = '';
-        document.querySelector('.news')!.appendChild(fragment);
+        newsWrapper!.innerHTML = '';
+        newsWrapper!.appendChild(fragment);
     }
 }
 
