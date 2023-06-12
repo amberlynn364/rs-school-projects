@@ -18,10 +18,10 @@ class AppController extends AppLoader {
         while (target !== newsContainer) {
             if (target && target instanceof HTMLElement) {
                 if (target.classList.contains('source__item')) {
-                    const sourceId: string | null = target.getAttribute('data-source-id');
+                    const sourceId: string = target.getAttribute('data-source-id') || '';
                     if (newsContainer && newsContainer instanceof HTMLElement) {
                         if (newsContainer.getAttribute('data-source') !== sourceId) {
-                            newsContainer.setAttribute('data-source', sourceId as string);
+                            newsContainer.setAttribute('data-source', sourceId);
                             super.getResp(
                                 {
                                     endpoint: EndPoint.Everything,
