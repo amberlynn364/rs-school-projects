@@ -16,12 +16,12 @@ class AppController extends AppLoader {
         const newsContainer: EventTarget | null = e.currentTarget;
 
         while (target !== newsContainer) {
-            if (target) {
-                if ((target as HTMLElement).classList.contains('source__item')) {
-                    const sourceId: string | null = (target as HTMLElement).getAttribute('data-source-id');
-                    if (newsContainer) {
-                        if ((newsContainer as HTMLElement).getAttribute('data-source') !== sourceId) {
-                            (newsContainer as HTMLElement).setAttribute('data-source', sourceId as string);
+            if (target && target instanceof HTMLElement) {
+                if (target.classList.contains('source__item')) {
+                    const sourceId: string | null = target.getAttribute('data-source-id');
+                    if (newsContainer && newsContainer instanceof HTMLElement) {
+                        if (newsContainer.getAttribute('data-source') !== sourceId) {
+                            newsContainer.setAttribute('data-source', sourceId as string);
                             super.getResp(
                                 {
                                     endpoint: EndPoint.Everything,
@@ -35,7 +35,7 @@ class AppController extends AppLoader {
                     }
                     return;
                 }
-                target = (target as HTMLElement).parentNode;
+                target = target.parentNode;
             }
         }
     }
