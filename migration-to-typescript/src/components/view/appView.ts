@@ -1,6 +1,6 @@
 import News from './news/news';
 import Sources from './sources/sources';
-import { NewsApi, sourceNews, NewsApiResponse } from '../../types/index';
+import { NewsApi, NewsApiSource, NewsApiResponse } from '../../types/index';
 
 export class AppView {
     private news = new News();
@@ -12,7 +12,7 @@ export class AppView {
     }
 
     public drawSources(data: NewsApiResponse): void {
-        const values: sourceNews[] = data?.sources ? data?.sources : [];
+        const values: NewsApiSource[] = data?.sources ? data?.sources : [];
         this.sources.draw(values);
     }
 }

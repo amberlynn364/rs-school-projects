@@ -6,12 +6,11 @@ export interface NewsApi {
     description: string;
     urlToImage: string;
     url: string;
-}
-
-export interface sourceNews {
     name: string;
     id: string;
 }
+
+export type NewsApiSource = Pick<NewsApi, 'name' | 'id'>;
 
 export type NewsApiResponse = NewsResponse & SourcesResponse;
 interface NewsResponse {
@@ -19,7 +18,7 @@ interface NewsResponse {
 }
 
 interface SourcesResponse {
-    sources: sourceNews[];
+    sources: NewsApiSource[];
     (): void;
 }
 
