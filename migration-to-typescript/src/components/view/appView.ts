@@ -3,12 +3,8 @@ import Sources from './sources/sources';
 import { NewsApi, sourceNews, NewsApiResponse } from '../../types/index';
 
 export class AppView {
-    private news;
-    private sources;
-    constructor() {
-        this.news = new News();
-        this.sources = new Sources();
-    }
+    private news = new News();
+    private sources = new Sources();
 
     public drawNews(data: NewsApiResponse): void {
         const values: NewsApi[] = data?.articles ? data?.articles : [];
