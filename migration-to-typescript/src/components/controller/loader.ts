@@ -1,9 +1,6 @@
-import { LoaderOptions, GetResp } from '../../types/index';
+import { LoaderOptions, GetResp, HTTPRequest } from '../../types/index';
 class Loader {
-    constructor(private baseLink: string, private options: LoaderOptions) {
-        this.baseLink = baseLink;
-        this.options = options;
-    }
+    constructor(private baseLink: string, private options: LoaderOptions) {}
 
     public getResp(
         { endpoint, options = {} }: GetResp,
@@ -11,7 +8,7 @@ class Loader {
             console.error('No callback for GET response');
         }
     ): void {
-        this.load('GET', endpoint, callback, options);
+        this.load(HTTPRequest.Get, endpoint, callback, options);
     }
 
     private errorHandler(res: Response): Response {
