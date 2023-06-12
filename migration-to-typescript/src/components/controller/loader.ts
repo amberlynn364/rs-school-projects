@@ -1,6 +1,6 @@
 import { LoaderOptions, GetResp, HTTPRequest } from '../../types/index';
 class Loader {
-    constructor(private baseLink: string, private options: LoaderOptions) {}
+    constructor(readonly baseLink: string, readonly options: LoaderOptions) {}
 
     public getResp<T>(
         { endpoint, options = {} }: GetResp,
