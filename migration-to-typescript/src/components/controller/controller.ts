@@ -1,8 +1,8 @@
 import AppLoader from './appLoader';
-import { EndPoint } from '../../types/index';
+import { EndPoint, MyCallBack } from '../../types/index';
 
 class AppController extends AppLoader {
-    public getSources<T>(callback: (data?: T) => void): void {
+    public getSources<T>(callback: MyCallBack<T>): void {
         super.getResp(
             {
                 endpoint: EndPoint.Sources,
@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    public getNews<T>(e: MouseEvent, callback: (data?: T) => void): void {
+    public getNews<T>(e: MouseEvent, callback: MyCallBack<T>): void {
         let target: EventTarget | null = e.target;
         const newsContainer: EventTarget | null = e.currentTarget;
 

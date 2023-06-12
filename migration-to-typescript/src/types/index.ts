@@ -39,3 +39,5 @@ export enum HTTPRequest {
     Get = 'GET',
     Post = 'POST',
 }
+
+export type MyCallBack<T> = (data?: T) => void;

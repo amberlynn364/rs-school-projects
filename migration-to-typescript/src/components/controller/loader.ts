@@ -1,10 +1,11 @@
-import { LoaderOptions, GetResp, HTTPRequest } from '../../types/index';
+import { LoaderOptions, GetResp, HTTPRequest, MyCallBack } from '../../types/index';
+
 class Loader {
     constructor(readonly baseLink: string, readonly options: LoaderOptions) {}
 
     public getResp<T>(
         { endpoint, options = {} }: GetResp,
-        callback: (data?: T) => void = () => {
+        callback: MyCallBack<T> = () => {
             console.error('No callback for GET response');
         }
     ): void {
