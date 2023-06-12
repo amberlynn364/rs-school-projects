@@ -36,3 +36,8 @@ export interface GetResp {
     endpoint: EndPoint;
     options?: object;
 }
+
+export enum HTTPRequest {
+    Get = 'GET',
+    Post = 'POST',
+}
