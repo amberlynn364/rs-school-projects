@@ -24,8 +24,7 @@ interface SourcesResponse {
 }
 
 export interface LoaderOptions {
-    apiKey: string;
-    sources?: string;
+    [apiKey: string]: string;
 }
 
 export enum EndPoint {

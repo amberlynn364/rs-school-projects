@@ -2,9 +2,9 @@ import { LoaderOptions, GetResp, HTTPRequest } from '../../types/index';
 class Loader {
     constructor(private baseLink: string, private options: LoaderOptions) {}
 
-    public getResp(
+    public getResp<T>(
         { endpoint, options = {} }: GetResp,
-        callback = (): void => {
+        callback: (data?: T) => void = () => {
             console.error('No callback for GET response');
         }
     ): void {
@@ -21,7 +21,7 @@ class Loader {
         return res;
     }
 
-    private makeUrl(options: LoaderOptions | object, endpoint: string): string {
+    private makeUrl(options: LoaderOptions, endpoint: string): string {
         const urlOptions: LoaderOptions = { ...this.options, ...options };
         let url: string = `${this.baseLink}${endpoint}?`;
 
@@ -32,7 +32,7 @@ class Loader {
         return url.slice(0, -1);
     }
 
-    protected load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}): void {
+    public load<T>(method: string, endpoint: string, callback: (data: T) => void, options = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res: Response): Promise<T> => res.json())

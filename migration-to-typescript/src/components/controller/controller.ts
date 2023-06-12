@@ -22,7 +22,7 @@ class AppController extends AppLoader {
                     if (newsContainer && newsContainer instanceof HTMLElement) {
                         if (newsContainer.getAttribute('data-source') !== sourceId) {
                             newsContainer.setAttribute('data-source', sourceId);
-                            super.getResp(
+                            super.getResp<T>(
                                 {
                                     endpoint: EndPoint.Everything,
                                     options: {
