@@ -1,8 +1,12 @@
-export interface NewsApi {
+export interface Source {
+    id: string;
+    name: string;
+}
+export interface Article {
     author: string;
     publishedAt: string;
     title: string;
-    source: { name: string };
+    source: Pick<Source, 'id' | 'name'>;
     description: string;
     urlToImage: string;
     url: string;
@@ -10,15 +14,15 @@ export interface NewsApi {
     id: string;
 }
 
-export type NewsApiSource = Pick<NewsApi, 'name' | 'id'>;
+// export type NewsApiSource = Pick<Article, 'name' | 'id'>;
 
 export type NewsApiResponse = NewsResponse & SourcesResponse;
 interface NewsResponse {
-    articles: NewsApi[];
+    articles: Article[];
 }
 
 interface SourcesResponse {
-    sources: NewsApiSource[];
+    sources: Source[];
     (): void;
 }
 

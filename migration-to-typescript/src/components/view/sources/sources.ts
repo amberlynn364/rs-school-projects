@@ -1,12 +1,12 @@
 import './sources.css';
-import { NewsApiSource } from '../../../types/index';
+import { Source } from '../../../types/index';
 
 class Sources {
-    public draw(data: NewsApiSource[]): void {
+    public draw(data: Source[]): void {
         const fragment: DocumentFragment = document.createDocumentFragment();
         const sourceItemTemp: HTMLTemplateElement | null = document.querySelector('#sourceItemTemp');
 
-        data.forEach((item: NewsApiSource): void => {
+        data.forEach((item: Source): void => {
             if (sourceItemTemp) {
                 const sourceClone: Node = sourceItemTemp.content.cloneNode(true) as HTMLElement;
                 if (sourceClone instanceof DocumentFragment) {

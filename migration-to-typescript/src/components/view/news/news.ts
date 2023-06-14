@@ -1,15 +1,15 @@
 import './news.css';
-import { NewsApi } from '../../../types/index';
+import { Article } from '../../../types/index';
 
 class News {
-    public draw(data: NewsApi[]): void {
-        const news: NewsApi[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
+    public draw(data: Article[]): void {
+        const news: Article[] = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
         const newsWrapper: HTMLDivElement | null = document.querySelector('.news');
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
 
-        news.forEach((item: NewsApi, idx: number): void => {
+        news.forEach((item: Article, idx: number): void => {
             if (newsItemTemp) {
                 const newsClone: Node = newsItemTemp.content.cloneNode(true);
                 if (newsClone instanceof DocumentFragment) {
