@@ -14,8 +14,6 @@ export interface Article {
     id: string;
 }
 
-// export type NewsApiSource = Pick<Article, 'name' | 'id'>;
-
 export type NewsApiResponse = NewsResponse & SourcesResponse;
 interface NewsResponse {
     articles: Article[];
@@ -36,7 +34,7 @@ export enum EndPoint {
 }
 export interface GetResp {
     endpoint: EndPoint;
-    options?: object;
+    options?: LoaderOptions;
 }
 
 export enum HTTPRequest {
