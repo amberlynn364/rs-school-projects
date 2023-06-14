@@ -1,0 +1,33 @@
+{
+  "env": {
+    "es6": true, 
+    "browser": true, 
+    "node": true 
+  },
+  "extends": [
+    "airbnb-typescript/base",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    "linebreak-style": 0,
+    "no-console": "warn",
+    "no-use-before-define": ["error", { "functions": false }],
+    "no-plusplus": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "max-len": ["error", { "code": 120, "ignoreTemplateLiterals": true }],
+    "object-curly-newline": ["error", { "consistent": true }],
+    "@typescript-eslint/no-explicit-any": 2, 
+    "@typescript-eslint/no-var-requires": 0,
+    "@typescript-eslint/no-non-null-assertion": 0,
+    "@typescript-eslint/no-inferrable-types": 0
+  }
+}
+
