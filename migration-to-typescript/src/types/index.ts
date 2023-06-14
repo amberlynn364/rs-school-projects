@@ -14,12 +14,11 @@ export interface Article {
     id: string;
 }
 
-export type NewsApiResponse = NewsResponse & SourcesResponse;
-interface NewsResponse {
+export interface NewsResponse {
     articles: Article[];
 }
 
-interface SourcesResponse {
+export interface SourcesResponse {
     sources: Source[];
     (): void;
 }
