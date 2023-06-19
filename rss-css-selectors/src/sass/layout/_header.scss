@@ -1,0 +1,25 @@
+@import '../utils/_keyframes';
+
+.header {
+  padding: $padding-header;
+  .logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    .logo {
+      opacity: 0.3;
+      width: 20px;
+      height: 20px;
+      transition: 0.3s;
+      &:hover {
+        opacity: 1;
+        scale: 1.2;
+        animation: wiggle 3s infinite;
+      }
+    }
+    .logo-title {
+      font-size: 1.1rem;
+      user-select: none;
+    }
+  }
+}

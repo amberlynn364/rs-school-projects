@@ -1,0 +1,65 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+@import '../utils/keyframes';
+
+.table-section {
+  @include flex-center;
+  flex-direction: column;
+  perspective: 300px;
+  .table-title {
+    font-size: 3rem;
+  }
+  .table-wrapper {
+    position: relative;
+    transform: rotateX(25deg);
+    width: $table-width;
+    transform-origin: bottom;
+    perspective: 350px;
+    .table-top {
+      @include width-height(100%, 100%);
+      position: absolute;
+      box-shadow: -3px 20px 20px 17px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(#dc9625,#ca881f);
+    }
+    .table-bot {
+      position: absolute;
+      bottom: -15px;
+      @include width-height($table-width, 15px);
+      background-color: #9b6818;
+      transform: rotateX(-35deg);
+      transform-origin: top;
+      .table-leg {
+        @include width-height(30px, 15px);
+        position: absolute;
+        background-color: #6a4509;
+        top: 15px;
+        &:first-child {
+          left: 15px;
+        }
+        &:last-child {
+          right: 15px;
+        }
+      }
+    }
+  }
+}
+
+.table {
+  @include flex-center;
+  gap: 20px;
+  position: relative;
+  padding: 15px 10px 25px;
+  .plate {
+    @include width-height(100px, 100px);
+    box-shadow: -1px 8px 5px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    background-image: url('../../assets/svg/plate.svg');
+    background-size: cover;
+  }
+}
+
+.wiggle {
+  transform-origin: bottom;
+  animation: wiggle 5s ease-out infinite;
+  animation-delay: 0s, .5s;
+}
