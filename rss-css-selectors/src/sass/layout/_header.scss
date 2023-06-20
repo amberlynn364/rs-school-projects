@@ -1,15 +1,14 @@
 @import '../utils/_keyframes';
+@import '../utils/mixins';
 
 .header {
   padding: $padding-header;
   .logo-wrapper {
-    display: flex;
-    align-items: center;
+    @include flex-align-center;
     gap: 5px;
     .logo {
+      @include width-height(20px, 20px);
       opacity: 0.3;
-      width: 20px;
-      height: 20px;
       transition: 0.3s;
       &:hover {
         opacity: 1;

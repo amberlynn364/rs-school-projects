@@ -42,3 +42,9 @@
     transform: rotateZ(0);
   }
 }
+
+@keyframes flashing {
+  50% {
+    background: none;
+  }
+}

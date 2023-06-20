@@ -6,21 +6,25 @@
   @include flex-center;
   flex-direction: column;
   perspective: 300px;
+
   .table-title {
     font-size: 3rem;
   }
+
   .table-wrapper {
     position: relative;
     transform: rotateX(25deg);
     width: $table-width;
     transform-origin: bottom;
     perspective: 350px;
+
     .table-top {
       @include width-height(100%, 100%);
       position: absolute;
       box-shadow: -3px 20px 20px 17px rgba(0, 0, 0, 0.2);
       background: linear-gradient(#dc9625,#ca881f);
     }
+
     .table-bot {
       position: absolute;
       bottom: -15px;
@@ -28,6 +32,7 @@
       background-color: #9b6818;
       transform: rotateX(-35deg);
       transform-origin: top;
+
       .table-leg {
         @include width-height(30px, 15px);
         position: absolute;
@@ -49,6 +54,7 @@
   gap: 20px;
   position: relative;
   padding: 15px 10px 25px;
+  
   .plate {
     @include width-height(100px, 100px);
     box-shadow: -1px 8px 5px 1px rgba(0, 0, 0, 0.1);

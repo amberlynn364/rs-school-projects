@@ -1,10 +1,6 @@
 @import '../utils/mixins';
 
 .levels {
-
-  .levels-title {
-
-  }
   .levels-list {
     display: flex;
     flex-direction: column;
@@ -13,6 +9,7 @@
     list-style-type: none;
     font-size: 1.5rem;
     cursor: pointer;
+
     .levels-item {
       display: flex;
       gap: 15px;
@@ -25,9 +22,8 @@
   }
 }
 
-.levels-checkmark {
-  width: 8px;
-  height: 15px;
+.levels-check {
+  @include width-height(8px, 15px);
   border: solid 1px #fff;
   border-width: 0 4px 4px 0;
   opacity: .2;

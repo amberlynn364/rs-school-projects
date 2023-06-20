@@ -1,0 +1,34 @@
+@import '../utils/mixins';
+
+.footer {
+  @include width-height(calc(100% - 200px), 70px);
+  @include flex-align-center;
+  flex: 0 0 auto;
+  justify-content: space-around;
+  background: rgba(0, 0, 0, 0.2);
+  font-size: 1.5rem;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.3s;
+    &:hover {
+      color: #b8b7b7;
+    }
+    &:active {
+      color: #838383;
+    }
+  }
+
+  .rs {
+    @include flex-align-center;
+    gap: 25px;
+    .rs-logo {
+      width: 70px;
+      transition: 0.3s;
+      &:hover {
+        scale: 1.1;
+      }
+    }
+  }
+}

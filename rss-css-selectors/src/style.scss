@@ -6,8 +6,17 @@
 @import './sass/layout/order';
 @import './sass/layout/levels';
 @import './sass/layout/text-fields';
+@import './sass/layout/footer';
+
+
+html {
+  height: 100%;
+}
 
 body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background-color: $body-background-color;
   font-family: "Exo 2", sans-serif;
   color: $text-main-color;
@@ -15,6 +24,8 @@ body {
 
 main {
   display: flex;
+  flex: 1 0 auto;
+  padding-bottom: 20px;
 }
 
 .left-side {
@@ -35,4 +46,5 @@ main {
   background-color: #1f1a14;
   overflow: hidden;
 }
+
 
