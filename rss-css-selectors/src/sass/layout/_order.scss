@@ -14,7 +14,7 @@
   .table-wrapper {
     position: relative;
     transform: rotateX(25deg);
-    width: $table-width;
+    width: 100%;
     transform-origin: bottom;
     perspective: 350px;
 
@@ -28,7 +28,7 @@
     .table-bot {
       position: absolute;
       bottom: -15px;
-      @include width-height($table-width, 15px);
+      @include width-height(100%, 15px);
       background-color: #9b6818;
       transform: rotateX(-35deg);
       transform-origin: top;
@@ -61,6 +61,10 @@
     border-radius: 50px;
     background-image: url('../../assets/svg/plate.svg');
     background-size: cover;
+    transition: 0.3s;
+    &.hovered {
+      box-shadow: 1px 2px 3px 5px rgba(255, 255, 255, 0.3);
+    }
   }
 }
 

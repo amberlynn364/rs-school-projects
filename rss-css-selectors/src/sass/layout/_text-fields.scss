@@ -94,8 +94,27 @@
 .html-markup-wrapper {
   padding: 10px;
   line-height: 140%;
-  
-  .markup {
-    padding-left: 20px;
+  color: #a6a6a6;
+
+  .markup-wrapper {
+
+    .markup {
+      transition: 0.1s;
+      
+      &.backlight {
+        color: #fff;
+      }
+    }
   }
+  
 }
+
+.html-markup-wrapper div {
+  padding-left: 20px;
+}
+
+.html-markup-wrapper > div {
+  padding-left: 0;
+}
+
+
