@@ -7,20 +7,26 @@
   "extends": [
     "airbnb-typescript/base",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./rss-css-selectors/tsconfig.json"
   },
   "plugins": [
-    "@typescript-eslint/recommended"
+    "@typescript-eslint"
   ],
   "rules": {
     "linebreak-style": 0,
     "no-console": "warn",
-    "no-use-before-define": ["error", { "functions": false }],
     "no-plusplus": "off",
+    "no-use-before-define": ["error", {
+      "functions": true,
+      "classes": true,
+      "variables": true,
+      "allowNamedExports": false
+    }],
     "no-param-reassign": ["error", { "props": false }],
     "max-len": ["error", { "code": 120, "ignoreTemplateLiterals": true }],
     "object-curly-newline": ["error", { "consistent": true }],
