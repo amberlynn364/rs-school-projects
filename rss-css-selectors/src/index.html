@@ -12,6 +12,12 @@
         <img src="./assets/svg/logo.svg" class="logo" alt="logo" />
         <span class="logo-title">CSS Diner</span>
       </div>
+      <div class="burger">
+        <div class="burger-button">
+          <span class="burger-button-lines"></span>
+        </div>
+      </div>
+      <div class="burger-overlay"></div>
     </header>
     <main class="main">
       <section class="left-side">
@@ -19,10 +25,7 @@
           <h1 class="table-title">Select the plates</h1>
           <div class="table-wrapper">
             <div class="table-top"></div>
-            <div class="table">
-              <!-- <span class="plate wiggle"></span>
-                <span class="plate wiggle"></span> -->
-            </div>
+            <div class="table"></div>
             <div class="table-bot">
               <div class="table-leg"></div>
               <div class="table-leg"></div>
@@ -52,19 +55,23 @@
                 <li class="numbers-list-item">13</li>
                 <li class="numbers-list-item">14</li>
                 <li class="numbers-list-item">15</li>
-                <li class="numbers-list-item">16</li>
-                <li class="numbers-list-item">17</li>
-                <li class="numbers-list-item">18</li>
-                <li class="numbers-list-item">19</li>
-                <li class="numbers-list-item">20</li>
               </ul>
-              <div class="input-wrapper">
-                <input
-                  type="text"
-                  class="selector-input"
-                  placeholder="Type in a CSS selector"
-                />
-                <button class="enter">enter</button>
+              <div class="css-code-editor">
+                <div class="input-wrapper">
+                  <input
+                    type="text"
+                    class="selector-input"
+                    placeholder="Type in a CSS selector"
+                  />
+                  <button class="enter">enter</button>
+                </div>
+                <button id="help" class="button help">Help</button>
+                <div class="syntax">Syntax: "A"</div>
+                <div class="description">
+                  Description: Selects all elements of type "A". Type refers to
+                  the type of tag, so div, p and ul are all different element
+                  types.
+                </div>
               </div>
             </div>
           </div>
@@ -90,16 +97,8 @@
                 <li class="numbers-list-item">13</li>
                 <li class="numbers-list-item">14</li>
                 <li class="numbers-list-item">15</li>
-                <li class="numbers-list-item">16</li>
-                <li class="numbers-list-item">17</li>
-                <li class="numbers-list-item">18</li>
-                <li class="numbers-list-item">19</li>
-                <li class="numbers-list-item">20</li>
               </ul>
-              <div class="html-markup-wrapper code html">
-                <!-- <div id="markup-wrapper">&lt;div class="table"&gt;</div>
-                <div>&lt;/div&gt;</div> -->
-              </div>
+              <div class="html-markup-wrapper code html"></div>
             </div>
           </div>
         </section>
@@ -107,48 +106,14 @@
       <section class="right-side">
         <section class="levels">
           <h2 class="levels-title">Levels:</h2>
-          <ul class="levels-list">
-            <li class="levels-item selected">
-              1 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              2 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              3 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              4 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              5 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              6 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              7 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              8 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              9 level
-              <span class="levels-check"></span>
-            </li>
-            <li class="levels-item">
-              10 level
-              <span class="levels-check"></span>
-            </li>
-          </ul>
+          <ul class="levels-list"></ul>
+          <button id="new-game" class="button">New game</button>
+          <div class="marking-description">
+            <h4 class="marking-description-title">Marking description:</h4>
+            <span class="not-complete">- not complete</span>
+            <span class="complete">- complete</span>
+            <span class="complete-with-help">- complete with help</span>
+          </div>
         </section>
       </section>
     </main>
@@ -167,6 +132,10 @@
         <span>2023</span>
       </div>
     </footer>
-    <div class="popup">Hello, world!</div>
+    <div class="popup"></div>
+    <!-- <div class="win-wrapper">
+      <h3 class="win-title">Congrats, You Win!</h3>
+      <button id="win-button" class="button">New game</button>
+    </div> -->
   </body>
 </html>
