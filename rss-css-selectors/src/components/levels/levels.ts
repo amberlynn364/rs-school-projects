@@ -151,6 +151,7 @@ export const levels = [
   {
     levelNumber: 5,
     rightAnswer: 'dessert + coffee',
+    anotherRightAnswer: 'coffee + dessert',
     tableTitle: 'Dessert with coffee',
     syntax: 'syntax: "tag + tag"',
     description: 'You liked the dessert and decided to order another one with coffee. Select dessert and coffee',
