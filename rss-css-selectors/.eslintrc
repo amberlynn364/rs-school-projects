@@ -28,7 +28,7 @@
       "allowNamedExports": false
     }],
     "no-param-reassign": ["error", { "props": false }],
-    "max-len": ["error", { "code": 120, "ignoreTemplateLiterals": true }],
+    "max-len": ["error", { "code": 120, "ignoreTemplateLiterals": true, "ignoreStrings": true }],
     "object-curly-newline": ["error", { "consistent": true }],
     "@typescript-eslint/no-explicit-any": 2, 
     "@typescript-eslint/no-var-requires": 0,
