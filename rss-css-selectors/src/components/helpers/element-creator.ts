@@ -14,6 +14,10 @@ export default class ElementCreator {
     if (elem.index !== undefined) {
       this.element.setAttribute('id', String(elem.index));
     }
+
+    if (elem.id !== undefined) {
+      this.element.setAttribute('table-id', elem.id);
+    }
   }
 
   public getElement(): HTMLElement | null {
