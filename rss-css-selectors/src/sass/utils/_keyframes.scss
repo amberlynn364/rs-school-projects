@@ -1,50 +1,38 @@
 @keyframes wiggle {
-  0%, 7% {
-    transform: rotateZ(0);
-  }
-  15% {
-    transform: rotateZ(-15deg);
-  }
-  20% {
-    transform: rotateZ(10deg);
-  }
-  25% {
-    transform: rotateZ(-10deg);
-  }
-  30% {
-    transform: rotateZ(6deg);
-  }
-  35% {
-    transform: rotateZ(-4deg);
-  }
-  40%, 50% {
-    transform: rotateZ(0);
-  }
-  57% {
-    transform: rotateZ(0);
-  }
-  65% {
-    transform: rotateZ(-15deg);
-  }
-  70% {
-    transform: rotateZ(10deg);
-  }
-  75% {
-    transform: rotateZ(-10deg);
-  }
-  80% {
-    transform: rotateZ(6deg);
-  }
-  85% {
-    transform: rotateZ(-4deg);
-  }
-  100% {
-    transform: rotateZ(0);
-  }
+  0%, 7% { transform: rotateZ(0); }
+  15% { transform: rotateZ(-15deg); }
+  20% { transform: rotateZ(10deg); }
+  25% { transform: rotateZ(-10deg); }
+  30% { transform: rotateZ(6deg); }
+  35% { transform: rotateZ(-4deg); }
+  40%, 50% { transform: rotateZ(0); }
+  57% { transform: rotateZ(0); }
+  65% { transform: rotateZ(-15deg); }
+  70% { transform: rotateZ(10deg); }
+  75% { transform: rotateZ(-10deg); }
+  80% { transform: rotateZ(6deg); }
+  85% { transform: rotateZ(-4deg); }
+  100% { transform: rotateZ(0); }
 }
 
 @keyframes flashing {
-  50% {
-    background: none;
+  50% { background: none; }
+}
+
+@keyframes input-field-shake {
+  0%  { transform: translateX(0); }
+  25% {  transform: translateX(-10px); }
+  50% {  transform: translateX(0); }
+  75% {  transform: translateX(10px); }
+}
+
+@keyframes vanishing {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    visibility: hidden;
   }
 }

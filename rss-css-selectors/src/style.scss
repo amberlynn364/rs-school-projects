@@ -1,6 +1,8 @@
 @import './sass/base/normalize';
 @import './sass/base/typography';
 @import './sass/utils/variables';
+@import './sass/components/buttons';
+@import './sass/components/burger';
 @import './sass/utils/mixins';
 @import './sass/layout/header';
 @import './sass/layout/order';
@@ -8,6 +10,8 @@
 @import './sass/layout/text-fields';
 @import './sass/layout/footer';
 @import './sass/layout/popup';
+@import './sass/layout/win';
+@import './sass/layout/marking-description';
 
 
 html {
@@ -21,19 +25,30 @@ body {
   background-color: $body-background-color;
   font-family: "Exo 2", sans-serif;
   color: $text-main-color;
+
 }
 
 main {
   display: flex;
   flex: 1 0 auto;
   padding-bottom: 20px;
+  height: 80%;
+
+  @media screen and (max-width: 768px) {
+    height: 100%;
+  }
 }
 
 .left-side {
   @include flex-center;
   flex-direction: column;
-  gap: 80px;
+  gap: 50px;
+  height: 90%;
   width: calc(100% - 200px);
+
+  @media (max-width: 768px) {
+    @include width-height(100%, 100%)
+  }
 }
 
 .right-side {
@@ -46,6 +61,12 @@ main {
   width: 200px;
   background-color: #1f1a14;
   overflow: hidden;
+  z-index: 20;
+  transition: right 0.7s;
+
+  @media (max-width: 768px) {
+    right: -999px;
+  }
 }
 
 

@@ -4,10 +4,13 @@
 
 .table-section {
   @include flex-center;
+  gap: 30px;
   flex-direction: column;
+  min-width: 300px;
   perspective: 300px;
 
   .table-title {
+    margin: 0;
     font-size: 3rem;
   }
 
@@ -15,8 +18,13 @@
     position: relative;
     transform: rotateX(25deg);
     width: 100%;
+    max-width: 600px;
     transform-origin: bottom;
     perspective: 350px;
+
+    @media (max-width: 768px) {
+      width: 90%;
+    }
 
     .table-top {
       @include width-height(100%, 100%);
@@ -54,22 +62,173 @@
   gap: 20px;
   position: relative;
   padding: 15px 10px 25px;
-  
-  .plate {
+
+  menu,
+  doner,
+  donut,
+  steak,
+  coffee,
+  dessert,
+  plate,
+  cocktail,
+  hamburger,
+  waiter,
+  pizza,
+  bill
+   {
     @include width-height(100px, 100px);
-    box-shadow: -1px 8px 5px 1px rgba(0, 0, 0, 0.1);
+    position: relative;
     border-radius: 50px;
-    background-image: url('../../assets/svg/plate.svg');
+    background-image: url('../../assets/svg/menu.svg');
     background-size: cover;
+    
     transition: 0.3s;
+    &.vanished {
+      animation: vanishing 0.5s ease forwards;
+    }
     &.hovered {
       box-shadow: 1px 2px 3px 5px rgba(255, 255, 255, 0.3);
     }
   }
+  menu {
+    @include width-height(120px, 100px);
+    background-size: 150px 100px;
+    background-repeat: no-repeat;
+  }
+  doner {
+    background-image: url('../../assets/svg/doner.svg');
+  }
+  donut {
+    background-image: url('../../assets/svg/donut.svg');
+  }
+  steak {
+    background-image: url('../../assets/svg/stake.svg');
+  }
+  coffee {
+    background-image: url('../../assets/svg/coffee.svg');
+    &.tea {
+      background-image: url('../../assets/svg/tea-coffee.svg');
+      background-size: 120px 100px;
+    }
+  }
+  dessert {
+    background-image: url('../../assets/svg/dessert.svg');
+  }
+  plate {
+    background-image: url('../../assets/svg/plate.svg');
+  }
+  cocktail {
+    background-image: url('../../assets/svg/cocktail.svg');
+  }
+  bill {
+    background-image: url('../../assets/svg/bill.svg');
+  }
+  waiter {
+    background-image: url('../../assets/svg/waiter.svg');
+
+    &.with-bottle {
+      background-image: url('../../assets/svg/waiter-with-bottle.svg');
+    }
+    &.with-mustache {
+      background-image: url('../../assets/svg/waiter-with-mustache.svg');
+    }
+    &.dog {
+      background-image: url('../../assets/svg/waiter-dog.svg');
+    }
+  }
+
+  
+  // .plate,
+//   .board,
+//   .fancy-plate,
+//   .orange,
+//   .cucumber,
+//   .apple {
+//     @include width-height(100px, 100px);
+//     position: relative;
+//     border-radius: 50px;
+//     background-image: url('../../assets/svg/plate.svg');
+//     background-size: cover;
+//     transition: 0.3s;
+//     &.vanished {
+//       animation: vanishing 0.5s ease forwards;
+//     }
+//     &.hovered {
+//       box-shadow: 1px 2px 3px 5px rgba(255, 255, 255, 0.3);
+//     }
+//   }
+
+//   .board {
+//     background-image: url('../../assets/svg/board.svg');
+//   }
+
+//   .fancy-plate {
+//     background-image: url('../../assets/svg/restaurant-plate.svg');
+//   }
+
+//   .apple,
+//   .orange,
+  hamburger,
+  pizza {
+    @include width-height(60px, 60px);
+    background-image: url('../../assets/svg/hamburger.svg');
+    transition: 0.3s;
+    
+    &.small {
+      @include width-height(30px, 30px);
+      
+      &:only-child {
+        top: calc(50% - 15px);
+        left: calc(50% - 15px)
+      }
+    }
+    
+    &.hovered {
+      scale: 1.2;
+    }
+  }
+  pizza {
+    background-image: url('../../assets/svg/pizza.svg');
+  }
+//   }
+//   .orange {
+//     background-image: url('../../assets/svg/orange.svg');
+//   }
+//   .cucumber {
+//     background-image: url('../../assets/svg/cucumber.svg');
+//   }
+// }
+
+
+// .plate > .apple:last-child,
+// .plate > .orange:last-child,
+// .plate > .cucumber:last-child,
+// .board > .apple:last-child,
+// .board > .orange:last-child,
+// .board > .cucumber:last-child,
+// .fancy-plate > .apple:last-child,
+// .fancy-plate > .orange:last-child,
+plate > hamburger,
+plate > pizza {
+  top: calc(50% - 35px);
+}
+
+// .plate .apple,
+// .plate .orange,
+// .plate .cucumber,
+// .board .apple,
+// .board .orange,
+// .board .cucumber,
+// .fancy-plate .apple,
+// .fancy-plate .orange,
+plate hamburger,
+plate pizza {
+  position: absolute;
+  left: calc(50% - 30px)
 }
 
 .wiggle {
   transform-origin: bottom;
   animation: wiggle 5s ease-out infinite;
   animation-delay: 0s, .5s;
-}
+}}

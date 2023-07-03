@@ -1,0 +1,81 @@
+@import '../utils/mixins';
+
+.burger {
+  display: none;
+  @include width-height(40px, 30px);
+  z-index: 30;
+  cursor: pointer;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+  
+  &:hover {
+    .burger-button-lines {
+      filter: brightness(0.6);
+      }
+    }
+    
+    .burger-button {
+      position: relative;
+      top: 15px;
+      transition: 0.4s;
+      
+      .burger-button-lines,
+      .burger-button-lines::before,
+      .burger-button-lines::after {
+        position: absolute;
+        width: 40px;
+        height: 3px;
+        background-color: #897b6c;
+        -webkit-transition: 0.4s;
+        -moz-transition: 0.4s;
+        -o-transition: 0.4s;
+        transition: 0.4s;
+      }
+    }
+
+    &.active {
+
+      .burger-button-lines {
+        background-color: transparent;
+      }
+    
+      .burger-button-lines::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      .burger-button-lines::after{
+        top: 0;
+        transform: rotate(-45deg);
+      }
+      +.burger-overlay {
+        display: block;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+}
+
+.burger-button-lines {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.burger-button-lines::before {
+  content: '';
+  top: -12px;
+}
+.burger-button-lines::after {
+  content: '';
+  top: 12px;
+}
+
+.burger-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+}

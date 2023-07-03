@@ -1,0 +1,45 @@
+@import '../utils/mixins';
+
+.marking-description {
+
+  span {
+    display: flex;
+    gap: 10px;
+  }
+
+  .not-complete {
+    &::before {
+      content: '';
+      display: inline-block;
+      @include width-height(8px, 15px);
+      border: solid 1px #fff;
+      border-width: 0 4px 4px 0;
+      opacity: .2;
+      transform: rotate(40deg);
+    }
+  }
+
+  .complete {
+    &::before {
+      content: '';
+      display: inline-block;
+      @include width-height(8px, 15px);
+      border: solid 1px #45a443;
+      border-width: 0 4px 4px 0;
+      opacity: .7;
+      transform: rotate(40deg);
+    }
+  }
+
+  .complete-with-help {
+    &::before {
+      content: '';
+      display: inline-block;
+      @include width-height(8px, 15px);
+      border: solid 1px #8b0c96;
+      border-width: 0 4px 4px 0;
+      opacity: .7;
+      transform: rotate(40deg);
+    }
+  }
+}

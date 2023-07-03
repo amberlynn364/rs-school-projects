@@ -2,7 +2,16 @@
 @import '../utils/mixins';
 
 .header {
+  position: relative;
   padding: $padding-header;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 230px);
+
+  @media (max-width: 768px) {
+    width: 95%;
+  }
+
   .logo-wrapper {
     @include flex-align-center;
     gap: 5px;

@@ -8,6 +8,10 @@
   background: rgba(0, 0, 0, 0.2);
   font-size: 1.5rem;
 
+    @media (max-width: 768px) {
+     width: 100%;
+    }
+
   a {
     text-decoration: none;
     color: inherit;

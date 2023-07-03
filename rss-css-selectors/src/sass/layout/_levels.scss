@@ -14,7 +14,22 @@
       display: flex;
       gap: 15px;
       opacity: 0.7;
-      transition: 0.3s;
+      &.done {
+        .levels-check {
+          border: solid 1px #45a443;
+          border-width: 0 4px 4px 0;
+          opacity: 1;
+          transition: 1s;
+        }
+
+      &.helped {
+        .levels-check {
+          border: solid 1px #8b0c96;
+          border-width: 0 4px 4px 0;
+          opacity: 1;
+        } 
+      }
+      }
       &.selected {
         color: #fff;
       }
@@ -33,4 +48,5 @@
   border-width: 0 4px 4px 0;
   opacity: .2;
   transform: rotate(40deg);
+  transition: 1s;
 }
