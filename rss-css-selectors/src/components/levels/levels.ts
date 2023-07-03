@@ -102,7 +102,7 @@ export const levels = [
   },
   {
     levelNumber: 4,
-    rightAnswer: '#dessert',
+    rightAnswer: '#apologize',
     tableTitle: 'Apologizing the waiter to the visitors',
     syntax: 'syntax: "#id"',
     description: 'The waiter repeated the order and added dessert as an apology. Select dessert with id selector',
