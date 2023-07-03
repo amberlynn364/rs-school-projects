@@ -21,6 +21,7 @@ export default class Table extends Popup {
   }
   
   private fillTable(lvl = 1): void {
+    document.querySelector('.table')!.innerHTML = '';
     levels[lvl - 1].tableFill.forEach((item) => {
       this.recursiveFillTable(item);
     });
