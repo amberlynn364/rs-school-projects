@@ -1,18 +1,11 @@
 export default class BurgerMenu {
   private burgerMenu: HTMLDivElement | null = document.querySelector('.burger');
   
-  private levels = document.querySelectorAll('.levels-item');
+  private levels: NodeListOf<HTMLLIElement> = document.querySelectorAll('.levels-item');
 
   private overlay: HTMLDivElement | null = document.querySelector('.burger-overlay');
 
   constructor() {
-    // this.burgerMenu!.addEventListener('click', () => this.toggleMenu());
-    // this.levels!.forEach((level) => level.addEventListener('click', () => {
-    //   if (this.burgerMenu!.classList.contains('active')) {
-    //     this.toggleMenu();
-    //   }
-    // }));
-    // this.overlay!.addEventListener('click', () => this.toggleMenu());
     this.initEventListener();
   }
 
