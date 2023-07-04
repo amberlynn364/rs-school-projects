@@ -1,10 +1,10 @@
 @import '../utils/mixins';
 
 .footer {
-  @include width-height(calc(100% - 200px), 70px);
   @include flex-align-center;
   flex: 0 0 auto;
   justify-content: space-around;
+  @include width-height(calc(100% - 200px), 70px);
   background: rgba(0, 0, 0, 0.2);
   font-size: 1.5rem;
 

@@ -60,14 +60,16 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-.burger-button-lines::before {
-  content: '';
-  top: -12px;
-}
-.burger-button-lines::after {
-  content: '';
-  top: 12px;
+
+  &::before {
+    content: '';
+    top: -12px;
+  }
+
+  &::after {
+    content: '';
+    top: 12px;
+  }
 }
 
 .burger-overlay {

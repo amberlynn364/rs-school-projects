@@ -3,10 +3,10 @@
 
 .header {
   position: relative;
-  padding: $padding-header;
   display: flex;
   justify-content: space-between;
   width: calc(100% - 230px);
+  padding: $padding-header;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -20,8 +20,8 @@
       opacity: 0.3;
       transition: 0.3s;
       &:hover {
-        opacity: 1;
         scale: 1.2;
+        opacity: 1;
         animation: wiggle 3s infinite;
       }
     }

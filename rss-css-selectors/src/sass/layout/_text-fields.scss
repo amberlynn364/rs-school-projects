@@ -8,8 +8,8 @@
   border: solid 7px rgba(0, 0, 0, 0.4);
   border-radius: 5px;
   font-family: monospace;
-  overflow: hidden;
   font-size: 1rem;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     width: 95%;
@@ -20,8 +20,8 @@
   }
 
   .code-field {
-    overflow: auto;
     width: 50%;
+    overflow: auto;
   }
 }
 .field-header {
@@ -47,8 +47,8 @@
     border-bottom: solid 1px rgba(255,255,255,0.03);
 
     .numbers-list {
-      border-right: solid 1px #2e2e2e;
       background: rgba(0,0,0,0.3);
+      border-right: solid 1px #2e2e2e;
     }
   }
   &.css-field {
@@ -56,19 +56,19 @@
     background-color: #e8e7e7;
   }
   .numbers-list {
-    background-color: #ddd;
     width: 20px;
-    list-style: none;
     padding: 10px;
     margin: 0;
+    background-color: #ddd;
     line-height: 140%;
+    list-style: none;
     text-align: right;
   }
 
   .css-code-editor {
     display: flex;
-    @include width-height(calc(100% - 40px), max-content);
     flex-direction: column;
+    @include width-height(calc(100% - 40px), max-content);
     
     * {
       padding: 10px;
@@ -80,23 +80,13 @@
       gap: 10px;
       font-size: 0.9rem;
 
-      // #result {
-      //   position: absolute;
-      //   top: 8px;
-      //   left: 5px;
-      //   * {
-      //     padding: 0;
-      //   }
-      // }
-
       @media (max-width: 768px) {
         flex-wrap: wrap;
         width: 100%;
       }
   
       .selector-input {
-        width: calc(100% - 65px);
-        height: 20px;
+        @include width-height(calc(100% - 65px), 20px);
         padding: 5px;
         background: rgba(45, 146, 183, 0.3);
         border: none;
@@ -113,23 +103,23 @@
       }
   
       .enter {
-        @include width-height(50px, 30px);
         @include flex-center;
-        background: #ddd;
+        @include width-height(50px, 30px);
         padding: 2px 7px 2px 7px;
+        background: #ddd;
         border: solid 3px #929292;
         border-width: 1px 1px 6px 1px;
         cursor: pointer;
         transition: 0.1s;
   
         &.enter-press {
-          transform: translateY(2px);
           border-width: 1px 1px 3px 1px;
+          transform: translateY(2px);
         }
   
         &:active {
-          transform: translateY(2px);
           border-width: 1px 1px 3px 1px;
+          transform: translateY(2px);
         } 
       }
     }
@@ -140,8 +130,13 @@
   padding: 10px;
   line-height: 140%;
   color: #a6a6a6;
-  span {
-    pointer-events: none;
+
+  div {
+    padding-left: 20px;
+  }
+
+  > div {
+    padding-left: 0;
   }
 
   .markup-wrapper {
@@ -159,15 +154,7 @@
       }
     }
   }
-  
 }
 
-.html-markup-wrapper div {
-  padding-left: 20px;
-}
-
-.html-markup-wrapper > div {
-  padding-left: 0;
-}
 
 

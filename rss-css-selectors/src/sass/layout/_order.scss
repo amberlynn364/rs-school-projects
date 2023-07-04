@@ -4,8 +4,8 @@
 
 .table-section {
   @include flex-center;
-  gap: 30px;
   flex-direction: column;
+  gap: 30px;
   min-width: 300px;
   perspective: 300px;
 
@@ -16,10 +16,10 @@
 
   .table-wrapper {
     position: relative;
-    transform: rotateX(25deg);
     width: 100%;
     max-width: 600px;
     transform-origin: bottom;
+    transform: rotateX(25deg);
     perspective: 350px;
 
     @media (max-width: 768px) {
@@ -27,8 +27,8 @@
     }
 
     .table-top {
-      @include width-height(100%, 100%);
       position: absolute;
+      @include width-height(100%, 100%);
       box-shadow: -3px 20px 20px 17px rgba(0, 0, 0, 0.2);
       background: linear-gradient(#dc9625,#ca881f);
     }
@@ -42,10 +42,10 @@
       transform-origin: top;
 
       .table-leg {
-        @include width-height(30px, 15px);
         position: absolute;
-        background-color: #6a4509;
         top: 15px;
+        @include width-height(30px, 15px);
+        background-color: #6a4509;
         &:first-child {
           left: 15px;
         }
@@ -58,9 +58,9 @@
 }
 
 .table {
+  position: relative;
   @include flex-center;
   gap: 20px;
-  position: relative;
   padding: 15px 10px 25px;
 
   menu,
@@ -76,13 +76,13 @@
   pizza,
   bill
    {
-    @include width-height(100px, 100px);
     position: relative;
+    @include width-height(100px, 100px);
     border-radius: 50px;
     background-image: url('../../assets/svg/menu.svg');
     background-size: cover;
-    
     transition: 0.3s;
+
     &.vanished {
       animation: vanishing 0.5s ease forwards;
     }
@@ -90,39 +90,50 @@
       box-shadow: 1px 2px 3px 5px rgba(255, 255, 255, 0.3);
     }
   }
+
   menu {
     @include width-height(120px, 100px);
     background-size: 150px 100px;
     background-repeat: no-repeat;
   }
+
   doner {
     background-image: url('../../assets/svg/doner.svg');
   }
+
   donut {
     background-image: url('../../assets/svg/donut.svg');
   }
+
   steak {
     background-image: url('../../assets/svg/stake.svg');
   }
+
   coffee {
     background-image: url('../../assets/svg/coffee.svg');
+
     &.tea {
       background-image: url('../../assets/svg/tea-coffee.svg');
       background-size: 120px 100px;
     }
   }
+
   dessert {
     background-image: url('../../assets/svg/dessert.svg');
   }
+
   plate {
     background-image: url('../../assets/svg/plate.svg');
   }
+
   cocktail {
     background-image: url('../../assets/svg/cocktail.svg');
   }
+
   bill {
     background-image: url('../../assets/svg/bill.svg');
   }
+
   waiter {
     background-image: url('../../assets/svg/waiter.svg');
 
@@ -137,37 +148,6 @@
     }
   }
 
-  
-  // .plate,
-//   .board,
-//   .fancy-plate,
-//   .orange,
-//   .cucumber,
-//   .apple {
-//     @include width-height(100px, 100px);
-//     position: relative;
-//     border-radius: 50px;
-//     background-image: url('../../assets/svg/plate.svg');
-//     background-size: cover;
-//     transition: 0.3s;
-//     &.vanished {
-//       animation: vanishing 0.5s ease forwards;
-//     }
-//     &.hovered {
-//       box-shadow: 1px 2px 3px 5px rgba(255, 255, 255, 0.3);
-//     }
-//   }
-
-//   .board {
-//     background-image: url('../../assets/svg/board.svg');
-//   }
-
-//   .fancy-plate {
-//     background-image: url('../../assets/svg/restaurant-plate.svg');
-//   }
-
-//   .apple,
-//   .orange,
   hamburger,
   pizza {
     @include width-height(60px, 60px);
@@ -190,37 +170,12 @@
   pizza {
     background-image: url('../../assets/svg/pizza.svg');
   }
-//   }
-//   .orange {
-//     background-image: url('../../assets/svg/orange.svg');
-//   }
-//   .cucumber {
-//     background-image: url('../../assets/svg/cucumber.svg');
-//   }
-// }
 
-
-// .plate > .apple:last-child,
-// .plate > .orange:last-child,
-// .plate > .cucumber:last-child,
-// .board > .apple:last-child,
-// .board > .orange:last-child,
-// .board > .cucumber:last-child,
-// .fancy-plate > .apple:last-child,
-// .fancy-plate > .orange:last-child,
 plate > hamburger,
 plate > pizza {
   top: calc(50% - 35px);
 }
 
-// .plate .apple,
-// .plate .orange,
-// .plate .cucumber,
-// .board .apple,
-// .board .orange,
-// .board .cucumber,
-// .fancy-plate .apple,
-// .fancy-plate .orange,
 plate hamburger,
 plate pizza {
   position: absolute;

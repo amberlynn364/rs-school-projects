@@ -2,33 +2,32 @@
 
 .button {
   width: auto;  
+  padding: 10px 25px;
   background-color: inherit;
   color: white;
   border-radius: 5px;
-  padding: 10px 25px;
   transition: 0.3s;
   user-select: none;
   cursor: pointer;
 
   &.help {
-    @include width-height(50px, 30px);
     @include flex-center;
-    border:  1px solid #929292;
-    color: inherit;
     align-self: end;
     margin: 0 10px;
+    @include width-height(50px, 30px);
+    border:  1px solid #929292;
+    color: inherit;
 
     @media (max-width: 768px) {
       align-self: start;
     }
-
   }
-}
 
-.button:hover {
-  transform: translateY(-1px);
-}
+  &:hover {
+    transform: translateY(-1px);
+  }
 
-.button:active {
-  transform: translateY(0);
+  &:active {
+    transform: translateY(0);
+  }
 }
