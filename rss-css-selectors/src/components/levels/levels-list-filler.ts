@@ -1,4 +1,4 @@
-import { ElementObject } from '../../types/types';
+import { ElementObject, LevelsListItem } from '../../types/types';
 import ElementCreator from '../helpers/element-creator';
 
 export default class LevelsListFiller {
@@ -8,11 +8,11 @@ export default class LevelsListFiller {
 
   private childElement: HTMLElement | null;
 
-  constructor(arr: any[]) {
+  constructor(arr: LevelsListItem[]) {
     this.levelsListFiller(arr);
   }
 
-  levelsListFiller(arr: any[]) {
+  levelsListFiller(arr: LevelsListItem[]) {
     this.levelsListWrapper!.innerHTML = '';
     arr.forEach((item) => {
       const elemParent: ElementObject = {
@@ -23,7 +23,7 @@ export default class LevelsListFiller {
 
       const elemChild: ElementObject = {
         tag: item.childTag,
-        classNames: item.childClassList,
+        classNames: item.childClassList as string[],
         textContent: '',
       };
       this.parentElement = new ElementCreator(elemParent).getElement();
