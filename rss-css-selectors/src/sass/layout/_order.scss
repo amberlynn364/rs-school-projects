@@ -12,6 +12,10 @@
   .table-title {
     margin: 0;
     font-size: 3rem;
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: 2rem;
+    }
   }
 
   .table-wrapper {
@@ -82,6 +86,9 @@
     background-image: url('../../assets/svg/menu.svg');
     background-size: cover;
     transition: 0.3s;
+    @media (max-width: 668px) {
+      @include width-height(70px, 70px);
+    }
 
     &.vanished {
       animation: vanishing 0.5s ease forwards;

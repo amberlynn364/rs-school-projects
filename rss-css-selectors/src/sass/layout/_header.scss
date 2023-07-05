@@ -9,7 +9,11 @@
   padding: $padding-header;
 
   @media (max-width: 768px) {
-    width: 95%;
+    width: 94%;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
   }
 
   .logo-wrapper {
