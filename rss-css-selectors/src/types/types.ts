@@ -1,32 +1,63 @@
-export interface PubSubCallBack {
-  [key: string]: (data: () => void) => void
+/* eslint-disable no-use-before-define */
+export interface LevelsListItem {
+  tag: string;
+  classList: string[];
+  textContent: string;
+  childTag: string;
+  childClassList?: string[];
 }
-
-
-export type TextContent = {
+export interface Level {
+  levelNumber: number;
+  rightAnswer: string;
+  anotherRightAnswer?: string;
+  tableTitle: string;
+  syntax: string;
+  description: string;
+  tableFill: LevelTableFill[];
+  boardMarkup: LevelBoardMarkup[];
+}
+export interface LevelBoardMarkup {
+  firstTag: LevelsTag;
+  secondTag: LevelsTag;
+  thirdTag?: LevelsTag;
+  fourthTag?: LevelsTag;
+  fifthTag?: LevelsTag;
+}
+export interface LevelsTag {
   parent: string;
   child?: string;
   closeTag?: string;
-};
-export type ElementObject = {
-  tag: string;
-  classNames: any;
-  textContent: string;
-  index?: number;
-  id?: string;
+}
+
+export type LevelTableFill = {
+  firstItem: TableItem;
+  secondItem: TableItem;
+  thirdItem?: TableItem;
+  fourthItem?: TableItem;
+  fifthItem?: TableItem;
 };
 
-
-export type Recursive = { 
-  wrapper: {
-    parent: string; 
-    child?: string;
-    closeTag?: string
-  };
-  nextWrapper: {
-    parent: string;
-    child?: string;
-    closeTag?: string
-  }; 
+export type TableItem = {
+  parent: string;
+  parentClasses: string[];
+  parentIndex: number;
+  child?: string,
+  childClasses?: string[],
+  childIndex?: number,
+  id?: string,
 };
-export type MarkUpType = Recursive & TextContent;
+
+export interface ElementObject {
+  tag: string,
+  classNames: string[],
+  textContent?: string,
+  index?: number,
+  id?: string,
+}
+
+export interface MarkUpElementObject {
+  parent: string;
+  child?: string;
+  closeTag?: string;
+}
+
