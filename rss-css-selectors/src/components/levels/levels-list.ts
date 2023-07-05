@@ -1,4 +1,6 @@
-export const levelsList = [
+import { LevelsListItem } from '../../types/types';
+
+export const levelsList: LevelsListItem[] = [
   {
     tag: 'li',
     classList: ['levels-item'],
