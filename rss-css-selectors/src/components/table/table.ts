@@ -1,4 +1,4 @@
-import { ElementObject } from '../../types/types';
+import { ElementObject, TableItem } from '../../types/types';
 import ElementCreator from '../helpers/element-creator';
 import { levels } from '../levels/levels';
 import Popup from '../popup/popup';
@@ -23,7 +23,7 @@ export default class Table extends Popup {
   private fillTable(lvl = 1): void {
     document.querySelector('.table')!.innerHTML = '';
     levels[lvl - 1].tableFill.forEach((item) => {
-      this.recursiveFillTable(item);
+      this.recursiveFillTable(item as unknown as TableItem);
     });
   }
 
@@ -48,13 +48,13 @@ export default class Table extends Popup {
     if (target instanceof HTMLElement) {
       const plateID = Number(target.getAttribute('id'));
       callback();
-      PubSub.getInstance().publish('backlightMarkUp', plateID);
+      PubSub.getInstance().publish<number>('backlightMarkUp', plateID);
       target.classList.toggle('hovered');
     }
   }
 
   private backlightTable(): void {
-    PubSub.getInstance().subscribe('backlightTable', (eventValue: string) => {
+    PubSub.getInstance().subscribe('backlightTable', (eventValue) => {
       const elements = this.table?.children;
       const result = [];
       if (elements !== undefined) {
@@ -69,10 +69,10 @@ export default class Table extends Popup {
     });
   }
 
-  private recursiveFillTable(obj: any): void {
+  private recursiveFillTable<T extends TableItem>(obj: T): void {
     for (const key in obj) {
       if (typeof obj[key] === 'object' && obj[key] !== null) {
-        this.recursiveFillTable(obj[key]);
+        this.recursiveFillTable(obj[key] as T);
       }
   
       if (obj[key] === obj.parent) {
@@ -89,8 +89,8 @@ export default class Table extends Popup {
   
       if (obj[key] === obj.child) {
         const elemChild: ElementObject = {
-          tag: obj.child,
-          classNames: obj.childClasses,
+          tag: obj.child as string,
+          classNames: obj.childClasses as string[],
           textContent: '',
           index: obj.childIndex,
         };
