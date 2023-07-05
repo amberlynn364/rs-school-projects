@@ -1,4 +1,6 @@
-export const levels = [
+import { Level } from '../../types/types';
+
+export const levels: Level[] = [
   {
     levelNumber: 1,
     rightAnswer: 'menu',
