@@ -1,8 +1,7 @@
-/* eslint-disable no-use-before-define */
-import { PubSubCallBack } from '../../types/types';
 
+/* eslint-disable no-use-before-define */
 export default class PubSub {
-  public events: PubSubCallBack = {};
+  public events: Record<string, ((event: string | number) => void)> = {};
   
   private static instance: PubSub;
   
@@ -16,11 +15,11 @@ export default class PubSub {
     }
   }
 
-  public publish(eventName: string, value: any): void {
+  public publish<T extends string | number>(eventName: string, value: T): void {
     (this.events)[eventName](value);
   }
 
-  public subscribe(eventName: string, handler: any): void {
+  public subscribe(eventName: string, handler: (value: string | number) => void): void {
     this.events[eventName] = handler;
   }
 }
