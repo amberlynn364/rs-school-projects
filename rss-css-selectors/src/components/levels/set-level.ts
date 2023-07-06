@@ -3,7 +3,7 @@ import MyLocalStorage from '../helpers/my-local-storage';
 import MarkUp from '../markup/markup';
 import Table from '../table/table';
 import TextContent from '../text-content/text-content';
-import { levels } from './levels';
+import { levels } from '../data/levels';
 
 export default class SetLevel {
   private levelsItem: NodeListOf<HTMLLIElement> = document.querySelectorAll('.levels-item');

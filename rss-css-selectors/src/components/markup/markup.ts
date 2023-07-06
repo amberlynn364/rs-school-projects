@@ -1,7 +1,7 @@
 import { ElementObject, MarkUpElementObject } from '../../types/types';
 import CodeHighlight from '../helpers/code-highlight';
 import ElementCreator from '../helpers/element-creator';
-import { levels } from '../levels/levels';
+import { levels } from '../data/levels';
 import Popup from '../popup/popup';
 import PubSub from '../pubsub/pubsub';
 
@@ -30,7 +30,7 @@ export default class MarkUp extends Popup {
     document.querySelector('.html-markup-wrapper')!.innerHTML = '';
     this.createMarkupWrapper();
     levels[lvl - 1].boardMarkup.forEach((item) => {
-      this.recursive(item as unknown as MarkUpElementObject);
+      this.recursiveFilling(item as unknown as MarkUpElementObject);
     });
     const closeDiv: ElementObject = {
       tag: 'div',
@@ -43,11 +43,11 @@ export default class MarkUp extends Popup {
     
   }
 
-  recursive<T extends MarkUpElementObject>(obj: T): void {
+  recursiveFilling<T extends MarkUpElementObject>(obj: T): void {
     for (const key in obj) {
       
       if (typeof obj[key] === 'object' && obj[key] !== null) {
-        this.recursive(obj[key] as T);
+        this.recursiveFilling(obj[key] as T);
       }
       
       if (obj[key] === obj.parent) {

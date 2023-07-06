@@ -2,8 +2,8 @@ import GameStatement from '../game-statement/game-statement';
 import LevelsHelper from '../helpers/levels-helper';
 import MyLocalStorage from '../helpers/my-local-storage';
 import ChangeLevel from '../levels/set-level';
-import { levelsList } from '../levels/levels-list';
-import AnimationController from '../animation-controller/animation-controller';
+import { levelsList } from '../data/levels-list';
+import AnimationController from '../controllers/animation-controller';
 
 export default class InputValidator extends GameStatement {
 
@@ -13,6 +13,7 @@ export default class InputValidator extends GameStatement {
 
   constructor() {
     super();
+    AnimationController.addInputFlashingAnimation();
     this.inputValidator();
   }
 

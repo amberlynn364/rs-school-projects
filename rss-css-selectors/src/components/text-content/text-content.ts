@@ -1,4 +1,4 @@
-import { levels } from '../levels/levels';
+import { levels } from '../data/levels';
 
 export default class TextContent {
 

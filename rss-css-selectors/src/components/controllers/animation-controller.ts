@@ -48,7 +48,6 @@ export default class AnimationController {
   }
 
   public static textAnimate(str: string): void {
-    // const input: HTMLInputElement | null = document.querySelector('.selector-input');
     for (let i = 0; i < str.length; i++) {
       setTimeout(() => AnimationController.input!.value += str.charAt(i), 300 * i);
     }

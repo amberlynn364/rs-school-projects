@@ -1,5 +1,5 @@
 import { LevelsListItem } from '../../types/types';
-import { levelsList } from '../levels/levels-list';
+import { levelsList } from '../data/levels-list';
 import MyLocalStorage from './my-local-storage';
 
 export default class LevelsHelper {

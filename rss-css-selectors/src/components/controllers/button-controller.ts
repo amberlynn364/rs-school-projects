@@ -1,7 +1,7 @@
-import AnimationController from '../animation-controller/animation-controller';
+import AnimationController from './animation-controller';
 import LevelsHelper from '../helpers/levels-helper';
-import { levels } from '../levels/levels';
-import { levelsList } from '../levels/levels-list';
+import { levels } from '../data/levels';
+import { levelsList } from '../data/levels-list';
 import SetLevel from '../levels/set-level';
 
 export default class ButtonController {

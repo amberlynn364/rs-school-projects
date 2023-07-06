@@ -1,6 +1,6 @@
 import { ElementObject, TableItem } from '../../types/types';
 import ElementCreator from '../helpers/element-creator';
-import { levels } from '../levels/levels';
+import { levels } from '../data/levels';
 import Popup from '../popup/popup';
 import PubSub from '../pubsub/pubsub';
 

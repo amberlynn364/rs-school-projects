@@ -1,5 +1,5 @@
-import { levels } from '../levels/levels';
-import { levelsList } from '../levels/levels-list';
+import { levels } from '../data/levels';
+import { levelsList } from '../data/levels-list';
 export default class GameStatement {
 
   protected input: HTMLInputElement | null = document.querySelector('.selector-input');
