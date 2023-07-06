@@ -1,24 +1,14 @@
+import { LevelsListItem } from '../../types/types';
+
 export default class MyLocalStorage {
 
-  public getItem(key: string, defaultValue?: any): any {
+  static getItem<T extends LevelsListItem[] | number>(key: string): T {
     const keyValueString = localStorage.getItem(key);
-
-    let value;
-    if (value === null) {
-      value = defaultValue;
-
-      return value;
-    }
-    
-    try {
-      value = JSON.parse(keyValueString as string);
-    } catch (e) {
-      value = defaultValue;
-    }
-    return value;
+    const data = JSON.parse(keyValueString as string);    
+    return data;
   }
 
-  public setItem(key: string, value: any): void {
+  static setItem<T extends LevelsListItem[] | number>(key: string, value: T): void {
     localStorage.setItem(key, JSON.stringify(value));
   }
 }
