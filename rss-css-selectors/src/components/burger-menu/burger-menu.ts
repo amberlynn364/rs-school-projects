@@ -19,7 +19,7 @@ export default class BurgerMenu {
     this.overlay!.addEventListener('click', () => this.toggleMenu());
   }
 
-  private toggleMenu(): void {
+  public toggleMenu(): void {
     const body: HTMLElement | null = document.body;
     const levelsWrapper: HTMLElement | null = document.querySelector('.right-side');
     this.burgerMenu!.classList.toggle('active');

@@ -7,6 +7,10 @@ export default class LevelsHelper {
   private static firstLevel: number = 1;
 
   public static getLevelNumberFromString(str: string): number {
+    if (Number(str[0]) !== parseInt(str)) {
+      throw new Error('you need to pass a string with first char number');
+    }
+    
     return parseInt(str);
   }
 
