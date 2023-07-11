@@ -61,3 +61,7 @@ export interface MarkUpElementObject {
   closeTag?: string;
 }
 
+export enum PubSubEvents {
+  backlightMarkUp = 'backlightMarkUp',
+  backlightTable = 'backlightTable',
+}

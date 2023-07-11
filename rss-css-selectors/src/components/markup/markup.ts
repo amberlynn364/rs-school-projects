@@ -1,4 +1,4 @@
-import { ElementObject, MarkUpElementObject } from '../../types/types';
+import { ElementObject, MarkUpElementObject, PubSubEvents } from '../../types/types';
 import CodeHighlight from '../helpers/code-highlight';
 import ElementCreator from '../helpers/element-creator';
 import { levels } from '../data/levels';
@@ -77,7 +77,7 @@ export default class MarkUp extends Popup {
   }
 
   private backlightMarkUp(): void {
-    PubSub.getInstance().subscribe('backlightMarkUp', (eventValue) => {
+    PubSub.getInstance().subscribe(PubSubEvents.backlightMarkUp, (eventValue) => {
       const markUpWrapper: HTMLElement | null = this.markUpWrapper.getElement();
       const markUpElementsArray = [];
       for (let i = 0; i < markUpWrapper!.children.length; i++) {
@@ -133,7 +133,7 @@ export default class MarkUp extends Popup {
         target.classList.toggle('backlight');
       }
     }
-    PubSub.getInstance().publish<string>('backlightTable', String(index));
+    PubSub.getInstance().publish<string>(PubSubEvents.backlightTable, String(index));
     callback();
 
   }

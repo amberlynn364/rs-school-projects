@@ -1,4 +1,4 @@
-import { ElementObject, TableItem } from '../../types/types';
+import { ElementObject, PubSubEvents, TableItem } from '../../types/types';
 import ElementCreator from '../helpers/element-creator';
 import { levels } from '../data/levels';
 import Popup from '../popup/popup';
@@ -48,13 +48,13 @@ export default class Table extends Popup {
     if (target instanceof HTMLElement) {
       const plateID = Number(target.getAttribute('id'));
       callback();
-      PubSub.getInstance().publish<number>('backlightMarkUp', plateID);
+      PubSub.getInstance().publish<number>(PubSubEvents.backlightMarkUp, plateID);
       target.classList.toggle('hovered');
     }
   }
 
   private backlightTable(): void {
-    PubSub.getInstance().subscribe('backlightTable', (eventValue) => {
+    PubSub.getInstance().subscribe(PubSubEvents.backlightTable, (eventValue) => {
       const elements = this.table?.children;
       const result = [];
       if (elements !== undefined) {
