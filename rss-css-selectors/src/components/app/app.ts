@@ -1,8 +1,6 @@
 import AppController from '../controllers/app-controller';
-
 export default class App {
-  
-  start() {
+  public start(): void {
     new AppController();
   }
 }
