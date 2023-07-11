@@ -97,16 +97,9 @@ export default class MarkUp extends Popup {
   }
 
   private fillingMarkUpElementsArray(): void {
-    for (let i = 0; i < this.markUpWrapper.getElement()!.children.length; i++) {
-      if (this.markUpWrapper.getElement()!.children[i].classList.contains('markup')) {
-        this.markUpElementsArray.push(this.markUpWrapper.getElement()!.children[i] as HTMLElement);
-        for (let j = 0; j < this.markUpWrapper.getElement()!.children[i].children.length; j++) {
-          if (this.markUpWrapper.getElement()!.children[i].children[j].classList.contains('markup-child')) {
-            this.markUpElementsArray.push(this.markUpWrapper.getElement()!.children[i].children[j] as HTMLElement);
-          }
-        }
-      }
-    }
+    const markUpWrapperElement = this.markUpWrapper.getElement();
+    const markUpElements = Array.from(markUpWrapperElement!.querySelectorAll('.markup, .markup-child')) as HTMLElement[];
+    this.markUpElementsArray.push(...markUpElements);
   }
 
   private backlightTable(): void {
