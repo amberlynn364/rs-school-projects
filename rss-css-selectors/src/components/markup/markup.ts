@@ -26,7 +26,7 @@ export default class MarkUp extends Popup {
     
   }
   
-  fillMarkUpWrapper(lvl = 1) {
+  private fillMarkUpWrapper(lvl = 1): void {
     document.querySelector('.html-markup-wrapper')!.innerHTML = '';
     this.createMarkupWrapper();
     levels[lvl - 1].boardMarkup.forEach((item) => {
@@ -43,7 +43,7 @@ export default class MarkUp extends Popup {
     
   }
 
-  recursiveFilling<T extends MarkUpElementObject>(obj: T): void {
+  private recursiveFilling<T extends MarkUpElementObject>(obj: T): void {
     for (const key in obj) {
       
       if (typeof obj[key] === 'object' && obj[key] !== null) {
