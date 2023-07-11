@@ -3,7 +3,7 @@ import { Level } from '../../types/types';
 export const levels: Level[] = [
   {
     levelNumber: 1,
-    rightAnswer: 'menu',
+    rightAnswer: ['menu'],
     tableTitle: 'Welcome to the restaurant! Take the menu',
     syntax: 'syntax: "div, span, p"',
     description: 'You came with a girl, Selects all menu by tag selector.',
@@ -34,7 +34,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 2,
-    rightAnswer: '*',
+    rightAnswer: ['*'],
     tableTitle: 'Select ALL food',
     syntax: 'syntax: "*"',
     description: 'Definitely you like to eat, Selects all by universal selector.',
@@ -73,7 +73,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 3,
-    rightAnswer: '.tea',
+    rightAnswer: ['.tea'],
     tableTitle: 'Ooops mistake',
     syntax: 'syntax: ".classname"',
     description: 'You ordered coffee, and the unlucky waiter brought one coffee and one tea. Select wrong glass with class selector',
@@ -104,7 +104,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 4,
-    rightAnswer: '#apologize',
+    rightAnswer: ['#apologize'],
     tableTitle: 'Apologizing the waiter to the visitors',
     syntax: 'syntax: "#id"',
     description: 'The waiter repeated the order and added dessert as an apology. Select dessert with id selector',
@@ -152,8 +152,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 5,
-    rightAnswer: 'dessert + coffee',
-    anotherRightAnswer: 'coffee + dessert',
+    rightAnswer: ['dessert + coffee', 'coffee + dessert'],
     tableTitle: 'Dessert with coffee',
     syntax: 'syntax: "tag + tag"',
     description: 'You liked the dessert and decided to order another one with coffee. Select dessert and coffee',
@@ -192,8 +191,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 6,
-    rightAnswer: ':nth-of-type(even)',
-    anotherRightAnswer: 'coffee:nth-of-type(even)',
+    rightAnswer: [':nth-of-type(even)', 'coffee:nth-of-type(even)'],
     tableTitle: 'The next table treats you',
     syntax: 'syntax: ":nth-of-type(A) or tag::nth-of-type(A)"',
     description: 'You were ordered cocktails and coffee, but you only like coffee. Select even drinks',
@@ -248,7 +246,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 7,
-    rightAnswer: 'plate hamburger:only-child',
+    rightAnswer: ['plate hamburger:only-child'],
     tableTitle: 'In some century dishes appeared',
     syntax: 'syntax: ":only-child"',
     description: 'Eat from dishes. You can select any element that is the only element inside of another one.',
@@ -292,8 +290,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 8,
-    rightAnswer: 'waiter:nth-child(3)',
-    anotherRightAnswer: ':nth-child(3)',
+    rightAnswer: ['waiter:nth-child(3)', ':nth-child(3)'],
     tableTitle: 'Choose the best waiter',
     syntax: 'syntax: ":nth-child(A) or tag:nth-child(A)"',
     description: 'Help to choose the best employee. Selects the nth (1st, 3rd, 12th etc.) child element in another element.',
@@ -340,7 +337,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 9,
-    rightAnswer: 'plate > pizza',
+    rightAnswer: ['plate > pizza'],
     tableTitle: 'Eat some pizza',
     syntax: 'syntax: "tag > tag"',
     description: 'Eat pizza before leaving. You can select elements that are direct children of other elements.',
@@ -405,7 +402,7 @@ export const levels: Level[] = [
   },
   {
     levelNumber: 10,
-    rightAnswer: 'bill:empty',
+    rightAnswer: ['bill:empty'],
     tableTitle: 'Oh yes! pay the bill',
     syntax: 'syntax: ":empty"',
     description: 'Forgot to pay the bill?. Selects elements that don\'t have any other elements inside of them.',

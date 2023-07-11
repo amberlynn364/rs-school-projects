@@ -38,7 +38,7 @@ export default class ButtonController {
       const lvlList: HTMLElement | null = document.querySelector('.levels-list');
       lvlList!.children[currentLevel - 1].classList.add('helped');
       levelsList[currentLevel - 1].classList.push('helped');
-      AnimationController.textAnimate(levels[currentLevel - 1].rightAnswer as string);
+      AnimationController.textAnimate(levels[currentLevel - 1].rightAnswer[0]);
     });
   }
 }

@@ -8,7 +8,7 @@ export interface LevelsListItem {
 }
 export interface Level {
   levelNumber: number;
-  rightAnswer: string;
+  rightAnswer: string[];
   anotherRightAnswer?: string;
   tableTitle: string;
   syntax: string;

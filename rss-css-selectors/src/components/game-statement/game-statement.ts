@@ -5,8 +5,8 @@ export default class GameStatement {
   protected input: HTMLInputElement | null = document.querySelector('.selector-input');
 
   protected winChecker(lvl: number = 1): boolean {
-    if (this.input?.value.toLowerCase() === levels[lvl - 1].rightAnswer 
-    || this.input?.value.toLowerCase() === levels[lvl - 1].anotherRightAnswer) {
+    const rightAnswers = levels[lvl - 1].rightAnswer;
+    if (rightAnswers.includes(this.input?.value.toLowerCase() as string)) {
       return true;
     } else {
       return false;
