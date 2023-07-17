@@ -3,7 +3,7 @@ import './header.scss';
 
 const header = createElement({
   tag: 'header',
-  classLists: ['header'],
+  classLists: ['header', 'content-wrapper'],
 });
 
 const title = createElement({
@@ -17,20 +17,21 @@ const nav = createElement({
   classLists: ['nav'],
 });
 
-const toWinnersButton = createElement({
-  tag: 'button',
-  classLists: ['nav__button', 'button'],
-  textContent: 'TO WINNERS',
-});
-
 const toGarageButton = createElement({
   tag: 'button',
   classLists: ['nav__button', 'button'],
+  id: 'to-garage',
   textContent: 'TO GARAGE',
 });
-nav.append(toGarageButton, toWinnersButton);
 
+const toWinnersButton = createElement({
+  tag: 'button',
+  classLists: ['nav__button', 'button'],
+  id: 'to-winners',
+  textContent: 'TO WINNERS',
+});
+
+nav.append(toGarageButton, toWinnersButton);
 
 header.append(title, nav);
 document.body.append(header);
-

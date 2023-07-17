@@ -40,4 +40,3 @@ RSSchoolWrapper.append(linkToRsSchool);
 footer.append(GitHubLink, yearOfCreation, RSSchoolWrapper);
 
 document.body.append(footer);
-
