@@ -1,0 +1,50 @@
+import { Car, CarData, HTTPRequest, Urls } from '../../types/types';
+
+const garageUrl = Urls.garage;
+
+export let totalCar: number;
+
+export async function fetchCarsFromServer(pageNumber: number, limitCarsOnPage = 7): Promise<Car[]> {
+  const response = await fetch(`${garageUrl}?_page=${pageNumber}&_limit=${limitCarsOnPage}`, {
+    method: HTTPRequest.GET,
+  });
+  totalCar = getTotalCar(response);
+  return response.json();
+}
+
+function getTotalCar(res: Response): number {
+  const totalCarFromServer = res.headers.get('X-Total-count');
+  return totalCarFromServer ? Number(totalCarFromServer) : 0;
+}
+
+export async function fetchCarFromServer(id: number): Promise<Car> {
+  return (await fetch(`${garageUrl}/${id}`, { method: HTTPRequest.GET })).json();
+}
+
+export async function createCarOnServer(carData: CarData): Promise<void> {
+  const requestOptions: RequestInit = {
+    method: HTTPRequest.POST,
+    body: JSON.stringify(carData),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+
+  await fetch(garageUrl, requestOptions);
+}
+
+export async function deleteCarFromServer(id: number): Promise<void> {
+  await fetch(`${garageUrl}/${id}`, { method: HTTPRequest.DELETE });
+}
+
+export async function updateCarDataOnServer(carData: CarData, id: number): Promise<void> {
+  const requestOptions: RequestInit = {
+    method: HTTPRequest.PUT,
+    body: JSON.stringify(carData),
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+
+  await fetch(`${garageUrl}/${id}`, requestOptions);
+}
