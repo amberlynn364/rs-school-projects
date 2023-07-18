@@ -101,3 +101,38 @@ export function buttonController(): HTMLElement {
   buttonWrapper.append(raceButton, resetButton, generateCarsButton);
   return buttonWrapper;
 }
+
+export function createPaginationView(): HTMLElement {
+  const pagination = createElement({
+    tag: 'div',
+    classLists: ['pagination'],
+  });
+  const firstPageButton = createElement({
+    tag: 'button',
+    classLists: ['button', 'pagination-button'],
+    id: 'first-page-button',
+    textContent: 'FIRST PAGE',
+  });
+  const prevPageButton = createElement({
+    tag: 'button',
+    classLists: ['button', 'pagination-button'],
+    id: 'prev-page-button',
+    textContent: 'PREV PAGE',
+  });
+  const nextPageButton = createElement({
+    tag: 'button',
+    classLists: ['button', 'pagination-button'],
+    id: 'next-page-button',
+    textContent: 'NEXT PAGE',
+  });
+  const lastPageButton = createElement({
+    tag: 'button',
+    classLists: ['button', 'pagination-button'],
+    id: 'last-page-button',
+    textContent: 'LAST PAGE',
+  });
+
+  disableElement([firstPageButton, prevPageButton]);
+  pagination.append(firstPageButton, prevPageButton, nextPageButton, lastPageButton);
+  return pagination;
+}

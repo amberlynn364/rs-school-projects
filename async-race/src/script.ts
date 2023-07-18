@@ -1,2 +1,1 @@
-import './index.html';
-import './style.scss';
+import './app/app';

@@ -1,20 +1,13 @@
 import { Car, CarData, HTTPRequest, Urls } from '../../types/types';
 
-const garageUrl = Urls.garage;
+const garageUrl: string = Urls.garage;
 
-export let totalCar: number;
-
-export async function fetchCarsFromServer(pageNumber: number, limitCarsOnPage = 7): Promise<Car[]> {
-  const response = await fetch(`${garageUrl}?_page=${pageNumber}&_limit=${limitCarsOnPage}`, {
+export async function fetchCarsFromServer(pageNumber: number): Promise<Car[]> {
+  const response = await fetch(`${garageUrl}?_page=${pageNumber}&_limit=7`, {
     method: HTTPRequest.GET,
   });
-  totalCar = getTotalCar(response);
-  return response.json();
-}
 
-function getTotalCar(res: Response): number {
-  const totalCarFromServer = res.headers.get('X-Total-count');
-  return totalCarFromServer ? Number(totalCarFromServer) : 0;
+  return response.json();
 }
 
 export async function fetchCarFromServer(id: number): Promise<Car> {
@@ -47,4 +40,12 @@ export async function updateCarDataOnServer(carData: CarData, id: number): Promi
   };
 
   await fetch(`${garageUrl}/${id}`, requestOptions);
+}
+
+export async function getTotalCarNumber(): Promise<number> {
+  const response = await fetch(`${garageUrl}?_limit=7`, {
+    method: HTTPRequest.GET,
+  });
+  const totalCarFromServer = response.headers.get('X-Total-count');
+  return totalCarFromServer ? Number(totalCarFromServer) : 0;
 }

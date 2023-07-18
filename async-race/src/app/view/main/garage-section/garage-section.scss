@@ -41,6 +41,16 @@
   }
 }
 
+.car-container {
+  min-height: 525px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px
+}
+
 @keyframes shake {
   0%  { transform: translateX(0); }
   25% {  transform: translateX(-10px); }

@@ -9,7 +9,8 @@
   user-select: none;
   transition: 0.5s;
 
-  &.cars-button {
+  &.cars-button,
+  &.pagination-button {
     min-width: 115px;
     font-size: 0.7rem;
   }

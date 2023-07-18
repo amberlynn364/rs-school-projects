@@ -1,3 +1,5 @@
 export function getCarIDFromButton(button: HTMLElement): number {
-  return Number(button.id.slice(-1));
+  const idToArray = button.id.split('-');
+  const lastPart = idToArray[idToArray.length - 1];
+  return Number(lastPart);
 }

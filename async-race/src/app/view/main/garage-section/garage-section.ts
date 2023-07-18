@@ -1,5 +1,10 @@
 import './garage-section.scss';
-import { buttonController, createCarOptions, createElement } from '../../../helpers/create-element';
+import {
+  buttonController,
+  createCarOptions,
+  createElement,
+  createPaginationView,
+} from '../../../helpers/create-element';
 
 export const garageSection = createElement({
   tag: 'section',
@@ -56,4 +61,6 @@ const carContainer = createElement({
 });
 garageContainer.append(carsInGarage, pageNumber);
 
-garageSection.append(carManager, garageContainer, carContainer);
+const pagination = createPaginationView();
+
+garageSection.append(carManager, garageContainer, carContainer, pagination);
