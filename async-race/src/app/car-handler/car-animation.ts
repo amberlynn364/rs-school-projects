@@ -2,26 +2,26 @@ import { CarAnimation } from '../../types/types';
 
 const carAnimations: { [carId: number]: CarAnimation } = {};
 
-export function handleStartCarButtonClick(car: HTMLElement, distance: number, duration: number, carId: number) {
+export function handleStartCarButtonClick(car: HTMLElement, distance: number, duration: number, carId: number): void {
   if (!carAnimations[carId]) {
     carAnimations[carId] = {
-      animation: addCarAnimation(car, 200, 1000),
+      animation: addCarAnimation(car, distance, duration),
       isRunning: true,
     };
   } else if (!carAnimations[carId].isRunning) {
-    carAnimations[carId].animation = addCarAnimation(car, 200, 1000);
+    carAnimations[carId].animation = addCarAnimation(car, distance, duration);
     carAnimations[carId].isRunning = true;
   }
 }
 
-export function handleStopCarButtonClick(carId: number) {
+export function handleStopCarButtonClick(carId: number): void {
   if (carAnimations[carId] && carAnimations[carId].isRunning) {
     carAnimations[carId].animation.stop();
     carAnimations[carId].isRunning = false;
   }
 }
 
-export function addCarAnimation(car: HTMLElement, distance: number, duration: number) {
+export function addCarAnimation(car: HTMLElement, distance: number, duration: number): { stop: () => void } {
   let startTime: number | null = null;
   let animationId: number | null = null;
 
@@ -45,7 +45,7 @@ export function addCarAnimation(car: HTMLElement, distance: number, duration: nu
     stop: () => {
       if (animationId !== null) {
         window.cancelAnimationFrame(animationId);
-        car.style.transform = 'translateX(0px)';
+        // car.style.transform = 'translateX(0px)';
       }
     },
   };
