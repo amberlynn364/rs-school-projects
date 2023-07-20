@@ -1,4 +1,4 @@
-import { EngineResource, HTTPRequest, Urls } from '../../types/types';
+import { EngineResource, HTTPRequest, SwitchCarEngineResponse, Urls } from '../../types/types';
 
 const engineUrl: string = Urls.engine;
 
@@ -10,7 +10,7 @@ export async function stopCarEngine(id: number): Promise<EngineResource> {
   return (await fetch(`${engineUrl}?id=${id}&status=stopped`, { method: HTTPRequest.PATCH })).json();
 }
 
-export async function switchCarEngineToDriveMode(id: number) {
+export async function switchCarEngineToDriveMode(id: number): Promise<SwitchCarEngineResponse> {
   const response = await fetch(`${engineUrl}?id=${id}&status=drive`, { method: HTTPRequest.PATCH });
   if (response.status === 200) {
     const data = await response.json();
