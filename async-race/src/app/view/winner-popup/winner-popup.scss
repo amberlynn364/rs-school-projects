@@ -1,0 +1,37 @@
+@import '../../../sass/components/button';
+
+.winner-popup {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  background-color: rgb(56, 56, 48);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 65%;
+  height: 35%;
+  border-radius: 15px;
+  z-index: 20;
+
+  &.hide {
+    display: none;
+  }
+
+  .winner-message {
+    padding: 0 5px;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+}
+
+.popup-overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0, 0, 0, 0.3);
+  z-index: 10;
+}
