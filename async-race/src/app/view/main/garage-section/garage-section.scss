@@ -2,6 +2,10 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  &.hide {
+    display: none;
+  }
 }
 
 .car-manager {
@@ -16,6 +20,10 @@
     gap: 10px;
     padding: 2px;
     width: 100%;
+
+    input[type="color"] {
+      align-self: center;
+    }
 
     &.shake {
       animation: shake 0.1s 5;
@@ -43,12 +51,17 @@
 
 .car-container {
   min-height: 525px;
+  width: 95%;
 }
 
 .pagination {
   display: flex;
   justify-content: center;
-  gap: 15px
+  gap: 15px;
+
+  @media(max-width: 550px) {
+    gap: 5px;
+  }
 }
 
 @keyframes shake {
