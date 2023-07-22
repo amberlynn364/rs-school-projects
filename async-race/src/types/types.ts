@@ -40,9 +40,24 @@ export interface EngineResource {
   velocity: number;
 }
 
+export interface SwitchCarEngineResponse {
+  success: boolean;
+}
+
 export interface CarAnimation {
   animation: ReturnType<typeof addCarAnimation>;
   isRunning: boolean;
+}
+
+export interface WinnersData {
+  wins: number;
+  time: string;
+  id: number;
+}
+
+export interface WinnersUpdateData {
+  wins: number;
+  time: string;
 }
 
 export type CreateOrUpdate = 'create' | 'update';
