@@ -1,4 +1,5 @@
 import { CarOptionsAttributes, ElementAttributes, InputElementAttributes } from '../../types/types';
+import createCarView from '../view/car-module/create-car-view';
 import { disableElement } from './disable-element';
 
 export function createElement({ tag, classLists, id, textContent }: ElementAttributes): HTMLElement {
@@ -98,41 +99,87 @@ export function buttonController(): HTMLElement {
     id: 'generate-cars-button',
     textContent: 'GENERATE CARS',
   });
+  disableElement(resetButton);
   buttonWrapper.append(raceButton, resetButton, generateCarsButton);
   return buttonWrapper;
 }
 
-export function createPaginationView(): HTMLElement {
+export function createPaginationView(page: string): HTMLElement {
   const pagination = createElement({
     tag: 'div',
-    classLists: ['pagination'],
+    classLists: ['pagination', 'content-wrapper'],
   });
   const firstPageButton = createElement({
     tag: 'button',
     classLists: ['button', 'pagination-button'],
-    id: 'first-page-button',
+    id: `first-page-button-${page}`,
     textContent: 'FIRST PAGE',
   });
   const prevPageButton = createElement({
     tag: 'button',
     classLists: ['button', 'pagination-button'],
-    id: 'prev-page-button',
+    id: `prev-page-button-${page}`,
     textContent: 'PREV PAGE',
   });
   const nextPageButton = createElement({
     tag: 'button',
     classLists: ['button', 'pagination-button'],
-    id: 'next-page-button',
+    id: `next-page-button-${page}`,
     textContent: 'NEXT PAGE',
   });
   const lastPageButton = createElement({
     tag: 'button',
     classLists: ['button', 'pagination-button'],
-    id: 'last-page-button',
+    id: `last-page-button-${page}`,
     textContent: 'LAST PAGE',
   });
 
   disableElement([firstPageButton, prevPageButton]);
   pagination.append(firstPageButton, prevPageButton, nextPageButton, lastPageButton);
   return pagination;
+}
+
+export function createTable(columns: number): HTMLTableElement {
+  const table: HTMLTableElement | null = createElement({
+    tag: 'table',
+    classLists: ['table'],
+    id: 'winners-table',
+  }) as HTMLTableElement;
+
+  const headerRow = document.createElement('thead');
+  for (let j = 0; j < columns; j++) {
+    const headerCell = document.createElement('th');
+    headerCell.textContent = `Column ${j + 1}`;
+    headerRow.appendChild(headerCell);
+  }
+  table.appendChild(headerRow);
+
+  return table;
+}
+
+export function addRowToTable(
+  tableElement: HTMLTableElement,
+  rowNumber: number,
+  carImage: string,
+  carName: string,
+  numberOfWins: number,
+  bestTime: string
+): void {
+  const table: HTMLTableElement | null = tableElement;
+  const newRow = table!.insertRow(-1);
+
+  const cellRowNumber = newRow.insertCell(0);
+  cellRowNumber.innerText = `${rowNumber}`;
+
+  const cellCarImage = newRow.insertCell(1);
+  cellCarImage.innerHTML = createCarView(carImage);
+
+  const cellCarName = newRow.insertCell(2);
+  cellCarName.innerText = carName;
+
+  const cellNumberOfWins = newRow.insertCell(3);
+  cellNumberOfWins.innerText = `${numberOfWins}`;
+
+  const celLBestTime = newRow.insertCell(4);
+  celLBestTime.innerText = bestTime;
 }

@@ -2,8 +2,9 @@
 /* eslint-disable no-use-before-define */
 import './car-module.scss';
 
-import { createElement } from '../../helpers/create-element';
+import { createElement } from '../../helpers/create-elements';
 import createCarView from './create-car-view';
+import { disableElement } from '../../helpers/disable-element';
 
 export function createCarModule(carTitle: string, color: string, id: number): HTMLElement {
   const carModule = createElement({
@@ -75,8 +76,10 @@ function createCarHandler(color: string, id: number): HTMLElement {
   const finishFlag = createElement({
     tag: 'div',
     classLists: ['finish-flag'],
+    id: `flag-id-${id}`,
   });
 
+  disableElement(buttonStop);
   carHandler.append(buttonStart, buttonStop, carView, finishFlag);
 
   return carHandler;

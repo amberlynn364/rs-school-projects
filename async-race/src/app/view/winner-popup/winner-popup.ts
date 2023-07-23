@@ -1,6 +1,6 @@
 import './winner-popup.scss';
 
-import { createElement } from '../../helpers/create-element';
+import { createElement } from '../../helpers/create-elements';
 
 export const winnerPopup = createElement({
   tag: 'div',

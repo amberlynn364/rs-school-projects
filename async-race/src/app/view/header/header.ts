@@ -1,7 +1,7 @@
-import { createElement } from '../../helpers/create-element';
+import { createElement } from '../../helpers/create-elements';
 import './header.scss';
 
-const header = createElement({
+export const header = createElement({
   tag: 'header',
   classLists: ['header', 'content-wrapper'],
 });

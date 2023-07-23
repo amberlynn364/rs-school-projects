@@ -1,9 +1,10 @@
-import { createElement, createPaginationView, createTable } from '../../../helpers/create-element';
+import { createElement, createPaginationView, createTable } from '../../../helpers/create-elements';
 import './winner-section.scss';
 
 export const winnerSection = createElement({
   tag: 'section',
   classLists: ['winner', 'hide'],
+  id: 'winner-section',
 });
 
 const numbersOfWinners = createElement({

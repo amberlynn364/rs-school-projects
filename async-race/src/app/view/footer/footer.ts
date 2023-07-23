@@ -1,4 +1,4 @@
-import { createElement } from '../../helpers/create-element';
+import { createElement } from '../../helpers/create-elements';
 import './footer.scss';
 
 const footer = createElement({
