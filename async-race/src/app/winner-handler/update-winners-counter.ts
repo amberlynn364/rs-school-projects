@@ -1,8 +1,9 @@
-import { getTotalWinnersNumber } from './winners-api-handlers';
+import { Urls } from '../../types/types';
+import { getTotalItemsFromServer } from '../api-requests/api-requests';
 
 export function updateWinnersCounter(): void {
   const winnersCounter: HTMLElement | null = document.querySelector('#number-of-winners');
   if (winnersCounter) {
-    getTotalWinnersNumber().then((number) => (winnersCounter.textContent = `Winners (${number})`));
+    getTotalItemsFromServer(Urls.winners).then((number) => (winnersCounter.textContent = `Winners (${number})`));
   }
 }

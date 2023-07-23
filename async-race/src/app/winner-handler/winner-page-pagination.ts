@@ -1,8 +1,8 @@
-import { PaginationButtons } from '../../types/types';
+import { PaginationButtons, Urls } from '../../types/types';
+import { getTotalItemsFromServer } from '../api-requests/api-requests';
 import { disableElement } from '../helpers/disable-element';
 import { enableElement } from '../helpers/enable-element';
-import { updateWinnersTableUI } from './update-winners-table';
-import { getTotalWinnersNumber } from './winners-api-handlers';
+import { renderWinnersTable } from './render-winners-table';
 
 const firstPageButton: HTMLButtonElement | null = document.querySelector('#first-page-button-winners');
 const prevPageButton: HTMLButtonElement | null = document.querySelector('#prev-page-button-winners');
@@ -28,11 +28,10 @@ export function handlePaginationButtonClickWinners(buttonType: PaginationButtons
       updatePageNumberAndRenderWinners(firstPagePagination - 1);
       break;
     case 'next-page-button':
-      console.log(1);
       updatePageNumberAndRenderWinners(firstPagePagination + 1);
       break;
     case 'last-page-button':
-      getTotalWinnersNumber().then((number) => {
+      getTotalItemsFromServer(Urls.winners).then((number) => {
         const lastPage = Math.ceil(number / LIMIT_WINNERS_ON_PAGE);
         updatePageNumberAndRenderWinners(lastPage);
       });
@@ -43,13 +42,13 @@ function updatePageNumberAndRenderWinners(newPageNumber: number) {
   const pageNumberWinners = document.querySelector('#page-number-winners');
   firstPagePagination = newPageNumber;
   pageNumberWinners!.textContent = `Page #${firstPagePagination}`;
-  updateWinnersTableUI();
-  disablePaginationButtonsWinners();
+  renderWinnersTable();
+  disableWinnersPaginationButtonsWinners();
 }
 
-export function disablePaginationButtonsWinners() {
+export function disableWinnersPaginationButtonsWinners() {
   if (firstPageButton && prevPageButton && nextPageButton && lastPageButton) {
-    getTotalWinnersNumber().then((number) => {
+    getTotalItemsFromServer(Urls.winners).then((number) => {
       const lastPage = Math.ceil(number / LIMIT_WINNERS_ON_PAGE);
       if (firstPagePagination === FIRST_PAGE) {
         disableElement([firstPageButton, prevPageButton]);
