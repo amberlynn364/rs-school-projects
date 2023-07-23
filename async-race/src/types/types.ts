@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { addCarAnimation } from '../app/car-handler/car-animation';
 
 export interface ElementAttributes {
@@ -24,16 +25,13 @@ export interface CarOptionsAttributes {
   disabled?: boolean;
 }
 
-export interface Car {
+export interface CarData {
   name: string;
   color: string;
   id: number;
 }
 
-export interface CarData {
-  name: string;
-  color: string;
-}
+export type Car = Omit<CarData, 'id'>;
 
 export interface EngineResource {
   distance: number;
@@ -54,17 +52,19 @@ export interface WinnersData {
   time: string;
   id: number;
 }
-
-export interface WinnersUpdateData {
-  wins: number;
-  time: string;
+export interface PaginationButtonsInterface {
+  firstButton: HTMLElement;
+  prevButton: HTMLElement;
+  nextButton: HTMLElement;
+  lastButton: HTMLElement;
 }
 
+export type PageType = 'garage' | 'winners';
 export type CreateOrUpdate = 'create' | 'update';
-
 export type RemoveOrSelectButtons = 'remove-button' | 'select-button';
-
 export type PaginationButtons = 'first-page-button' | 'prev-page-button' | 'next-page-button' | 'last-page-button';
+export type FetchUrl = Urls.garage | Urls.winners;
+export type ItemLimitValue = ItemLimit.carsLimit | ItemLimit.winnersLimit;
 
 export enum Urls {
   garage = 'http://127.0.0.1:3000/garage',
@@ -78,4 +78,9 @@ export enum HTTPRequest {
   PUT = 'PUT',
   PATCH = 'PATCH',
   DELETE = 'DELETE',
+}
+
+export enum ItemLimit {
+  carsLimit = 7,
+  winnersLimit = 10,
 }
