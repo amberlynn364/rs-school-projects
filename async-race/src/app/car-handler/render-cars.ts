@@ -1,5 +1,5 @@
 import { Car } from '../../types/types';
-import { fetchCarsFromServer, getTotalCarNumber } from '../garage-handler/garage-api-handlers';
+import { fetchCarsFromServer } from '../garage-handler/garage-api-handlers';
 import { pageNumber } from '../garage-handler/garage-button-handlers';
 import { createCarModule } from '../view/car-module/car-module';
 
@@ -17,5 +17,3 @@ export function renderCars(): void {
     }
   });
 }
-
-renderCars();

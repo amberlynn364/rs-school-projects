@@ -6,5 +6,3 @@ export function updateCarsCounter() {
     getTotalCarNumber().then((number) => (carInGarage.textContent = `Cars in Garage (${number})`));
   }
 }
-
-updateCarsCounter();
