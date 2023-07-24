@@ -20,6 +20,13 @@
   color: black;
 }
 
+.table th {
+  &:last-child,
+  &:nth-child(4) {
+    cursor: pointer;
+  }
+}
+
 .table td,
 .table th {
   text-align: center;
