@@ -25,6 +25,7 @@ export function stopCarAnimation(carID: number): void {
 let raceResult = [];
 export function addCarAnimation(car: HTMLElement, distance: number, duration: number): { stop: () => void } {
   raceResult = [];
+  const raceButton = document.querySelector('#race-button');
   let startTime: number | null = null;
   let animationId: number | null = null;
 
@@ -42,7 +43,7 @@ export function addCarAnimation(car: HTMLElement, distance: number, duration: nu
     }
 
     if (progress >= 1) {
-      if (raceResult.length === 0) addWinnerToServer(car, duration);
+      if (raceResult.length === 0 && raceButton?.hasAttribute('disabled')) addWinnerToServer(car, duration);
       raceResult.push(car);
     }
   }
