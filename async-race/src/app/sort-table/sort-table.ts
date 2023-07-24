@@ -8,8 +8,8 @@ export function sortTable(columnIndex: number, ascending: boolean): void {
       const cellA = a.getElementsByTagName('td')[columnIndex].textContent;
       const cellB = b.getElementsByTagName('td')[columnIndex].textContent;
 
-      const valueA = parseInt(cellA!);
-      const valueB = parseInt(cellB!);
+      const valueA = parseFloat(cellA!);
+      const valueB = parseFloat(cellB!);
 
       return ascending ? valueA - valueB : valueB - valueA;
     });
