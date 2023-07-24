@@ -149,6 +149,7 @@ export function createTable(columns: number): HTMLTableElement {
   const headerRow = document.createElement('thead');
   for (let j = 0; j < columns; j++) {
     const headerCell = document.createElement('th');
+    headerCell.setAttribute('data-column-index', `${j}`);
     headerCell.textContent = `Column ${j + 1}`;
     headerRow.appendChild(headerCell);
   }
