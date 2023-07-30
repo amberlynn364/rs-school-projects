@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+    <style>
+      p {
+        font-size: 24px;
+      }
+      li {
+        font-size: 18px;
+      }
+      code {
+        font-size: 16px;
+        line-height: 20px;
+      }
+      table {
+        font-size: 18px;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid rgb(195, 195, 195);
+        padding: 8px;
+      }
+
+      th {
+        background-color: #494949; /* Цвет фона заголовков */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h2>Context API vs Redux</h2>
+          <p>Presented by Timoshkin Ivan</p>
+        </section>
+
+        <!-- Slide 2: Introduction -->
+        <section>
+          <h2>Introduction</h2>
+        </section>
+
+        <!-- Slide 3: Context API -->
+        <section>
+          <section>
+            <h2>Context API</h2>
+            <p>
+              Context API is a feature provided by React that allows data to be
+              passed through the component tree without the need to explicitly
+              pass props down to every level. It helps solve the prop drilling
+              problem, where data needs to be passed through multiple
+              components, even if some intermediate components don't use that
+              data.
+            </p>
+          </section>
+          <section>
+            <p>Example usage of Context API:</p>
+            <pre><code class="js" data-trim data-noescape data-line-numbers>
+							const UserContext = React.createContext();
+							&lt;UserContext.Provider value={userData}&gt;
+							&lt;ComponentA /&gt;
+							&lt;ComponentB /&gt;
+							&lt;/UserContext.Provider&gt;
+						</code>
+						</pre>
+          </section>
+          <section>
+            <p>Pros of using Context API:</p>
+            <ul>
+              <li>
+                Simple to implement, especially for small to medium-sized apps.
+              </li>
+              <li>No need to install additional libraries.</li>
+            </ul>
+            <p>Cons of using Context API:</p>
+            <ul>
+              <li>
+                Not ideal for larger, more complex applications with deep
+                nesting.
+              </li>
+              <li>
+                Can lead to performance issues due to excessive re-renders.
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Slide 4: Redux -->
+        <section>
+          <section>
+            <h2>Redux</h2>
+            <p>
+              Redux is a popular state management library for React (and other
+              JavaScript frameworks) that provides a predictable and centralized
+              way to manage the state of an application. It follows a one-way
+              data flow, which means that data in the application flows in a
+              single direction, making state changes more predictable and easier
+              to manage.
+            </p>
+          </section>
+          <section>
+            <p>Example usage of Redux:</p>
+            <pre><code class="js" data-trim data-noescape data-line-numbers >
+							const initialState = {
+							count: 0,
+							};
+							
+							function reducer(state = initialState, action) {
+
+								switch (action.type) {
+								case 'INCREMENT':
+								return { ...state, count: state.count + 1 };
+
+								case 'DECREMENT':
+								return { ...state, count: state.count - 1 };
+								
+								default:
+								return state;
+								}
+							}
+							
+							const store = Redux.createStore(reducer);
+						</code>
+						</pre>
+          </section>
+          <section>
+            <p>Pros of using Redux:</p>
+            <ul>
+              <li>Centralized global state management.</li>
+              <li>
+                Excellent for large and complex applications with predictable
+                state changes.
+              </li>
+              <li>Time travel debugging and extensive tooling support.</li>
+            </ul>
+            <p>Cons of using Redux:</p>
+            <ul>
+              <li>Requires more boilerplate code compared to Context API.</li>
+              <li>Steep learning curve, especially for beginners.</li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Slide 5: Comparison -->
+        <section>
+          <section>
+            <h2>Comparison</h2>
+          </section>
+          <section>
+            <table>
+              <thead>
+                <tr>
+                  <th>Aspect</th>
+                  <th>Context API</th>
+                  <th>Redux</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Complexity</td>
+                  <td>Simple to use and learn. Part of React.</td>
+                  <td>
+                    More complex to set up and understand. Separate library.
+                  </td>
+                </tr>
+                <tr>
+                  <td>State Management</td>
+                  <td>Provides global state without additional libraries.</td>
+                  <td>Uses a single store for managing application state.</td>
+                </tr>
+                <tr>
+                  <td>Ecosystem &amp; Community</td>
+                  <td>
+                    Supported by an active React community with good support.
+                  </td>
+                  <td>
+                    Extensive ecosystem with various extensions and development
+                    tools. Large user community.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Performance</td>
+                  <td>
+                    Fast and works well for most cases, but may be less
+                    optimized for high-load applications.
+                  </td>
+                  <td>
+                    Potentially more performant, especially for larger projects,
+                    due to immutability and efficient update mechanisms.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Use Cases</td>
+                  <td>
+                    Suitable for simple state management and lifting state in
+                    the component tree.
+                  </td>
+                  <td>
+                    Suitable for complex state management, handling deeply
+                    nested states, async actions, and providing state to
+                    multiple components.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Developer Experience</td>
+                  <td>
+                    Requires less code and setup, making it quicker and easier
+                    to use for small projects.
+                  </td>
+                  <td>
+                    Involves more code and requires additional setup, but offers
+                    powerful debugging tools like Redux DevTools.
+                  </td>
+                </tr>
+                <tr>
+                  <td>Usage Examples</td>
+                  <td>
+                    Ideal for simple state management in small and medium
+                    projects.
+                  </td>
+                  <td>
+                    Suitable for managing complex state, handling async
+                    operations, and sharing data between multiple components in
+                    larger applications.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <p>When to choose Context API over Redux:</p>
+            <ul>
+              <li>
+                Context API is suitable for small to medium-sized applications
+                with less nesting.
+              </li>
+              <li>
+                Redux is preferable for large and complex applications with deep
+                nesting and predictable state changes.
+              </li>
+            </ul>
+          </section>
+        </section>
+
+        <!-- Slide 6: Real-World Examples -->
+        <section>
+          <section>
+            <h2>Real-World Examples</h2>
+          </section>
+          <section>
+            <p>
+              Example 1: Building a simple user profile page with limited data
+              sharing - Context API can be a good choice here.
+            </p>
+            <p>
+              Example 2: Building an e-commerce application with multiple pages
+              and complex data sharing - Redux is a better fit for this
+              scenario.
+            </p>
+            <p>
+              Example 3: A medium-sized blog application with a moderate level
+              of data sharing - Context API might be sufficient for this use
+              case.
+            </p>
+          </section>
+        </section>
+
+        <!-- Slide 7: Conclusion -->
+        <section>
+          <h2>Conclusion</h2>
+          <p>
+            Context API and Redux are powerful tools for state management in
+            React apps. Remember that the choice between Context API and Redux
+            largely depends on the specific requirements and complexity of your
+            project. Both solutions have their strengths and can greatly improve
+            the state management of your React applications.
+          </p>
+        </section>
+
+        <!-- Slide 8: Ending -->
+        <section>
+          <h4>Thank you for your attention and goodbye!</h4>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        // beforeHighlight: js,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>
